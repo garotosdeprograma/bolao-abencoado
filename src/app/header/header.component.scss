@@ -1,0 +1,111 @@
+// gameboll themes
+.gameboll-theme-primary {
+    // background-color: #071C4C !important;
+    background-color: #0E562C !important;    
+    color: #fff !important;
+    .button-1, {
+        background-color: #073018 !important;
+        color: #fff !important;
+        cursor: pointer;
+        i {
+            color: #fff !important;
+        }
+        &:hover {
+            background-color: #000 !important;
+            border: solid 1px #fff;
+        }
+    }
+
+    .button-2, {
+        background-color: #e7e9ea !important;
+        color: #000 !important;
+        i {
+            color: #000 !important;
+        }
+    }
+
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #fff !important;
+    }
+}
+
+.gameboll-theme-secondary {
+    background-color: #e7e9ea !important;
+    color: #000 !important;
+    .button {
+        background-color: #000 !important;
+        color: #fff !important;
+        i {
+            color: #fff !important;
+        }
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+}
+
+.gameboll-theme-light {
+    background-color: #fff !important;
+    color: #000 !important;
+    .button {
+        background-color: #000 !important;
+        color: #fff !important;
+        i {
+            color: #fff !important;
+        }
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+}
+
+.gameboll-theme-dark {
+    background-color: #051438 !important;
+    color: #fff !important;
+    .button {
+        background-color: #e7e9ea !important;
+        color: #000 !important;
+        i {
+            color: #000 !important;
+        }
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #fff !important;
+    }
+}
+
+.gameboll-theme-modal {
+    .modal-header {
+        background-color: #073018 !important;
+        .modal-title {
+            color: #fff !important;
+        }
+    }
+    span {
+        color: #fff !important;
+    }
+    .btn {
+        background-color: #073018 !important;
+        color: #fff !important;
+        i {
+            color: #000 !important;
+        }
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+    .link {
+        color: #0366d6 !important;
+    }
+}
+
+.header {
+    .logo {
+        .span1 {
+            margin-right: -5px;
+        }
+        .span2 {
+            margin-left: -5px;
+        }
+    }
+}

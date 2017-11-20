@@ -1,3 +1,450 @@
-<p>
-  home works!
-</p>
+<div class="home">
+
+  <div class="menu-top col-12 text-center">
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" (click)="showMenu()">Meus Jogos</a>
+
+        <div class="content-jogos" #meusjogos>
+          <div class="d-flex justify-content-center row p-2">
+
+            <div class="jogo col-sm-3 m-0 p-1 d-flex justify-content-center row">
+              <!-- time da casa -->
+              <div class="time-casa text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+                <span class="col-12 info p-0">Barcelona FC</span>
+
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+              <!-- time visitante -->
+              <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+                <span class="col-12 info p-0">Real Madrid FC</span>
+
+              </div>
+              <div class="col-12 info-jogo">
+                <p class="info">Data</p>
+                <p class="info">Horário: 00:00h</p>
+
+              </div>
+            </div>
+
+            <div class="jogo col-sm-3 m-0 p-1 d-flex justify-content-center row">
+              <!-- time da casa -->
+              <div class="time-casa text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+                <span class="col-12 info p-0">Barcelona FC</span>
+
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+              <!-- time visitante -->
+              <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+                <span class="col-12 info p-0">Real Madrid FC</span>
+
+              </div>
+              <div class="col-12 info-jogo">
+                <p class="info">Data</p>
+                <p class="info">Horário: 00:00h</p>
+
+              </div>
+            </div>
+
+            <div class="jogo col-sm-3 m-0 p-1 d-flex justify-content-center row">
+              <!-- time da casa -->
+              <div class="time-casa text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+                <span class="col-12 info p-0">Barcelona FC</span>
+
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+              <!-- time visitante -->
+              <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+                <span class="col-12 info p-0">Real Madrid FC</span>
+
+              </div>
+              <div class="col-12 info-jogo">
+                <p class="info">Data</p>
+                <p class="info">Horário: 00:00h</p>
+
+              </div>
+            </div>
+
+            <div class="jogo col-sm-3 m-0 p-1 d-flex justify-content-center row">
+              <!-- time da casa -->
+              <div class="time-casa text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+                <span class="col-12 info p-0">Barcelona FC</span>
+
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+              <!-- time visitante -->
+              <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+                <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+                <span class="col-12 info p-0">Real Madrid FC</span>
+
+              </div>
+              <div class="col-12 info-jogo">
+                <p class="info">Data</p>
+                <p class="info">Horário: 00:00h</p>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="showResultado()">Resultado da semana</a>
+        <div #resultado class="resultado h-100 pb-5 justify-content-center">
+
+          <div class="row">
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+            <div class="jogador col-12">
+              <span class="classificacao col-2">1º</span>
+              <span class="nome span col-8">Nome do usuário</span>
+              <span class="pontos col-2">7</span>
+            </div>
+
+          </div>
+
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+
+
+  <div class="jogos row mt-3 mb-3 mr-0 ml-0 d-flex justify-content-center">
+    <!-- (click)="fecharMensagem()" -->
+    <div class="imagem-inicio col-12 mt-5 pt-5 justify-content-center row" #fechar>
+      <div class="text-center col-12 texto-inicial">
+        <h1>Bem vindo ao GameBoll</h1>
+        <h3 class="pb-3">Selecione um dos campeonatos para iniciar suas apostas!</h3>
+        <a>Fechar mensagem</a>
+        <img src="../../assets/img/seta.png" alt="">
+      </div>
+    </div>
+
+    <!-- jogos da rodada -->
+    <div class="col-12 jogos-rodada p-0" #fechar>
+      <div class="row d-flex m-0 text-center justify-content-center header">
+        <img class="mt-3 mb-1" src="../../assets/img/ligas/uefa.png" alt="logo do campeonato">
+        <h3 class="m-0 col-12">Campeonato escolhido</h3>
+        <h6 class="mt-0 mb-3 col-12">3ª rodada</h6>
+      </div>
+      <!-- o jogo é apresentado nesse local -->
+      <div class="row w-100 m-0">
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+          <!-- time da casa -->
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+            <span class="col-12 info p-0">Barcelona FC</span>
+
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <!-- time visitante -->
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeescolhida (click)="escolherEquipe()">
+            <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+            <span class="col-12 info p-0">Real Madrid FC</span>
+
+          </div>
+          <div class="col-12 info-jogo">
+            <p class="info">Data</p>
+            <p class="info">Horário: 00:00h</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="imagem-fundo d-flex justify-content-center align-items-center">
+    <img src="../../assets/img/torcida3.jpg" alt="imagem de fundo">
+  </div>
+
+
+  <div alt="lista-de-campeonatos" class="lista-campeonatos row d-flex justify-content-center align-items-center">
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/uefa.png" alt="campeonato-uefa">
+      <a>
+        <p class="text-center">UEFA</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/brasileirao-serie-a.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Brasileirao Série A</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/brasileirao-serie-b.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Brasileirao Série B</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/liga-espanhola.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Liga Espanhola</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/liga-francesa.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Liga Francesa</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/liga-italiana.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Liga Italiana</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/liga-inglesa.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Liga Iglesa</p>
+      </a>
+    </div>
+
+    <div class="campeonato p-3 d-flex justify-content-center align-items-center">
+      <img src="../../assets/img/ligas/liga-alema.png" alt="campeonato-uefa">
+      <a href="">
+        <p class="text-center">Liga Alemã</p>
+      </a>
+    </div>
+
+  </div>
+
+</div>
