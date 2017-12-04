@@ -1,13 +1,59 @@
 <div class="home">
 
+  <div class="aposta-icon text-center d-flex justify-content-center align-items-center mt-2 pt-0">
+    <!-- <img data-toggle="modal" data-target="#modal-apostas" src="assets/img/bola-aposta.png" alt="aposta atual"> -->
+    <small class="text-muted">
+      <p class="mt-3" data-toggle="modal" data-target="#modal-apostas">Ver<br/> aposta</p>
+    </small>
+  </div>
+
+  <div class="modal gameboll-theme-modal" id="modal-apostas">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header rounded-0">
+          <h5 class="modal-title">Aposta atual</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="jogo col-12 m-0 p-1 d-flex justify-content-center row">
+            <!-- time da casa -->
+            <div class="time-casa text-center d-flex justify-content-center col-5 row">
+              <img src="../../../assets/img/uefa/barcelona.png" alt="logo do time">
+              <span class="col-12 info p-0">Barcelona FC</span>
+
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+            <!-- time visitante -->
+            <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+              <img src="../../../assets/img/uefa/real-madrid.png" alt="logo do time">
+              <span class="col-12 info p-0">Real Madrid FC</span>
+
+            </div>
+            <div class="col-12 text-center info-jogo">
+              <p class="info">Data</p>
+              <p class="info">Horário: 00:00h</p>
+            </div>
+
+            <div class="btn-desfazer-aposta col-12 mt-3 text-center">
+              <a href="" class="btn btn-sm btn-primary">Desfazer aposta</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="menu-top col-12 text-center">
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link" (click)="showMenu()">Meus Jogos</a>
+        <a class="nav-link" (click)="showMenu()">Minhas apostas</a>
 
         <div class="content-jogos" #meusjogos>
-          <p class="aposta">Aposta 1</p>
+          <p class="lista-aposta">Aposta 1</p>
           <div class="d-flex justify-content-center row p-2">
 
             <div class="jogo col-sm-3 m-0 p-1 d-flex justify-content-center row">
@@ -147,8 +193,6 @@
     </ul>
 
   </div>
-
-
 
   <div class="jogos row mt-3 mb-3 mr-0 ml-0 d-flex justify-content-center">
     <!-- (click)="fecharMensagem()" -->
@@ -392,7 +436,7 @@
   <div alt="lista-de-campeonatos" class="lista-campeonatos row d-flex justify-content-center align-items-center">
     <div class="campeonato p-3 d-flex justify-content-center align-items-center">
       <img src="../../assets/img/ligas/uefa.png" alt="campeonato-uefa">
-      <a>
+      <a href="">
         <p class="text-center">UEFA</p>
       </a>
     </div>

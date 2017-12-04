@@ -1,3 +1,33 @@
+.gameboll-theme-modal {
+    .modal-header {
+        background-color: #073018 !important;
+        .modal-title {
+            color: #fff !important;
+        }
+        .close {
+            span {
+                color: #fff !important;
+            }
+        }
+    }
+    span {
+        color: #000 !important;
+    }
+    .btn {
+        background-color: #073018 !important;
+        color: #fff !important;
+        i {
+            color: #000 !important;
+        }
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+    .link {
+        color: #0366d6 !important;
+    }
+}
+
 .home {
     position: relative;
     width: 100%;
@@ -26,6 +56,54 @@
         z-index: -1;
         img {
             height: 140%;
+        }
+    }
+
+    .aposta-icon {
+        background: radial-gradient(circle closest-side,#073018 0%,#073018 74%,rgba(255, 255, 255, 0.39) 80%,rgba(0,0,0,0) 100%);
+        position: fixed;
+        width: 12vh;
+        height: 12vh;
+        right: 4%;
+        top: 100px;
+        z-index: 1;
+        &:hover {
+            background: radial-gradient(circle closest-side,#073018 0%,#073018 74%,rgba(0, 0, 0, 1) 80%,rgba(0,0,0,0) 100%);
+        }
+        img {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        p {
+            // background-color: red;
+            padding: 12px;
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+
+    .aposta {
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal {
+        img {
+            height: 40px;
+        }
+        .info {
+            text-align: center;
+            margin: 0;
+            font-size: 0.8em;
+        }
+        .btn-desfazer-aposta {
+            padding-bottom: 8px;
+            border-bottom: solid 1px;
         }
     }
 
@@ -76,7 +154,7 @@
             .content-jogos {
                 display: none;
                 color: #000;
-                .aposta {
+                .lista-aposta {
                     color: #fff;
                     border-top: solid 1px #fff;
                 }

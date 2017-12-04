@@ -1,0 +1,138 @@
+.gameboll-theme-modal {
+    .modal-header {
+        background-color: #073018 !important;
+        .modal-title {
+            color: #fff !important;
+        }
+    }
+    span {
+        color: #fff !important;
+    }
+    .btn {
+        cursor: pointer;
+        background-color: #073018 !important;
+        color: #fff !important;
+        i {
+            color: #000 !important;
+        }
+        &:hover {
+            background-color: #000 !important;
+            border: solid 1px #fff;
+        }
+
+    }
+    a, b, i, p, h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+    .link {
+        color: #0366d6 !important;
+    }
+}
+
+.administrador {
+    position: relative;
+    width: 100%;
+    min-height: 72vh;
+    margin-top: 56px;
+
+    .menu-left {
+        position: absolute;
+        left: 0;
+        padding-left: 12px;
+        z-index: 1;
+        min-height:100vh;
+        background: #073018;
+        display: inline-block;
+        white-space: nowrap;
+        width: 65px;
+        transition: width 0.2s;
+        &:hover {
+            width: 250px;
+        }
+        .icon {
+            margin:15px;
+            width:20px;
+            color:#fff;
+        }
+        .item {
+            height:50px;
+            overflow:hidden;
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+            &:hover {
+                background-color:#fff;
+                .icon {
+                    color: #073018;
+
+                }
+                a {
+                    color: #073018;
+                }
+            }
+        }
+    }
+
+    .table-campeonato {
+        // display: none;
+        .btn {
+            cursor: pointer;
+            background-color: #0E562C;
+            color: #fff;
+            &:hover {
+                background-color: #000 !important;
+            }
+        }
+    }
+
+    .table-aposta {
+        display: none;
+        .th-pagamento {
+            width: 100px;
+        }
+        span {
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            input {
+                cursor: pointer;
+            }
+        }
+        .btn {
+            cursor: pointer;
+            background-color: #0E562C;
+            color: #fff;
+            &:hover {
+                background-color: #000 !important;
+            }
+        }
+    }
+
+    .content {
+        width: 95vw;
+        min-height: 100vh;
+        thead {
+            background-color: #073018;
+            color: #fff;
+            .th-editar {
+                width: 20px;
+            }
+            .th-apagar {
+                width: 20px;
+            }
+        }
+        tbody {
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media (max-width: 768px){
+        .content {
+            width: 88vw;
+        }
+    }
+                    
+}
+
