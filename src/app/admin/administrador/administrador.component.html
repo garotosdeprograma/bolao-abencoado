@@ -1,3 +1,68 @@
+<div class="jogos p-5" #jogos>
+  <button class="voltar" (click)="voltar()">
+    <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+  </button>
+  <div class="col-12 row mb-5">
+    <h4 class="col-11 pl-5">Rodada 1</h4>
+    <button class="col-1 btn w-100" data-toggle="modal" data-target="">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="col-12 row d-flex justify-content-center">
+    <div class="col-8 m-0 mb-3 p-0 pt-3 row jogo">
+      <div class="col-5 text-center">
+        <img src="assets/img/uefa/barcelona.png" alt="">
+        <br/>
+        <small>Barcelona FC</small>
+        <br/>
+        <small>0</small>
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center">
+        <p>X</p>
+      </div>
+      <div class="col-5 text-center">
+        <img src="assets/img/uefa/real-madrid.png" alt="">
+        <br/>
+        <small>Real Madrid FC</small>
+        <br/>
+        <small>0</small>
+      </div>
+      <div class="col-12 info text-center">
+        <small>
+          Data: 00/00/0000
+          <br/> Horário: 00:00h
+        </small>
+      </div>
+    </div>
+
+    <div class="col-8 m-0 mb-3 p-0 pt-3 row jogo">
+      <div class="col-5 text-center">
+        <img src="assets/img/uefa/barcelona.png" alt="">
+        <br/>
+        <small>Barcelona FC</small>
+        <br/>
+        <small>0</small>
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center">
+        <p>X</p>
+      </div>
+      <div class="col-5 text-center">
+        <img src="assets/img/uefa/real-madrid.png" alt="">
+        <br/>
+        <small>Real Madrid FC</small>
+        <br/>
+        <small>0</small>
+      </div>
+      <div class="col-12 info text-center">
+        <small>
+          Data: 00/00/0000
+          <br/> Horário: 00:00h
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="administrador container-fluid row p-0 d-flex justify-content-center">
   <div class="menu-left">
 
@@ -30,48 +95,13 @@
     </div>
   </div>
 
-  <!-- modelo -->
-  <!-- <div class="content col-12">
-    <h2 class="col-12 text-center mt-4 mb-3">Campeonatos</h2>
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div> -->
-
-  <!-- Tabela Campeonatos -->
-  <div class="content table-campeonato col-11 ml-5 pl-5">
+  <!-- Campeonatos -->
+  <div class="content accordion-campeonatos col-11 ml-5 pl-5">
     <div class="col-12 row d-flex align-items-center m-0 p-0">
-      <h2 class="col-sm-7 text-left mt-4 mb-3">Campeonatos</h2>
-      <div class="col-sm-4">
+      <div class="col-sm-7 ml-0 pl-0">
+        <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Campeonatos</h2>
+      </div>
+      <div class="col-8 col-sm-4 p-0 m-0">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="campeonato..." aria-label="campeonato...">
           <span class="input-group-btn">
@@ -81,7 +111,243 @@
           </span>
         </div>
       </div>
-      <button class="btn" data-toggle="modal" data-target="#modal-editar-campeonato">Novo</button>
+      <div class="col-4 col-sm-1 text-right pl-3 mr-0 pr-0 mt-2 mb-2">
+        <button class="btn w-100" data-toggle="modal" data-target="#modal-editar-campeonato">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="accordion" role="tablist">
+      <div class="card">
+        <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingOne">
+          <div class="col-8">
+            <h5 class="mb-0">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/uefa.png" alt="">
+              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Uefa
+              </a>
+            </h5>
+          </div>
+          <div class="col-4 row m-0">
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-editar-campeonato">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <div class="col-12 row p-0 m-0 mb-3">
+              <h5 class="col-10 col-sm-11">Rodadas</h5>
+              <button class="btn col-2 col-sm-1">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div>
+              <div class="list-group">
+                <div class="col-12 row m-0 p-0">
+                  <a class="col-11 list-group-item list-group-item-action" (click)="mostrarJogos()">
+                    Rodada 1
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 2
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 3
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 4
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingTwo">
+          <div class="col-8">
+            <h5 class="mb-0">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-a.png" alt="">
+              <a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Brasileiro Série A
+              </a>
+            </h5>
+          </div>
+          <div class="col-4 row m-0">
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-editar-campeonato">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <div class="col-12 row p-0 m-0 mb-3">
+              <h5 class="col-10 col-sm-11">Rodadas</h5>
+              <button class="btn col-2 col-sm-1">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div>
+              <div class="list-group">
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 1
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 2
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 3
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 4
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingThree">
+          <div class="col-8">
+            <h5 class="mb-0">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-b.png" alt="">
+              <a data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Brasileiro Série B
+              </a>
+            </h5>
+          </div>
+          <div class="col-4 row m-0">
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-editar-campeonato">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="col-sm-6 text-center mt-2 mb-2">
+              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            <div class="col-12 row p-0 m-0 mb-3">
+              <h5 class="col-10 col-sm-11">Rodadas</h5>
+              <button class="btn col-2 col-sm-1">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div>
+              <div class="list-group">
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 1
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 2
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 3
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 row m-0 p-0">
+                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                    Rodada 4
+                  </a>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tabela Apostas -->
+  <div class="content table-aposta col-11 ml-5 pl-5">
+    <div class="form-group row d-flex align-items-center m-0 p-0">
+      <div class="form-group col-sm-4 ml-0 pl-0">
+        <h2 class="text-left mt-4 mb-3">Apostas</h2>
+      </div>
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="nome" aria-label="nome">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="email" aria-label="email">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
+        <div class="col-6 ml-0 pl-0">
+          <button class="btn w-100" type="button">
+            <img src="assets/img/clean.png" alt="">
+          </button>
+        </div>
+        <div class="col-6 mr-0 pr-0">
+          <button class="btn w-100" type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <div class="table-responsive">
@@ -90,50 +356,46 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col" class="th-editar">Editar</th>
-            <th scope="col" class="th-apagar">Apagar</th>
+            <th scope="col">Email</th>
+            <th scope="col">Data da aposta</th>
+            <th scope="col">Equipes escolhidas</th>
+            <th scope="col" class="th-pagamento text-center">Pago</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>UEFA</td>
+            <td>Daouda</td>
+            <td>daouda@email.com</td>
+            <td>01/01/2018</td>
+            <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
-              <span data-toggle="modal" data-target="#modal-editar-campeonato">
-                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
-              </span>
-            </td>
-            <td>
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
-                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              <span class="input-group-addon justify-content-center">
+                <input type="checkbox" aria-label="Checkbox for following text input">
               </span>
             </td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Brasiliro Série A</td>
+            <td>Joziélio</td>
+            <td>jozielio@email.com</td>
+            <td>01/01/2018</td>
+            <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
-              <span data-toggle="modal" data-target="#modal-editar-campeonato">
-                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
-              </span>
-            </td>
-            <td>
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
-                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              <span class="input-group-addon justify-content-center">
+                <input type="checkbox" aria-label="Checkbox for following text input">
               </span>
             </td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Brasiliro Série B</td>
+            <td>Fulano</td>
+            <td>fulano@email.com</td>
+            <td>01/01/2018</td>
+            <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
-              <span data-toggle="modal" data-target="#modal-editar-campeonato">
-                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
-              </span>
-            </td>
-            <td>
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
-                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              <span class="input-group-addon justify-content-center">
+                <input type="checkbox" aria-label="Checkbox for following text input">
               </span>
             </td>
           </tr>
@@ -142,123 +404,349 @@
     </div>
   </div>
 
-  <!-- Apostas -->
-  <div class="content table-aposta col-11 ml-5 pl-5">
-    <div class="col-12 row d-flex align-items-center">
-      <h2 class="col-sm-8 text-left mt-4 mb-3">Apostas</h2>
-      <div class="col-sm-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="José, exemplo@email.com..." aria-label="José, exemplo@email.com...">
-          <span class="input-group-btn">
-            <button class="btn" type="button">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </span>
+  <!-- Tabela Usuários -->
+  <div class="content table-usuario col-11 ml-5 pl-5">
+    <div class="form-group row d-flex align-items-center m-0 p-0">
+      <div class="form-group col-sm-4 ml-0 pl-0">
+        <h2 class="text-left mt-4 mb-3">Usuários</h2>
+      </div>
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="nome" aria-label="nome">
         </div>
       </div>
 
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-              <th scope="col" class="th-pagamento text-center">Pago</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Didi</td>
-              <td>didi@email.com</td>
-              <td>
-                <span class="input-group-addon justify-content-center">
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>José</td>
-              <td>jose@email.com</td>
-              <td>
-                <span class="input-group-addon justify-content-center">
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Fulano</td>
-              <td>fulano@email.com</td>
-              <td>
-                <span class="input-group-addon justify-content-center">
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="email" aria-label="email">
+        </div>
       </div>
-    </div>
 
-  </div>
-  <div class="modal gameboll-theme-modal" id="modal-editar-campeonato">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header rounded-0">
-          <h5 class="modal-title">Campeonato</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+      <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
+        <div class="col-6 ml-0 pl-0">
+          <button class="btn w-100" type="button">
+            <img src="assets/img/clean.png" alt="">
           </button>
         </div>
-        <div class="modal-body">
-          <div class="col-md-12">
-            <form class="form-modal" method="post" action="">
-              <div class="form-group">
-                <label>Nome</label>
-                <input type="text" name="nome" class="form-control" placeholder="nome">
-              </div>
-            </form>
-            <div class="row">
-              <div class="col-md-4">
-                <a class="btn btn-primary">Salvar</a>
-              </div>
-              <div class="col-md-8">
-              </div>
+        <div class="col-6 mr-0 pr-0">
+          <button class="btn w-100" type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Daouda</td>
+            <td>Traore</td>
+            <td>daouda@email.com</td>
+            <td>(85)9xxxx-xxxx</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Joziélio</td>
+            <td>Santiago</td>
+            <td>jozielio@email.com</td>
+            <td>(85)9xxxx-xxxx</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Fulano</td>
+            <td>Lima</td>
+            <td>fulano@email.com</td>
+            <td>(85)9xxxx-xxxx</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tabela Equipes -->
+  <div class="content table-equipe col-11 ml-5 pl-5">
+    <div class="form-group row d-flex align-items-center m-0 p-0">
+      <div class="form-group col-sm-4 ml-0 pl-0">
+        <h2 class="text-left mt-4 mb-3">Equipes</h2>
+      </div>
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="equipe" aria-label="equipe">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+          <input type="text" class="form-control" placeholder="campeonato" aria-label="campeonato">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
+        <div class="col-4 pl-0 pr-1">
+          <button class="btn w-100" type="button">
+            <img src="assets/img/clean.png" alt="">
+          </button>
+        </div>
+        <div class="col-4 pl-1 pr-1">
+          <button class="btn w-100" type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-4 pl-1 pr-0">
+          <button class="btn w-100" type="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Escudo</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Campeonato(s)</th>
+            <th scope="col" class="th-editar">Editar</th>
+            <th scope="col" class="th-apagar">Apagar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <img src="assets/img/uefa/barcelona.png" alt="">
+            </td>
+            <td>Barcelona FC</td>
+            <td>UEFA</td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-editar-equipe">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>
+              <img src="assets/img/uefa/real-madrid.png" alt="">
+            </td>
+            <td>Real Madrid FC</td>
+            <td>UEFA</td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-editar-equipe">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>
+              <img src="assets/img/uefa/chelsea.png" alt="">
+            </td>
+            <td>Chelsea</td>
+            <td>UEFA</td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-editar-equipe">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </td>
+            <td>
+              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-editar-campeonato">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Campeonato</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <form class="form-modal" method="post" action="">
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" name="nome" class="form-control" placeholder="nome">
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-md-4">
+              <a class="btn btn-primary">Salvar</a>
+            </div>
+            <div class="col-md-8">
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="modal gameboll-theme-modal" id="modal-excluir-campeonato">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header rounded-0">
-          <h5 class="modal-title">Editar Campeonato</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body text-center">
-          <div class="col-md-12">
-            <label class="mt-4 mb-4">Tem certeza que deseja excluir [nome do campeonato]?</label>
-            <div class="row mt-3 mb-4 d-flex justify-content-center">
-              <div class="col-md-4">
-                <a class="btn">Sim</a>
-              </div>
-              <div class="col-md-4">
-                <a class="btn">Não</a>
-              </div>
+<div class="modal gameboll-theme-modal" id="modal-excluir-campeonato">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Excluir campeonato</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="col-md-12">
+          <label class="mt-4 mb-4">Tem certeza que deseja excluir [nome do campeonato]?</label>
+          <div class="row mt-3 mb-4 d-flex justify-content-center">
+            <div class="col-4">
+              <a class="btn">Sim</a>
+            </div>
+            <div class="col-4">
+              <a class="btn">Não</a>
+            </div>
 
-              <div class="col-md-8">
-              </div>
+            <div class="col-md-8">
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-editar-equipe">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Equipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="col-12 text-center">
+            <div class="col-12">
+              <img src="assets/img/uefa/chelsea.png" alt="Escudo do time">
+            </div>
+            <div class="col-12 p-0 mt-1">
+              <button class="btn btn-sm">
+                <small>
+                  Alterra escudo
+                </small>
+              </button>
+            </div>
+          </div>
+
+          <form class="form-modal" method="post" action="">
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" name="nome" class="form-control" placeholder="nome">
+            </div>
+
+            <label>Campeonato(s)</label>
+            <div class="col-sm-12 row p-0 m-0">
+              <div class="form-group col-11 pl-0 ml-0">
+                <select class="form-control">
+                  <option selected>Campeonato...</option>
+                  <option value="1">Brasileiro Série A</option>
+                  <option value="1">Brasileiro Série B</option>
+                  <option value="2">UEFA</option>
+                </select>
+              </div>
+              <div class="col-1 pl-0 ml-0">
+                <button class="btn">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-sm-12 row p-0 m-0">
+              <div class="form-group col-11 pl-0 ml-0">
+                <select class="form-control">
+                  <option selected>Campeonato...</option>
+                  <option value="1">Brasileiro Série A</option>
+                  <option value="1">Brasileiro Série B</option>
+                  <option value="2">UEFA</option>
+                </select>
+              </div>
+              <div class="col-1 pl-0 ml-0">
+                <button class="btn btn-excluir">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="col-md-4">
+              <a class="btn btn-primary">Salvar</a>
+            </div>
+            <div class="col-md-8">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-excluir-equipe">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Excluir equipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="col-md-12">
+          <label class="mt-4 mb-4">Tem certeza que deseja excluir [nome da equipe]?</label>
+          <div class="row mt-3 mb-4 d-flex justify-content-center">
+            <div class="col-md-4">
+              <a class="btn">Sim</a>
+            </div>
+            <div class="col-md-4">
+              <a class="btn">Não</a>
+            </div>
+
+            <div class="col-md-8">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

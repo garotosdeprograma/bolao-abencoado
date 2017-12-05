@@ -13,7 +13,7 @@
         background-color: #073018 !important;
         color: #fff !important;
         i {
-            color: #000 !important;
+            color: #fff !important;
         }
         &:hover {
             background-color: #000 !important;
@@ -21,11 +21,66 @@
         }
 
     }
+
+    .btn-excluir {
+        cursor: pointer;
+        background-color: gray !important;
+        i {
+            color: #fff !important;
+        }
+        &:hover {
+            background-color: #000 !important;
+            border: solid 1px #fff;
+        }
+
+    }
+
     a, b, i, p, h1, h2, h3, h4, h5, h6 {
         color: #000 !important;
     }
     .link {
         color: #0366d6 !important;
+    }
+}
+
+.jogos {
+    position: absolute;
+    display: none;
+    width: 1px;
+    right: 0px;
+    min-height: 100vh;
+    background-color: #fff;
+    z-index: 6;
+    transition: 0.3s;
+    .voltar {
+        cursor: pointer;
+        color: #0E562C;
+        border: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0);
+        left: 2%;
+        top: 10px;
+        &:hover {
+            color: #073018;
+        }
+    }
+    .btn {
+        cursor: pointer;
+        background-color: #0E562C;
+        color: #fff;
+        &:hover {
+            background-color: #000 !important;
+        }
+    }
+    img {
+        width: 30px;
+    }
+    .jogo {
+        background-color: rgba(0, 0, 0, 0.164);
+    }
+    .info {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.452);
     }
 }
 
@@ -39,7 +94,7 @@
         position: absolute;
         left: 0;
         padding-left: 12px;
-        z-index: 1;
+        z-index: 5;
         min-height:100vh;
         background: #073018;
         display: inline-block;
@@ -74,14 +129,59 @@
         }
     }
 
-    .table-campeonato {
-        // display: none;
+    .accordion-campeonatos {
+        .card-header {
+            color: #000;
+            background-color: rgb(190, 188, 188);
+            &:hover {
+                color: #fff;
+                background-color: #0E562C;
+                a {
+                    color: #fff;
+                }
+            }
+        }
         .btn {
             cursor: pointer;
             background-color: #0E562C;
             color: #fff;
             &:hover {
                 background-color: #000 !important;
+            }
+        }
+        img {
+            width: 40px;
+        }
+        .card-header {
+            span {
+                cursor: pointer;
+            }
+        }
+        .list-group {
+            i {
+                cursor: pointer;
+            }
+        }
+        a {
+            cursor: pointer;
+            color: #000;
+            text-decoration: none;
+        }
+    }
+
+    .table-campeonato {
+        display: none;
+        .btn {
+            cursor: pointer;
+            background-color: #0E562C;
+            color: #fff;
+            &:hover {
+                background-color: #000 !important;
+            }
+        }
+        td {
+            img {
+                width: 30px;
             }
         }
     }
@@ -104,6 +204,62 @@
             color: #fff;
             &:hover {
                 background-color: #000 !important;
+            }
+        }
+        button {
+            img {
+                color: #fff;
+                width: 20px;
+            }
+        }
+    }
+
+    .table-usuario {
+        display: none;
+        .th-pagamento {
+            width: 100px;
+        }
+        span {
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            input {
+                cursor: pointer;
+            }
+        }
+        .btn {
+            cursor: pointer;
+            background-color: #0E562C;
+            color: #fff;
+            &:hover {
+                background-color: #000 !important;
+            }
+        }
+        button {
+            img {
+                color: #fff;
+                width: 20px;
+            }
+        }
+    }
+
+    .table-equipe {
+        display: none;
+        img{
+            width: 30px;
+            height: auto;
+        }
+        .btn {
+            cursor: pointer;
+            background-color: #0E562C;
+            color: #fff;
+            &:hover {
+                background-color: #000 !important;
+            }
+        }
+        button {
+            img {
+                color: #fff;
+                width: 20px;
             }
         }
     }
