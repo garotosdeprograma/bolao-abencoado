@@ -1,102 +1,288 @@
-<div class="jogos p-5" #jogos>
+<div class="jogos" #jogos>
   <button class="voltar" (click)="voltar()">
     <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
   </button>
-  <div class="col-12 row mb-5">
-    <h4 class="col-11 pl-5">Rodada 1</h4>
-    <button class="col-1 btn w-100" data-toggle="modal" data-target="">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    </button>
-  </div>
-  <div class="col-12 row d-flex justify-content-center">
-    <div class="col-8 m-0 mb-3 p-0 pt-3 row jogo">
-      <div class="col-5 text-center">
-        <img src="assets/img/uefa/barcelona.png" alt="">
-        <br/>
-        <small>Barcelona FC</small>
-        <br/>
-        <small>0</small>
-      </div>
-      <div class="col-2 d-flex justify-content-center align-items-center">
-        <p>X</p>
-      </div>
-      <div class="col-5 text-center">
-        <img src="assets/img/uefa/real-madrid.png" alt="">
-        <br/>
-        <small>Real Madrid FC</small>
-        <br/>
-        <small>0</small>
-      </div>
-      <div class="col-12 info text-center">
-        <small>
-          Data: 00/00/0000
-          <br/> Horário: 00:00h
-        </small>
-      </div>
-    </div>
 
-    <div class="col-8 m-0 mb-3 p-0 pt-3 row jogo">
-      <div class="col-5 text-center">
-        <img src="assets/img/uefa/barcelona.png" alt="">
-        <br/>
-        <small>Barcelona FC</small>
-        <br/>
-        <small>0</small>
+  <div class="col-12 row d-flex justify-content-center m-0 mt-5 pt-3">
+
+    <div class="col-sm-8 lista-jogos pt-5 pb-5 pl-3 pr-3">
+
+      <div class="col-sm-12 row m-0 mb-5 p-0">
+        <h4 class="col-10 col-sm-11 m-0 p-0">Rodada 1</h4>
+        <button class="col-2 col-sm-1 btn w-100" data-toggle="modal" data-target="#modal-jogo">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
       </div>
-      <div class="col-2 d-flex justify-content-center align-items-center">
-        <p>X</p>
+
+      <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+          <br/>
+          <small>Barcelona</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <p>X</p>
+        </div>
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+          <br/>
+          <small>Real Madrid</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-12 row info d-flex align-items-center p-0 m-0">
+          <div class="col-8 text-left">
+            <small>
+              Data: 00/00/0000
+              <br/> Horário: 00:00h
+            </small>
+          </div>
+
+          <div class="col-4 text-right">
+            <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+              <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
       </div>
-      <div class="col-5 text-center">
-        <img src="assets/img/uefa/real-madrid.png" alt="">
-        <br/>
-        <small>Real Madrid FC</small>
-        <br/>
-        <small>0</small>
+
+      <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+          <br/>
+          <small>Barcelona</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <p>X</p>
+        </div>
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+          <br/>
+          <small>Real Madrid</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-12 row info d-flex align-items-center p-0 m-0">
+          <div class="col-8 text-left">
+            <small>
+              Data: 00/00/0000
+              <br/> Horário: 00:00h
+            </small>
+          </div>
+
+          <div class="col-4 text-right">
+            <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+              <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
       </div>
-      <div class="col-12 info text-center">
-        <small>
-          Data: 00/00/0000
-          <br/> Horário: 00:00h
-        </small>
+
+      <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+          <br/>
+          <small>Barcelona</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <p>X</p>
+        </div>
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+          <br/>
+          <small>Real Madrid</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-12 row info d-flex align-items-center p-0 m-0">
+          <div class="col-8 text-left">
+            <small>
+              Data: 00/00/0000
+              <br/> Horário: 00:00h
+            </small>
+          </div>
+
+          <div class="col-4 text-right">
+            <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+              <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+          <br/>
+          <small>Barcelona</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <p>X</p>
+        </div>
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+          <br/>
+          <small>Real Madrid</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-12 row info d-flex align-items-center p-0 m-0">
+          <div class="col-8 text-left">
+            <small>
+              Data: 00/00/0000
+              <br/> Horário: 00:00h
+            </small>
+          </div>
+
+          <div class="col-4 text-right">
+            <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+              <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+          <br/>
+          <small>Barcelona</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <p>X</p>
+        </div>
+        <div class="col-5 text-center">
+          <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+          <br/>
+          <small>Real Madrid</small>
+          <br/>
+          <small>0</small>
+        </div>
+        <div class="col-12 row info d-flex align-items-center p-0 m-0">
+          <div class="col-8 text-left">
+            <small>
+              Data: 00/00/0000
+              <br/> Horário: 00:00h
+            </small>
+          </div>
+
+          <div class="col-4 text-right">
+            <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+              <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+              <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="administrador container-fluid row p-0 d-flex justify-content-center">
+
   <div class="menu-left">
+    <div class="item">
+      <a (click)="rankingSemana()">
+        <i class="icon fa fa-lg fa-list-ol" aria-hidden="true"></i>
+        Ranking da semana
+      </a>
+    </div>
 
     <div class="item">
-      <a href="">
+      <a (click)="campeonato()">
         <i class="icon fa fa-lg fa-trophy" aria-hidden="true"></i>
         Campeonatos
       </a>
     </div>
 
     <div class="item">
-      <a href="">
+      <a (click)="aposta()">
         <i class="icon fa fa-lg fa-money" aria-hidden="true"></i>
         Apostas
       </a>
     </div>
 
     <div class="item">
-      <a href="">
+      <a (click)="usuario()">
         <i class="icon fa fa-lg fa-users" aria-hidden="true"></i>
         Usuários
       </a>
     </div>
 
     <div class="item">
-      <a href="">
+      <a (click)="equipe()">
         <i class="icon fa fa-lg fa-futbol-o" aria-hidden="true"></i>
         Equipes
       </a>
     </div>
   </div>
 
+  <!-- Tabela Ranking -->
+  <div class="content table-ranking col-11 ml-5 pl-5" #ranking>
+    <div class="form-group row d-flex align-items-center m-0 p-0">
+      <h2 class="text-left mt-4 mb-3">Ranking da Semana</h2>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Data da aposta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Daouda</td>
+            <td>daouda@email.com</td>
+            <td>01/01/2018</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Joziélio</td>
+            <td>jozielio@email.com</td>
+            <td>01/01/2018</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Fulano</td>
+            <td>fulano@email.com</td>
+            <td>01/01/2018</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Campeonatos -->
-  <div class="content accordion-campeonatos col-11 ml-5 pl-5">
+  <div class="content accordion-campeonatos col-11 ml-5 pl-5" #campeonatos>
     <div class="col-12 row d-flex align-items-center m-0 p-0">
       <div class="col-sm-7 ml-0 pl-0">
         <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Campeonatos</h2>
@@ -123,8 +309,9 @@
         <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingOne">
           <div class="col-8">
             <h5 class="mb-0">
-              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/uefa.png" alt="">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/uefa.png" alt="Escudo do campeonato">
               <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-caret-down mr-1" aria-hidden="true"></i>
                 Uefa
               </a>
             </h5>
@@ -136,46 +323,50 @@
               </span>
             </div>
             <div class="col-sm-6 text-center mt-2 mb-2">
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
             <div class="col-12 row p-0 m-0 mb-3">
               <h5 class="col-10 col-sm-11">Rodadas</h5>
-              <button class="btn col-2 col-sm-1">
+              <button class="btn col-2 col-sm-1" data-toggle="modal" data-target="#modal-rodada" data-toggle="modal" data-target="#modal-rodada">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </button>
             </div>
             <div>
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
-                  <a class="col-11 list-group-item list-group-item-action" (click)="mostrarJogos()">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action" (click)="mostrarJogos()">
                     Rodada 1
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 2
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 3
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 4
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
               </div>
 
@@ -188,8 +379,9 @@
         <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingTwo">
           <div class="col-8">
             <h5 class="mb-0">
-              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-a.png" alt="">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-a.png" alt="Escudo do campeonato">
               <a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <i class="fa fa-caret-down mr-1" aria-hidden="true"></i>
                 Brasileiro Série A
               </a>
             </h5>
@@ -201,7 +393,7 @@
               </span>
             </div>
             <div class="col-sm-6 text-center mt-2 mb-2">
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </div>
@@ -212,35 +404,39 @@
           <div class="card-body">
             <div class="col-12 row p-0 m-0 mb-3">
               <h5 class="col-10 col-sm-11">Rodadas</h5>
-              <button class="btn col-2 col-sm-1">
+              <button class="btn col-2 col-sm-1" data-toggle="modal" data-target="#modal-rodada">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </button>
             </div>
             <div>
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 1
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 2
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 3
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 4
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
               </div>
 
@@ -253,8 +449,9 @@
         <div class="card-header col-12 row d-flex align-items-center m-0 p-0" role="tab" id="headingThree">
           <div class="col-8">
             <h5 class="mb-0">
-              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-b.png" alt="">
+              <img class="pt-2 pb-2 mr-4" src="assets/img/campeonatos/brasileirao-serie-b.png" alt="Escudo do campeonato">
               <a data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <i class="fa fa-caret-down mr-1" aria-hidden="true"></i>
                 Brasileiro Série B
               </a>
             </h5>
@@ -266,7 +463,7 @@
               </span>
             </div>
             <div class="col-sm-6 text-center mt-2 mb-2">
-              <span data-toggle="modal" data-target="#modal-excluir-campeonato">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </div>
@@ -277,35 +474,39 @@
           <div class="card-body">
             <div class="col-12 row p-0 m-0 mb-3">
               <h5 class="col-10 col-sm-11">Rodadas</h5>
-              <button class="btn col-2 col-sm-1">
+              <button class="btn col-2 col-sm-1" data-toggle="modal" data-target="#modal-rodada">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </button>
             </div>
             <div>
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 1
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 2
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 3
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
-                  <a href="#" class="col-11 list-group-item list-group-item-action">
+                  <a class="col-10 col-sm-11 list-group-item list-group-item-action">
                     Rodada 4
                   </a>
-                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
+                    data-target="#modal-excluir"></i>
                 </div>
               </div>
 
@@ -318,7 +519,7 @@
   </div>
 
   <!-- Tabela Apostas -->
-  <div class="content table-aposta col-11 ml-5 pl-5">
+  <div class="content table-aposta col-11 ml-5 pl-5" #apostas>
     <div class="form-group row d-flex align-items-center m-0 p-0">
       <div class="form-group col-sm-4 ml-0 pl-0">
         <h2 class="text-left mt-4 mb-3">Apostas</h2>
@@ -338,7 +539,7 @@
       <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
         <div class="col-6 ml-0 pl-0">
           <button class="btn w-100" type="button">
-            <img src="assets/img/clean.png" alt="">
+            <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
           </button>
         </div>
         <div class="col-6 mr-0 pr-0">
@@ -405,7 +606,7 @@
   </div>
 
   <!-- Tabela Usuários -->
-  <div class="content table-usuario col-11 ml-5 pl-5">
+  <div class="content table-usuario col-11 ml-5 pl-5" #usuarios>
     <div class="form-group row d-flex align-items-center m-0 p-0">
       <div class="form-group col-sm-4 ml-0 pl-0">
         <h2 class="text-left mt-4 mb-3">Usuários</h2>
@@ -425,7 +626,7 @@
       <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
         <div class="col-6 ml-0 pl-0">
           <button class="btn w-100" type="button">
-            <img src="assets/img/clean.png" alt="">
+            <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
           </button>
         </div>
         <div class="col-6 mr-0 pr-0">
@@ -476,7 +677,7 @@
   </div>
 
   <!-- Tabela Equipes -->
-  <div class="content table-equipe col-11 ml-5 pl-5">
+  <div class="content table-equipe col-11 ml-5 pl-5" #equipes>
     <div class="form-group row d-flex align-items-center m-0 p-0">
       <div class="form-group col-sm-4 ml-0 pl-0">
         <h2 class="text-left mt-4 mb-3">Equipes</h2>
@@ -496,7 +697,7 @@
       <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
         <div class="col-4 pl-0 pr-1">
           <button class="btn w-100" type="button">
-            <img src="assets/img/clean.png" alt="">
+            <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
           </button>
         </div>
         <div class="col-4 pl-1 pr-1">
@@ -505,7 +706,7 @@
           </button>
         </div>
         <div class="col-4 pl-1 pr-0">
-          <button class="btn w-100" type="button">
+          <button class="btn w-100" type="button" data-toggle="modal" data-target="#modal-editar-equipe">
             <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
         </div>
@@ -529,9 +730,9 @@
           <tr>
             <th scope="row">1</th>
             <td>
-              <img src="assets/img/uefa/barcelona.png" alt="">
+              <img src="assets/img/ligaEspanhola/barcelona.png" alt="Escudo do time">
             </td>
-            <td>Barcelona FC</td>
+            <td>Barcelona</td>
             <td>UEFA</td>
             <td>
               <span data-toggle="modal" data-target="#modal-editar-equipe">
@@ -539,7 +740,7 @@
               </span>
             </td>
             <td>
-              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </td>
@@ -547,9 +748,9 @@
           <tr>
             <th scope="row">2</th>
             <td>
-              <img src="assets/img/uefa/real-madrid.png" alt="">
+              <img src="assets/img/ligaEspanhola/real-madrid.png" alt="Escudo do time">
             </td>
-            <td>Real Madrid FC</td>
+            <td>Real Madrid</td>
             <td>UEFA</td>
             <td>
               <span data-toggle="modal" data-target="#modal-editar-equipe">
@@ -557,7 +758,7 @@
               </span>
             </td>
             <td>
-              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </td>
@@ -565,7 +766,7 @@
           <tr>
             <th scope="row">3</th>
             <td>
-              <img src="assets/img/uefa/chelsea.png" alt="">
+              <img src="assets/img/ligaInglesa/chelsea.png" alt="Escudo do time">
             </td>
             <td>Chelsea</td>
             <td>UEFA</td>
@@ -575,7 +776,7 @@
               </span>
             </td>
             <td>
-              <span data-toggle="modal" data-target="#modal-excluir-equipe">
+              <span data-toggle="modal" data-target="#modal-excluir">
                 <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
               </span>
             </td>
@@ -616,35 +817,6 @@
   </div>
 </div>
 
-<div class="modal gameboll-theme-modal" id="modal-excluir-campeonato">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header rounded-0">
-        <h5 class="modal-title">Excluir campeonato</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        <div class="col-md-12">
-          <label class="mt-4 mb-4">Tem certeza que deseja excluir [nome do campeonato]?</label>
-          <div class="row mt-3 mb-4 d-flex justify-content-center">
-            <div class="col-4">
-              <a class="btn">Sim</a>
-            </div>
-            <div class="col-4">
-              <a class="btn">Não</a>
-            </div>
-
-            <div class="col-md-8">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="modal gameboll-theme-modal" id="modal-editar-equipe">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -658,12 +830,12 @@
         <div class="col-md-12">
           <div class="col-12 text-center">
             <div class="col-12">
-              <img src="assets/img/uefa/chelsea.png" alt="Escudo do time">
+              <img src="assets/img/ligaEspanhola/chelsea.png" alt="Escudo do time">
             </div>
             <div class="col-12 p-0 mt-1">
               <button class="btn btn-sm">
                 <small>
-                  Alterra escudo
+                  Alterar escudo
                 </small>
               </button>
             </div>
@@ -722,18 +894,86 @@
   </div>
 </div>
 
-<div class="modal gameboll-theme-modal" id="modal-excluir-equipe">
+<div class="modal gameboll-theme-modal" id="modal-jogo">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header rounded-0">
-        <h5 class="modal-title">Excluir equipe</h5>
+        <h5 class="modal-title">Jogo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-modal col-12 row p-0 m-0" method="post" action="">
+          <div class="col-8 ml-0 mr-0">
+            <label>Time casa</label>
+            <div class="form-group pl-0 ml-0">
+              <select class="form-control">
+                <option selected>times...</option>
+                <option value="1">Barcelona</option>
+                <option value="1">Real Madrid</option>
+                <option value="2">Chelsea</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group col-4">
+            <label>Gol(s)</label>
+            <input type="text" name="gol-casa" class="form-control" placeholder="gol(s)">
+          </div>
+
+          <div class="col-8 ml-0 mr-0">
+            <label>Time visitante</label>
+            <div class="form-group pl-0 ml-0">
+              <select class="form-control">
+                <option selected>times...</option>
+                <option value="1">Barcelona</option>
+                <option value="1">Real Madrid</option>
+                <option value="2">Chelsea</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group col-4">
+            <label>Gol(s)</label>
+            <input type="text" name="gol-visitante" class="form-control" placeholder="gol(s)">
+          </div>
+
+          <div class="col-12 row ml-0 mr-0">
+            <div class="form-group col-6 ml-0 pl-0">
+              <label>Horário</label>
+              <input type="text" name="horario" class="form-control" placeholder="00:00h">
+            </div>
+
+            <div class="form-group col-6 mr-0 pr-0">
+              <label>Data</label>
+              <input type="text" name="data" class="form-control" placeholder="00/00/0000">
+            </div>
+          </div>
+
+          <div class="col-12">
+            <a class="btn btn-primary">Salvar</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-excluir">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Excluir</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body text-center">
         <div class="col-md-12">
-          <label class="mt-4 mb-4">Tem certeza que deseja excluir [nome da equipe]?</label>
+          <label class="mt-4 mb-4">Tem certeza que deseja excluir?</label>
           <div class="row mt-3 mb-4 d-flex justify-content-center">
             <div class="col-md-4">
               <a class="btn">Sim</a>
@@ -742,6 +982,36 @@
               <a class="btn">Não</a>
             </div>
 
+            <div class="col-md-8">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-rodada">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Rodada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <form class="form-modal" method="post" action="">
+            <div class="form-group">
+              <label>Rodada</label>
+              <input type="text" name="rodada" class="form-control" placeholder="informe a rodada">
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-md-4">
+              <a class="btn btn-primary">Salvar</a>
+            </div>
             <div class="col-md-8">
             </div>
           </div>
