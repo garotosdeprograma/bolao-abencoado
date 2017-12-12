@@ -5,10 +5,12 @@
 
   <div class="col-12 row d-flex justify-content-center m-0 mt-5 pt-3">
 
-    <div class="col-sm-8 lista-jogos pt-5 pb-5 pl-3 pr-3">
+    <div class="col-sm-8 lista-jogos pt-5 pl-3 pr-3">
 
       <div class="col-sm-12 row m-0 mb-5 p-0">
-        <h4 class="col-10 col-sm-11 m-0 p-0">Rodada 1</h4>
+        <div class="col-10 col-sm-11 row m-0 p-0">
+          <h4 class="col-12">Jogos da rodada</h4>
+        </div>
         <button class="col-2 col-sm-1 btn w-100" data-toggle="modal" data-target="#modal-jogo">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
@@ -227,13 +229,6 @@
     </div>
 
     <div class="item">
-      <a (click)="usuario()">
-        <i class="icon fa fa-lg fa-users" aria-hidden="true"></i>
-        Usuários
-      </a>
-    </div>
-
-    <div class="item">
       <a (click)="equipe()">
         <i class="icon fa fa-lg fa-futbol-o" aria-hidden="true"></i>
         Equipes
@@ -253,7 +248,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
             <th scope="col">Data da aposta</th>
           </tr>
         </thead>
@@ -261,13 +256,13 @@
           <tr>
             <th scope="row">1</th>
             <td>Daouda</td>
-            <td>daouda@email.com</td>
+            <td>(85)9xxxx-xxxx</td>
             <td>01/01/2018</td>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Joziélio</td>
-            <td>jozielio@email.com</td>
+            <td>(85)9xxxx-xxxx</td>
             <td>01/01/2018</td>
           </tr>
           <tr>
@@ -342,28 +337,28 @@
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action" (click)="mostrarJogos()">
-                    Rodada 1
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 2
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 3
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 4
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
@@ -412,28 +407,28 @@
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 1
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 2
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 3
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 4
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
@@ -482,28 +477,28 @@
               <div class="list-group">
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 1
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 2
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 3
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
                 </div>
                 <div class="col-12 row m-0 p-0">
                   <a class="col-10 col-sm-11 list-group-item list-group-item-action">
-                    Rodada 4
+                    Início: 00/00/0000 - Fim: 00/00/0000
                   </a>
                   <i class="col-1 d-flex justify-content-center align-items-center fa fa-lg fa-trash-o" aria-hidden="true" data-toggle="modal"
                     data-target="#modal-excluir"></i>
@@ -521,18 +516,12 @@
   <!-- Tabela Apostas -->
   <div class="content table-aposta col-11 ml-5 pl-5" #apostas>
     <div class="form-group row d-flex align-items-center m-0 p-0">
-      <div class="form-group col-sm-4 ml-0 pl-0">
+      <div class="form-group col-sm-6 ml-0 pl-0">
         <h2 class="text-left mt-4 mb-3">Apostas</h2>
       </div>
-      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+      <div class="form-group col-sm-4 row m-0 p-0 mt-2 mb-2">
         <div class="input-group col-sm-11 mt-2 mb-2 p-0">
           <input type="text" class="form-control" placeholder="nome" aria-label="nome">
-        </div>
-      </div>
-
-      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
-        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-          <input type="text" class="form-control" placeholder="email" aria-label="email">
         </div>
       </div>
 
@@ -557,7 +546,6 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col">Email</th>
             <th scope="col">Data da aposta</th>
             <th scope="col">Equipes escolhidas</th>
             <th scope="col" class="th-pagamento text-center">Pago</th>
@@ -567,7 +555,6 @@
           <tr>
             <th scope="row">1</th>
             <td>Daouda</td>
-            <td>daouda@email.com</td>
             <td>01/01/2018</td>
             <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
@@ -579,7 +566,6 @@
           <tr>
             <th scope="row">2</th>
             <td>Joziélio</td>
-            <td>jozielio@email.com</td>
             <td>01/01/2018</td>
             <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
@@ -591,7 +577,6 @@
           <tr>
             <th scope="row">3</th>
             <td>Fulano</td>
-            <td>fulano@email.com</td>
             <td>01/01/2018</td>
             <td>Equipe A, Equipe B, Equipe C, Equipe D</td>
             <td>
@@ -599,77 +584,6 @@
                 <input type="checkbox" aria-label="Checkbox for following text input">
               </span>
             </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Tabela Usuários -->
-  <div class="content table-usuario col-11 ml-5 pl-5" #usuarios>
-    <div class="form-group row d-flex align-items-center m-0 p-0">
-      <div class="form-group col-sm-4 ml-0 pl-0">
-        <h2 class="text-left mt-4 mb-3">Usuários</h2>
-      </div>
-      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
-        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-          <input type="text" class="form-control" placeholder="nome" aria-label="nome">
-        </div>
-      </div>
-
-      <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
-        <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-          <input type="text" class="form-control" placeholder="email" aria-label="email">
-        </div>
-      </div>
-
-      <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
-        <div class="col-6 ml-0 pl-0">
-          <button class="btn w-100" type="button">
-            <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
-          </button>
-        </div>
-        <div class="col-6 mr-0 pr-0">
-          <button class="btn w-100" type="button">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Sobrenome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Daouda</td>
-            <td>Traore</td>
-            <td>daouda@email.com</td>
-            <td>(85)9xxxx-xxxx</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Joziélio</td>
-            <td>Santiago</td>
-            <td>jozielio@email.com</td>
-            <td>(85)9xxxx-xxxx</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Fulano</td>
-            <td>Lima</td>
-            <td>fulano@email.com</td>
-            <td>(85)9xxxx-xxxx</td>
           </tr>
         </tbody>
       </table>
@@ -830,7 +744,7 @@
         <div class="col-md-12">
           <div class="col-12 text-center">
             <div class="col-12">
-              <img src="assets/img/ligaEspanhola/chelsea.png" alt="Escudo do time">
+              <img src="assets/img/ligaInglesa/chelsea.png" alt="Escudo do time">
             </div>
             <div class="col-12 p-0 mt-1">
               <button class="btn btn-sm">

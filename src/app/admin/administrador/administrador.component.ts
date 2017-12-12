@@ -35,7 +35,7 @@ export class AdministradorComponent implements OnInit {
     this.Ranking.nativeElement.style.display = 'block';
     this.Campeonatos.nativeElement.style.display = 'none';
     this.Apostas.nativeElement.style.display = 'none';
-    this.Usuarios.nativeElement.style.display = 'none';
+    // this.Usuarios.nativeElement.style.display = 'none';
     this.Equipes.nativeElement.style.display = 'none';
   }
 
@@ -43,7 +43,7 @@ export class AdministradorComponent implements OnInit {
     this.Ranking.nativeElement.style.display = 'none';
     this.Campeonatos.nativeElement.style.display = 'block';
     this.Apostas.nativeElement.style.display = 'none';
-    this.Usuarios.nativeElement.style.display = 'none';
+    // this.Usuarios.nativeElement.style.display = 'none';
     this.Equipes.nativeElement.style.display = 'none';
   }
 
@@ -51,7 +51,7 @@ export class AdministradorComponent implements OnInit {
     this.Ranking.nativeElement.style.display = 'none';    
     this.Campeonatos.nativeElement.style.display = 'none';
     this.Apostas.nativeElement.style.display = 'block';
-    this.Usuarios.nativeElement.style.display = 'none';
+    // this.Usuarios.nativeElement.style.display = 'none';
     this.Equipes.nativeElement.style.display = 'none';
   }
 
@@ -59,7 +59,7 @@ export class AdministradorComponent implements OnInit {
     this.Ranking.nativeElement.style.display = 'none';    
     this.Campeonatos.nativeElement.style.display = 'none';
     this.Apostas.nativeElement.style.display = 'none';
-    this.Usuarios.nativeElement.style.display = 'block';
+    // this.Usuarios.nativeElement.style.display = 'block';
     this.Equipes.nativeElement.style.display = 'none';
   }
 
@@ -67,7 +67,7 @@ export class AdministradorComponent implements OnInit {
     this.Ranking.nativeElement.style.display = 'none';    
     this.Campeonatos.nativeElement.style.display = 'none';
     this.Apostas.nativeElement.style.display = 'none';
-    this.Usuarios.nativeElement.style.display = 'none';
+    // this.Usuarios.nativeElement.style.display = 'none';
     this.Equipes.nativeElement.style.display = 'block';
   }
 

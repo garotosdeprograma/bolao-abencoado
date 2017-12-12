@@ -9,7 +9,8 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-      { path: 'home', component: HomeComponent },
+      // { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent },      
       { path: 'administrador', component: AdministradorComponent }
     ]
   }
