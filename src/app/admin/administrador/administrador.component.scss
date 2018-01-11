@@ -21,7 +21,6 @@
         }
 
     }
-
     .btn-excluir {
         cursor: pointer;
         background-color: gray !important;
@@ -31,15 +30,19 @@
         &:hover {
             background-color: #000 !important;
             border: solid 1px #fff;
-        }
-
+        }    
     }
+    
 
     a, b, i, p, h1, h2, h3, h4, h5, h6 {
         color: #000 !important;
     }
     .link {
         color: #0366d6 !important;
+    }
+    .image-escudo {
+        width: 60px;
+        height: 60px;
     }
 }
 
@@ -136,137 +139,7 @@
         }
     }
 
-    .accordion-campeonatos {
-        display: none;
-        .card {
-            border: none;
-        }
-        .card-header {
-            color: #000;
-            // background-color: #fff;
-            &:hover {
-                color: #fff;
-                background-color: #0E562C;
-                a {
-                    color: #fff;
-                }
-            }
-        }
-        .card-body {
-            background-color: #ececec;
-        }
-        .btn {
-            cursor: pointer;
-            background-color: #0E562C;
-            color: #fff;
-            &:hover {
-                background-color: #000 !important;
-            }
-        }
-        img {
-            width: 40px;
-        }
-        .card-header {
-            span {
-                cursor: pointer;
-            }
-        }
-        .list-group {
-            i {
-                cursor: pointer;
-            }
-        }
-        a {
-            cursor: pointer;
-            color: #000;
-            text-decoration: none;
-        }
-    }
-
-    .table-aposta {
-        display: none;
-        .th-pagamento {
-            width: 100px;
-        }
-        span {
-            background-color: rgba(255, 255, 255, 0);
-            border: none;
-            input {
-                cursor: pointer;
-            }
-        }
-        .btn {
-            cursor: pointer;
-            background-color: #0E562C;
-            color: #fff;
-            &:hover {
-                background-color: #000 !important;
-            }
-        }
-        button {
-            img {
-                color: #fff;
-                width: 20px;
-            }
-        }
-    }
-
-    .table-ranking {
-        .th-pagamento {
-            width: 100px;
-        }
-        span {
-            background-color: rgba(255, 255, 255, 0);
-            border: none;
-            input {
-                cursor: pointer;
-            }
-        }
-        .btn {
-            cursor: pointer;
-            background-color: #0E562C;
-            color: #fff;
-            &:hover {
-                background-color: #000 !important;
-            }
-        }
-        button {
-            img {
-                color: #fff;
-                width: 20px;
-            }
-        }
-    }
-
-    .table-usuario {
-        display: none;
-        .th-pagamento {
-            width: 100px;
-        }
-        span {
-            background-color: rgba(255, 255, 255, 0);
-            border: none;
-            input {
-                cursor: pointer;
-            }
-        }
-        .btn {
-            cursor: pointer;
-            background-color: #0E562C;
-            color: #fff;
-            &:hover {
-                background-color: #000 !important;
-            }
-        }
-        button {
-            img {
-                color: #fff;
-                width: 20px;
-            }
-        }
-    }
-
-    .table-equipe {
+    .table-custom {
         display: none;
         img{
             width: 30px;
@@ -280,10 +153,31 @@
                 background-color: #000 !important;
             }
         }
+        span {
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            input {
+                cursor: pointer;
+            }
+        }
         button {
             img {
                 color: #fff;
                 width: 20px;
+            }
+        }
+        a {
+            cursor: pointer;
+            color: #000;
+            text-decoration: none;
+        }
+        .th-pagamento {
+            width: 100px;
+        }
+        .nome-rodada {
+            text-decoration: underline;
+            &:hover {
+                color: #afadad;
             }
         }
     }
@@ -312,7 +206,5 @@
         .content {
             width: 88vw;
         }
-    }
-                    
+    }                    
 }
-

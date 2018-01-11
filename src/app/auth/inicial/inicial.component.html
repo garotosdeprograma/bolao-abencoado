@@ -5,14 +5,15 @@
         <div class="col-md-12 text-white">
           <h1 class="mb-4">Faça sua melhor jogada</h1>
           <p class="lead mb-5">Comece agora mesmo e jogue ao lado do seu time.
-            <br>Fique por dentro dos principais campeonatos nacionais e internacionais.
+            <br>Fique por dentro dos principais jogos dos campeonatos nacionais e internacionais.
             <br> </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Campeonatos e jogos -->
+  <!-- Campeonatos -->
+
   <div class="jogos col-12 row d-flex justify-content-center align-items-center m-0">
     <div class="col-sm-10 row d-flex justify-content-center p-0">
       <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
@@ -27,7 +28,7 @@
 
         <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
           <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeEscolhida (click)="escolherEquipe()">
             <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>Barcelona</span>
@@ -36,7 +37,7 @@
           </div>
           <div class="col-2 d-flex justify-content-center align-items-center">X</div>
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeEscolhida (click)="escolherEquipe()">
             <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>Real Madrid</span>
@@ -365,7 +366,7 @@
         <div class="jogo col-12 m-0 p-1 d-flex justify-content-center row mb-3 pb-2">
           <!-- time da casa -->
           <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
+            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>Barcelona</span>
             </small>
@@ -380,15 +381,10 @@
             </small>
 
           </div>
-          <div class="col-12 info-jogo pb-2">
-            <div class="col-12 text-center">
-              <p class="info">Data: 00/00/0000</p>
-              <p class="info">Horário: 00:00h</p>
-            </div>
-
-            <div class="btn-desfazer-aposta col-12 mt-2 text-center">
-              <a href="" class="btn btn-sm btn-primary">Desfazer aposta</a>
-            </div>
+          <div class="col-12 trash p-0 m-0 text-center">
+            <button type="button" class="btn btn-sm mt-2">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
 
@@ -404,28 +400,61 @@
           <div class="col-2 d-flex justify-content-center align-items-center">X</div>
           <!-- time visitante -->
           <div class="time-visitante text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
+            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>Real Madrid</span>
             </small>
 
           </div>
-          <div class="col-12 info-jogo pb-2">
-            <div class="col-12 text-center">
-              <p class="info">Data: 00/00/0000</p>
-              <p class="info">Horário: 00:00h</p>
-            </div>
-
-            <div class="btn-desfazer-aposta col-12 mt-2 text-center">
-              <a href="" class="btn btn-sm btn-primary">Desfazer aposta</a>
-            </div>
+          <div class="col-12 trash p-0 m-0 text-center">
+            <button type="button" class="btn btn-sm mt-2">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
 
       </div>
 
-      <div class="btn-finalizar-aposta col-12 mt-2 mb-3 text-center">
-        <a href="" class="btn btn-primary">Finalizar aposta</a>
+      <div class="col-12 mb-3 text-center">
+        <button class="btn btn-sm" (click)="finalizarAposta()">
+          <small>
+            Finalizar aposta
+          </small>
+        </button>
+      </div>
+
+      <div class="input-telefone col-12 mb-3" #inputTelefone>
+        <div>
+          <p class="text-center">Preencha o formulário para finalizar a aposta</p>
+        </div>
+        <label>Telefone</label>
+        <input type="text" name="nomeRodada" class="form-control" placeholder="(85)9xxxx-xxxx">
+      </div>
+
+      <div class="formularioCadastrado col-12 row m-0 p-0 pt-3 pb-3" #formularioCadastro>
+        <div class="col-12">
+          <small>
+            <p class="text-center alerta">Usuário não cadastrado no sistema!
+              <br/>Informe os dados abaixo</p>
+          </small>
+        </div>
+        <div class="col-12 m-0">
+          <label>Nome</label>
+          <input type="text" name="nomeRodada" class="form-control" placeholder="nome">
+        </div>
+
+        <div class="col-12 m-0">
+          <label>Sobrenome</label>
+          <input type="text" name="nomeRodada" class="form-control" placeholder="sobrenome">
+        </div>
+      </div>
+
+      <div class="enviar text-center pt-2 pb-2 p-0" #enviar>
+        <button class="btn btn-sm" (click)="FormularioCadastroUsuario()">
+          <small>
+            Enviar
+          </small>
+        </button>
       </div>
 
     </div>

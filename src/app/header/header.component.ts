@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-declare var jQuery:any;
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,9 @@ declare var jQuery:any;
 })
 export class HeaderComponent implements OnInit {
 
+  @ViewChild('formularioRecuperar') FormularioRecuperar: ElementRef;
+  @ViewChild('formularioLogin') FormularioLogin: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
@@ -15,5 +18,12 @@ export class HeaderComponent implements OnInit {
 
   closeModal() {
     jQuery('#modal-login').modal('hide');
+    this.FormularioLogin.nativeElement.style.display = 'block';
+    this.FormularioRecuperar.nativeElement.style.display = 'none';
+  }
+
+  recuperarSenha() {
+    this.FormularioRecuperar.nativeElement.style.display = 'block';
+    this.FormularioLogin.nativeElement.style.display = 'none';
   }
 }
