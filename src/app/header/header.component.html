@@ -39,18 +39,18 @@
             <form class="form-modal" method="post" action="">
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="email">
+                <input type="email" name="email" class="form-control" [(ngModel)]="user.email" autocomplete="off" maxlength="40">
               </div>
               <div class="form-group">
                 <label>Senha</label>
-                <input type="password" name="password" class="form-control" placeholder="senha">
+                <input type="password" name="password" class="form-control" [(ngModel)]="user.password" autocomplete="off" maxlength="40">
               </div>
             </form>
             <div class="row">
               <div class="col-md-4">
-                <a class="btn btn-sm" routerLink='/admin/administrador' (click)="closeModal()">Login</a>
+                <a class="btn btn-sm" (click)="login()">Login</a>
               </div>
-              <div class="col-md-8">
+              <!-- <div class="col-md-8">
                 <p class="text-right">
                   <a class="link" (click)="recuperarSenha()">
                     <small>
@@ -58,7 +58,7 @@
                     </small>
                   </a>
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="recuperar-senha col-12 pt-3 pr-4 pl-4 pb-4 m-0" #formularioRecuperar>
