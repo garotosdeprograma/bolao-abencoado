@@ -3,3 +3,16 @@
 // or import a bootstrap 4 alert styled design (SASS ONLY) 
 // should be after your bootstrap imports, it uses bs4 variables 
 // @import "~ngx-toastr/toastr-bs4-alert"
+
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+.content {
+    position: relative;
+    width: calc(100% - 65px);
+    min-height: 100vh;
+    left: 65px;
+}
+

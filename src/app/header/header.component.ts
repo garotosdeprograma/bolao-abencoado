@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit {
 
   login() {
     this.loginService.login(this.user)
-      .then(token => {
-        localStorage.setItem(STORED_TOKEN, token);
+      .then(result => {
+        localStorage.setItem(STORED_TOKEN, result.token);
         this.route.navigate(['/admin/administrador']);
         this.closeModal();
         this.user = new User();

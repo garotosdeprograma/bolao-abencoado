@@ -1,0 +1,39 @@
+.menu-left {
+    position: absolute;
+    left: 0;
+    padding-left: 12px;
+    z-index: 5;
+    height:100%;
+    background: #073018;
+    display: inline-block;
+    white-space: nowrap;
+    width: 65px;
+    transition: width 0.2s;
+    &:hover {
+        width: 250px;
+    }
+    .icon {
+        margin:15px;
+        width:20px;
+        color:#fff;
+    }
+    .item {
+        height:50px;
+        overflow:hidden;
+        a {
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color:#fff;
+            .icon {
+                color: #073018;
+
+            }
+            a {
+                color: #073018;
+            }
+        }
+    }
+}

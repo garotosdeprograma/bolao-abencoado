@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 declare var jQuery: any;
 
@@ -19,7 +20,7 @@ export class AdministradorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.Ranking.nativeElement.style.display = 'block';
+    // this.Ranking.nativeElement.style.display = 'block';
   }
 
   mostrarJogos() {
@@ -41,7 +42,7 @@ export class AdministradorComponent implements OnInit {
   campeonato() {
     this.Ranking.nativeElement.style.display = 'none';
     this.Campeonatos.nativeElement.style.display = 'block';
-    this.Rodadas.nativeElement.style.display = 'none'
+    this.Rodadas.nativeElement.style.display = 'none';
     this.Apostas.nativeElement.style.display = 'none';
     this.Equipes.nativeElement.style.display = 'none';
   }
