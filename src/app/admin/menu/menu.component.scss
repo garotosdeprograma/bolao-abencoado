@@ -1,9 +1,9 @@
 .menu-left {
-    position: absolute;
+    position: fixed;
     left: 0;
+    height: 100vh;
     padding-left: 12px;
     z-index: 5;
-    height:100%;
     background: #073018;
     display: inline-block;
     white-space: nowrap;

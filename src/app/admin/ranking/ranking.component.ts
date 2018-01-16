@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
+// import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
   styleUrls: ['./ranking.component.scss']
 })
-export class RankingComponent implements OnInit, AfterViewChecked {
+export class RankingComponent implements OnInit {
 
   editing = {};
   rows = [];
@@ -15,10 +15,9 @@ export class RankingComponent implements OnInit, AfterViewChecked {
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
 
-
   @ViewChild('tableWrapper') tableWrapper;
   private currentComponentWidth;
-  @ViewChild(DatatableComponent) table: DatatableComponent;
+  // @ViewChild(DatatableComponent) table: DatatableComponent;
 
   columns = [
     { prop: 'name' },
@@ -34,19 +33,19 @@ export class RankingComponent implements OnInit, AfterViewChecked {
     });
   }
 
-  ngAfterViewChecked() {
+  // ngAfterViewChecked() {
     // Check if the table size has changed,
     // if (this.table && this.table.recalculate && (this.tableWrapper.nativeElement.clientWidth !== this.currentComponentWidth)) {
     //   this.currentComponentWidth = this.tableWrapper.nativeElement.clientWidth;
     //   this.table.recalculate();
     //   this.changeDetectorRef.detectChanges();
     // }
-    if (this.table && this.table.recalculate && (this.tableWrapper.nativeElement.clientWidth !== this.currentComponentWidth)) {
-      this.currentComponentWidth = this.tableWrapper.nativeElement.clientWidth;
-      this.table.recalculate();
-      window.dispatchEvent(new Event('resize'));
-    }
-  }
+    // if (this.table && this.table.recalculate && (this.tableWrapper.nativeElement.clientWidth !== this.currentComponentWidth)) {
+    //   this.currentComponentWidth = this.tableWrapper.nativeElement.clientWidth;
+    //   this.table.recalculate();
+    //   window.dispatchEvent(new Event('resize'));
+    // }
+  // }
 
   fetch(data) {
     const req = new XMLHttpRequest();

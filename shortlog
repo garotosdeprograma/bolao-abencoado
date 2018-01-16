@@ -1,0 +1,60 @@
+[33mcommit bc7ea9385f0d564e794510aec020dc54bc1a8543[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Wed Jan 10 23:28:07 2018 -0300
+
+    update pages administrador and inicial
+
+[33mcommit c1ff175459e5cf150e6fc260efcbd314774b58e6[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Tue Dec 12 01:52:15 2017 -0300
+
+    page inicial modified, listing of apostas and ranking modified
+
+[33mcommit 1ed75482a8a34ed984aa7bfc8fac10188824f98f[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Wed Dec 6 05:09:51 2017 -0300
+
+    view for insertion and edition of jogos created / view of ranking of the week created
+
+[33mcommit 73b7cd779600d3698096e3dac8bafbc939cf5309[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Tue Dec 5 09:22:00 2017 -0300
+
+    tables for listing and search of Campeonatos, Apostas, Usuários e Equipes created / Modal for edition and insertion of Campeonatos, Equipes created / view for insertion and edition of Jogos initiated
+
+[33mcommit fde550dd51f14db0eb2f837a5cb39d24ce580d17[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Mon Dec 4 06:19:46 2017 -0300
+
+    page administrador created and created options menu, construction of administrador page options started
+
+[33mcommit f68ee4453522dab1594c9d1de9d5772a7dece7b5[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Sat Dec 2 18:32:21 2017 -0300
+
+    page cadastro created, page home - unexpected behavior fixed
+
+[33mcommit 1cbe02e6619756d493774bdf838231240d0192bb[m
+Author: Jozielio Santiago <jozieliosantiago@gmail.com>
+Date:   Mon Nov 20 10:20:00 2017 -0300
+
+    pagina Icinal #1, modal-login #1, modal-cadastro #1, home page do user #1
+
+[33mcommit ac2ef0a1afee411b9b0dbeae47b07b188e57adb0[m
+Author: Daouda <quieterkali@gmail.com>
+Date:   Sat Nov 18 02:05:27 2017 -0300
+
+    initial project
+
+[33mcommit 11084bfb7aad9ff5959b3534a51d842460170da9[m
+Author: Angular CLI <angular-cli@angular.io>
+Date:   Sat Nov 18 00:32:08 2017 -0300
+
+    chore: initial commit from @angular/cli
+    
+        _                      _                 ____ _     ___
+       / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+      / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+     / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+    /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                   |___/

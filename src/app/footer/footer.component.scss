@@ -14,5 +14,7 @@
 }
 
 .footer {
-    height: 24vh;
+  position: absolute;
+  z-index: 5;
+  height: 24vh;
 }

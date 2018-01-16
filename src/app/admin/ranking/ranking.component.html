@@ -11,20 +11,21 @@
     class="material"
     [headerHeight]="40"
     [limit]="10"
-    [columnMode]="'flex'"
+    [columnMode]="'force'"
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [rows]="rows"
+    [scrollbarH]="'true'"
     [loadingIndicator]="loadingIndicator">
     <ngx-datatable-column
         [width]="30"
         [sortable]="false"
-        [canAutoResize]="false"
+        [canAutoResize]="true"
         [draggable]="true"
         [resizeable]="false"
-        [headerCheckboxable]="true"
-        [checkboxable]="true">
-      </ngx-datatable-column>
+        [headerCheckboxable]="false"
+        [checkboxable]="false">
+    </ngx-datatable-column>
     <ngx-datatable-column name="Name">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span
