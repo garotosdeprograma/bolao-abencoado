@@ -12,11 +12,15 @@ import { CampeonatoComponent } from './campeonato/campeonato.component';
 import { RodadaComponent } from './rodada/rodada.component';
 import { ApostaComponent } from './aposta/aposta.component';
 import { EquipeComponent } from './equipe/equipe.component';
+import { FormsModule } from '@angular/forms';
+import { CampeonatoService } from './campeonato/campeonato.service';
+import { RodadaService } from './rodada/rodada.service';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
+    FormsModule,
     NgxDatatableModule
   ],
   declarations: [
@@ -28,6 +32,7 @@ import { EquipeComponent } from './equipe/equipe.component';
     RodadaComponent,
     ApostaComponent,
     EquipeComponent
-  ]
+  ],
+  providers: [ CampeonatoService, RodadaService ]
 })
 export class AdminModule { }

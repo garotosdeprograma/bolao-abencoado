@@ -1,5 +1,5 @@
 
-<div class="row content pt-5 pb-5 m-0" #tableWrapper>
+<div class="row content pt-5 pb-5 m-0">
   <div class="input-group mb-2 col-lg-12">
     <span class="input-group-addon"><i class="fa fa-search"></i></span>
     <input class="form-control" type="text" placeholder="Type to filter the name column..." (keyup)="updateFilter($event)"/>
@@ -17,14 +17,13 @@
     [rows]="rows"
     [scrollbarH]="'true'"
     [loadingIndicator]="loadingIndicator">
-    <ngx-datatable-column
-        [width]="30"
-        [sortable]="false"
-        [canAutoResize]="true"
-        [draggable]="true"
-        [resizeable]="false"
-        [headerCheckboxable]="false"
-        [checkboxable]="false">
+    <ngx-datatable-column name="Nº"
+        [maxWidth]="30" [width]="20">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.$$index +1}}
+          </span>
+        </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Name">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">

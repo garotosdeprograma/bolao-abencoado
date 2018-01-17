@@ -1,9 +1,11 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { showError } from '../utils/showError';
 import { LoginService } from '../login.service';
 import { User } from '../models/user';
 import { STORED_TOKEN } from '../constant/local-storage';
-import { ToastrService } from 'ngx-toastr';
 declare var jQuery: any;
 
 @Component({
@@ -35,19 +37,7 @@ export class HeaderComponent implements OnInit {
         this.user = new User();
       })
       .catch(err => {
-        const errObj = JSON.parse(err._body);
-        console.log(errObj);
-        for (const prop in errObj) {
-          if (errObj.hasOwnProperty(prop)) {
-            const element = errObj[prop];
-            this.toastr.error(element);
-          }
-        }
+        showError(err, this.toastr);
       });
-  }
-
-  recuperarSenha() {
-    this.FormularioRecuperar.nativeElement.style.display = 'block';
-    this.FormularioLogin.nativeElement.style.display = 'none';
   }
 }

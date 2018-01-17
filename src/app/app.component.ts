@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+
+  // @ViewChild('footer') footer: ElementRef;
+
+  constructor() {
+
+  }
 }
