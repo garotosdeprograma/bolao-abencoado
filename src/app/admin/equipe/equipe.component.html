@@ -1,3 +1,163 @@
-<p>
-  equipe works!
-</p>
+<div class="row content pt-2 pb-5 m-0">
+  <div class="col-12 form-group row d-flex align-items-center m-0 p-3">
+    <div class="form-group col-sm-4 ml-0 pl-0">
+      <h2 class="text-left mt-4 mb-3">Equipes</h2>
+    </div>
+    <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+      <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+        <input type="text" class="form-control" placeholder="equipe" aria-label="equipe">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
+      <div class="input-group col-sm-11 mt-2 mb-2 p-0">
+        <input type="text" class="form-control" placeholder="campeonato" aria-label="campeonato">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
+      <div class="col-4 pl-0 pr-1">
+        <button class="btn w-100" type="button">
+          <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
+        </button>
+      </div>
+      <div class="col-4 pl-1 pr-1">
+        <button class="btn w-100" type="button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="col-4 pl-1 pr-0">
+        <button class="btn w-100" type="button" data-toggle="modal" data-target="#modal-equipe">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 m-0">
+    <ngx-datatable 
+    #table 
+    class="material" 
+    [headerHeight]="40" [limit]="10" 
+    [columnMode]="'force'" 
+    [footerHeight]="50" 
+    [rowHeight]="'auto'"
+    [rows]="rows" 
+    [scrollbarH]="'false'"
+    [loadingIndicator]="loadingIndicator">
+      <ngx-datatable-column 
+      name="Nº" [maxWidth]="30" [width]="20">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.$$index +1}}
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Escudo">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span title="Double click to edit" (dblclick)="editing[row.$$index + '-name'] = true" *ngIf="!editing[row.$$index + '-name']">
+            {{value}}
+          </span>
+          <input autofocus (blur)="updateValue($event, 'name', value, row)" *ngIf="editing[row.$$index + '-name']" type="text" [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Nome">
+        <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
+          <span title="Double click to edit" (dblclick)="editing[row.$$index + '-gender'] = true" *ngIf="!editing[row.$$index + '-gender']">
+            {{value}}
+          </span>
+          <select *ngIf="editing[row.$$index + '-gender']" (change)="updateValue($event, 'gender', value, row)" [value]="value">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Campeonato(s)">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Ações">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          <div class="action col-12 row text-center">
+            <div class="col-6">
+              <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
+                  <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="col-6">
+                <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
+                    <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                </span>
+            </div>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<!-- Modal Equipe -->
+<div class="modal gameboll-theme-modal" id="modal-equipe">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header rounded-0">
+          <h5 class="modal-title">Equipe</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="col-12 text-center">
+              <div class="col-12">
+                <img class="image-escudo" src="assets/img/ligaInglesa/chelsea.png" alt="Escudo do time">
+              </div>
+              <div class="col-12 p-0 mt-1">
+                <button class="btn btn-sm">
+                  <small>
+                    Alterar/Inserir escudo
+                  </small>
+                </button>
+              </div>
+            </div>
+  
+            <form class="form-modal" method="post" action="">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="nome" class="form-control" placeholder="nome">
+              </div>
+  
+              <label>Campeonato(s)</label>
+              <div class="input-campeonato">
+                <div class="col-sm-12 row p-0 m-0">
+                  <div class="form-group col-11 pl-0 ml-0">
+                    <select class="form-control">
+                      <option selected>Campeonato...</option>
+                      <option value="1">Brasileiro Série A</option>
+                      <option value="2">Brasileiro Série B</option>
+                      <option value="3">UEFA</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pl-0 ml-0">
+                    <a class="btn" (click)="addInputCampeonato()">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+  
+            <div class="row">
+              <div class="col-md-4">
+                <a class="btn">Salvar</a>
+              </div>
+              <div class="col-md-8">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

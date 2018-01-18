@@ -1,0 +1,122 @@
+<div class="content jogos" #jogos>  
+    <div class="col-12 row d-flex justify-content-center m-0 mt-5 pt-3">  
+      <div class="col-sm-8 lista-jogos pt-5 pl-3 pr-3">
+  
+        <div class="col-sm-12 row m-0 mb-5 p-0">
+          <div class="col-10 col-sm-11 row m-0 p-0">
+            <h4 class="col-12">Jogos da rodada</h4>
+          </div>
+          <button class="col-2 col-sm-1 btn w-100" data-toggle="modal" data-target="#modal-jogo">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+  
+        <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+          <div class="col-5 text-center">
+            <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+            <br/>
+            <small>Barcelona</small>
+            <br/>
+            <small>0</small>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <p>X</p>
+          </div>
+          <div class="col-5 text-center">
+            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+            <br/>
+            <small>Real Madrid</small>
+            <br/>
+            <small>0</small>
+          </div>
+          <div class="col-12 row info d-flex align-items-center p-0 m-0">
+            <div class="col-8 text-left">
+              <small>
+                Data: 00/00/0000
+                <br/> Horário: 00:00h
+              </small>
+            </div>
+  
+            <div class="col-4 text-right">
+              <span class="mr-4" data-toggle="modal" data-target="#modal-jogo">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
+              <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
+                <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Jogo -->
+<div class="modal gameboll-theme-modal" id="modal-jogo">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header rounded-0">
+          <h5 class="modal-title">Jogo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+          <form class="form-modal col-12 row p-0 m-0" method="post" action="">
+  
+            <div class="col-12 ml-0 mr-0">
+              <label>Campeonato</label>
+              <div class="form-group pl-0 ml-0">
+                <select class="form-control">
+                  <option selected>campeonatos...</option>
+                  <option value="1">UEFA</option>
+                  <option value="2">Brasileiro Série A</option>
+                  <option value="3">Brasileiro Série B</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="col-8 ml-0 mr-0">
+              <label>Time casa</label>
+              <select class="form-control">
+                <option selected>equipe...</option>
+                <option value="1">Barcelona</option>
+                <option value="2">Real Madrid</option>
+              </select>
+            </div>
+  
+            <div class="form-group col-4">
+              <label>Gol(s)</label>
+              <input type="text" name="gol-casa" class="form-control" placeholder="gol(s)">
+            </div>
+  
+            <div class="col-8 ml-0 mr-0">
+              <label>Time Visitante</label>
+              <select class="form-control">
+                <option selected>equipe...</option>
+                <option value="1">Barcelona</option>
+                <option value="2">Real Madrid</option>
+              </select>
+            </div>
+  
+            <div class="form-group col-4">
+              <label>Gol(s)</label>
+              <input type="text" name="gol-visitante" class="form-control" placeholder="gol(s)">
+            </div>
+  
+            <div class="col-12 row ml-0 mr-0">
+              <label>Data/Hora</label>
+              <input type="datetime-local" name="horario" class="form-control">
+            </div>
+  
+            <div class="col-12 mt-3">
+              <a class="btn">Salvar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

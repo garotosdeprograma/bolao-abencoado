@@ -1,11 +1,11 @@
-<div class="row content pt-5 pb-5 m-0">
-    <div class="col-12 row d-flex align-items-center m-0 p-0">
+<div class="row content pt-2 pb-5 m-0">
+    <div class="col-12 row d-flex align-items-center m-0 p-3">
         <div class="col-sm-7 ml-0 pl-0">
-          <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Campeonatos</h2>
+          <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Rodadas</h2>
         </div>
         <div class="col-8 col-sm-4 p-0 m-0">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="campeonato..." aria-label="campeonato...">
+            <input type="text" class="form-control" placeholder="rodadas..." aria-label="campeonato...">
             <span class="input-group-btn">
               <button class="btn" type="button">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -30,12 +30,16 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [rows]="rows"
-    [scrollbarH]="'true'"
+    [scrollbarH]="'false'"
     [loadingIndicator]="loadingIndicator">
     <ngx-datatable-column name="Rodadas">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            {{row.nome}}
+            <a class="nome-rodada" (click)="mostrarJogos()">
+              <a [routerLink]="['../jogo']">
+                {{row.nome}}
+              </a>
+            </a>
           </span>
         </ng-template>
       </ngx-datatable-column>
@@ -55,9 +59,18 @@
       </ngx-datatable-column>
       <ngx-datatable-column [width]="200" name="Ação">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span class="mr-4" data-toggle="modal" data-target="#modal-excluir">
-            <i class="fa fa-lg fa-pencil-square-o" data-toggle="modal" data-target="#modal-rodada" (click)="setRodada(row)" aria-hidden="true"></i>
-          </span>
+            <div class="col-12 row text-center">
+              <div class="col-6">
+                <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
+                    <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="col-6">
+                  <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
+                      <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+                  </span>
+              </div>
+            </div>
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>

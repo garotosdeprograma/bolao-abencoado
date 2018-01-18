@@ -1,5 +1,5 @@
-<div class="row content pt-5 pb-5 m-0">
-    <div class="col-12 row d-flex align-items-center m-0 p-0">
+<div class="row content pt-2 pb-5 m-0">
+    <div class="col-12 row d-flex align-items-center m-0 p-3">
         <div class="col-sm-7 ml-0 pl-0">
           <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Campeonatos</h2>
         </div>
@@ -30,9 +30,23 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [rows]="rows"
-    [scrollbarH]="'true'"
+    [scrollbarH]="'false'"
     [loadingIndicator]="loadingIndicator">
-    <ngx-datatable-column name="Campeonatos">
+    <ngx-datatable-column name="Escudo">
+      <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+        <span>
+          {{row.nome}}
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Nome">
+      <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+        <span>
+          {{row.nome}}
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Ações">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span>
           {{row.nome}}
@@ -55,24 +69,43 @@
         </div>
         <div class="modal-body">
           <div class="col-md-12">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center mb-3">
               <div class="col-12">
-                <img class="image-escudo" src="assets/img/campeonatos/uefa.png" alt="Escudo do campeonato">
-              </div>
-              <div class="col-12 p-0 mt-1">
-                <button class="btn btn-sm">
-                  <small>
-                    Alterar/Inserir escudo
-                  </small>
-                </button>
+                <img class="image-escudo" src="assets/img/default.png" alt="Escudo do campeonato">
               </div>
             </div>
+
             <form class="form-modal" method="post" action="">
-              <div class="form-group">
-                <label>Nome</label>
-                <input type="text" name="nome" [(ngModel)]="campeonato.nome" class="form-control" placeholder="nome">
+              <div class="row">
+                <div class="col-sm-3">
+                  <label>Escudo</label>
+                  <div class="dropdown escudos col-6 m-0 p-0">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Escudo
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="escudos">
+                      <span class="dropdown-item">
+                        <input type="checkbox" name="" id="">
+                        <img class="image-escudo ml-1" src="assets/img/default.png" alt="Escudo do campeonato">
+                      </span>
+                      <span class="dropdown-item">
+                        <input type="checkbox" name="" id="">
+                        <img class="image-escudo ml-1" src="assets/img/campeonatos/uefa.png" alt="Escudo do campeonato">
+                      </span>
+                      <span class="dropdown-item">
+                        <input type="checkbox" name="" id="">
+                        <img class="image-escudo ml-1" src="assets/img/campeonatos/uefa.png" alt="Escudo do campeonato">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-sm-9">
+                  <label>Nome</label>
+                  <input type="text" name="nome" [(ngModel)]="campeonato.nome" class="form-control" placeholder="nome">
+                </div>
               </div>
             </form>
+
             <div class="row">
               <div class="col-md-4">
                 <a class="btn" (click)=save()>Salvar</a>
@@ -85,3 +118,4 @@
       </div>
     </div>
   </div>
+  

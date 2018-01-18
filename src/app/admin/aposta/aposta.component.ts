@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { URL_API } from '../../constant/api';
 
 @Component({
   selector: 'app-aposta',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApostaComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

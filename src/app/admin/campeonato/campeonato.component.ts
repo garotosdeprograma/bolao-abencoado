@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { showError } from '../../utils/showError';
 import { Campeonato } from '../../models/campeonato';
 import { CampeonatoService } from './campeonato.service';
+declare const jQuery;
 
 @Component({
   selector: 'app-campeonato',
@@ -35,7 +36,7 @@ export class CampeonatoComponent implements OnInit {
     this.loadingIndicator = true;
     this.reorderable = true;
   }
-
+  
   fetch(data) {
     const req = new XMLHttpRequest();
     req.open('GET', '../../assets/data/company.json');
@@ -44,7 +45,7 @@ export class CampeonatoComponent implements OnInit {
     };
     req.send();
   }
-
+  
   ngOnInit() {
     this.service.getCampeonatos(this.filter)
     .then(result => {
@@ -54,18 +55,24 @@ export class CampeonatoComponent implements OnInit {
     .catch(err => {
       showError(err, this.toastr);
     });
+    
+    // jQuery('<span class="dropdown-item">' +
+    // '<input type="checkbox" name="" id="">' +
+    // '<img class="image-escudo ml-1" src="assets/img/default.png" alt="Escudo do campeonato">' +
+    // '</span>"').appendTo(".dropdown-menu");
+    
   }
 
   public save() {
     const logo = 'assets/campeonatos/' + this.campeonato.nome + '';
     this.campeonato.logo = logo;
     this.service.saveCampeonato(this.campeonato)
-    .then(campeonato => {
-      this.campeonatos.unshift(campeonato);
-    })
-    .catch(err => {
-      showError(err, this.toastr);
-    });
+      .then(campeonato => {
+        this.campeonatos.unshift(campeonato);
+      })
+      .catch(err => {
+        showError(err, this.toastr);
+      });
   }
 
 }

@@ -20,7 +20,7 @@ export class AdministradorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.Ranking.nativeElement.style.display = 'block';
+    this.Rodadas.nativeElement.style.display = 'block';
   }
 
   mostrarJogos() {
