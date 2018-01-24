@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { showError } from '../../utils/showError';
 import { Campeonato } from '../../models/campeonato';
+import { Pagination } from '../../models/pagination';
 import { CampeonatoService } from './campeonato.service';
 declare const jQuery;
 
@@ -22,6 +23,7 @@ export class CampeonatoComponent implements OnInit {
   public campeonato: Campeonato;
   public campeonatos: Campeonato[];
   public filter; any;
+  public pagination: Pagination = new Pagination();
 
   columns = [
     { prop: 'name' },
@@ -34,42 +36,74 @@ export class CampeonatoComponent implements OnInit {
     this.campeonatos = [];
     this.filter = {};
     this.loadingIndicator = true;
-    this.reorderable = true;
   }
-  
-  fetch(data) {
-    const req = new XMLHttpRequest();
-    req.open('GET', '../../assets/data/company.json');
-    req.onload = () => {
-      data(JSON.parse(req.response));
-    };
-    req.send();
-  }
-  
+
   ngOnInit() {
-    this.service.getCampeonatos(this.filter)
+    this.setPage();
+  }
+
+  setPage(pageInfo = {offset: 0}) {
+    this.filter.page = pageInfo.offset + 1;
+    this.getCampeonatos();
+  }
+
+  private getCampeonatos(): Promise<any> {
+    return this.service.getCampeonatos(this.filter)
     .then(result => {
-      this.rows = result.campeonatos;
+      this.pagination.count = result.total;
+      this.pagination.offset = result.current_page - 1;
+      this.pagination.limit = result.per_page;
+      this.rows = result.data;
       this.loadingIndicator = false;
     })
     .catch(err => {
       showError(err, this.toastr);
     });
-    
-    // jQuery('<span class="dropdown-item">' +
-    // '<input type="checkbox" name="" id="">' +
-    // '<img class="image-escudo ml-1" src="assets/img/default.png" alt="Escudo do campeonato">' +
-    // '</span>"').appendTo(".dropdown-menu");
-    
+  }
+
+  public buscar() {
+    this.filter.page = 1;
+    this.getCampeonatos();
+  }
+
+
+  public edit(campeonato) {
+    this.campeonato = campeonato;
+  }
+
+  public novo() {
+    this.campeonato = new Campeonato();
+  }
+
+  public submit() {
+    if (this.campeonato.id != null) {
+      this.update();
+    } else {
+      this.save();
+    }
+  }
+
+  public update() {
+    this.service.update(this.campeonato)
+      .then(result => {
+        this.toastr.success('Campeonato editado com sucesso.');
+        return this.getCampeonatos();
+      })
+      .then(result => jQuery('#modal-campeonato').modal('hide'))
+      .catch(err => {
+        showError(err, this.toastr);
+      });
   }
 
   public save() {
     const logo = 'assets/campeonatos/' + this.campeonato.nome + '';
     this.campeonato.logo = logo;
     this.service.saveCampeonato(this.campeonato)
-      .then(campeonato => {
-        this.campeonatos.unshift(campeonato);
+      .then(result => {
+        this.toastr.success('Campeonato salvo com sucesso.');
+        return this.getCampeonatos();
       })
+      .then(result => jQuery('#modal-campeonato').modal('hide'))
       .catch(err => {
         showError(err, this.toastr);
       });

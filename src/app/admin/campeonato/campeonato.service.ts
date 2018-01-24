@@ -36,9 +36,25 @@ export class CampeonatoService {
       .toPromise();
   }
 
+  public update(campeonato: Campeonato): Promise<any> {
+    const url = this.url + '/' + campeonato.id;
+    return this.http.put(url, campeonato, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
+  }
+
   public getCampeonatos(filter: any): Promise<any> {
-    this.url += '?page' + filter.page + '&nome=' + filter.nome;
-    return this.http.get(this.url, this.getHeaders())
+    let url = '';
+    if (filter.page) {
+      url = this.url + '?page=' + filter.page;
+    } else {
+      url = this.url + '?page=1';
+    }
+    if (filter.nome) {
+      url += '&nome=' + filter.nome;
+    }
+    console.log(url);
+    return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();
   }

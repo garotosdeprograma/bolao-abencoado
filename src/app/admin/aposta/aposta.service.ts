@@ -4,16 +4,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { URL_API } from '../../constant/api';
 import { STORED_TOKEN } from '../../constant/local-storage';
-import { Rodada } from '../../models/rodada';
+import { Aposta } from '../../models/aposta';
 
 @Injectable()
-export class RodadaService {
+export class ApostaService {
 
-  private token: string;
   private url: string;
+  private token: string;
 
   constructor(private http: Http) {
-    this.url = URL_API + 'rodada';
+    this.url = URL_API + 'aposta';
   }
 
   private getHeaders() {
@@ -30,17 +30,21 @@ export class RodadaService {
     return res.json();
   }
 
-  public save(rodada: Rodada): Promise<any> {
-    return this.http.post(this.url, rodada, this.getHeaders())
-    .map(this.extract)
-    .toPromise();
+  public saveAposta(aposta: Aposta): Promise<any> {
+    return this.http.post(this.url, aposta, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
   }
 
+  public update(aposta: Aposta): Promise<any> {
+    const url = this.url + '/' + aposta.id;
+    return this.http.put(url, aposta, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
+  }
 
-  public getRodadas(filter: any): Promise<any> {
-
+  public getApostas(filter: any): Promise<any> {
     let url = '';
-
     if (filter.page) {
       url = this.url + '?page=' + filter.page;
     } else {
@@ -49,24 +53,10 @@ export class RodadaService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
-    if (filter.inicio) {
-      url += '&inicio=' + filter.inicio;
-    }
-    if (filter.fim) {
-      url += '&fim=' + filter.fim;
-    }
     console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();
   }
-
-  public update(rodada: Rodada): Promise<any> {
-    const url = this.url + '/' + rodada.id;
-    return this.http.put(url, rodada, this.getHeaders())
-      .map(this.extract)
-      .toPromise();
-  }
-
 
 }

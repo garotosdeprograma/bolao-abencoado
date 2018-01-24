@@ -14,4 +14,8 @@ export class ApostaComponent implements OnInit {
   ngOnInit() {
   }
 
+  // private getApostas(): Promise<any> {
+  //   return this.
+  // }
+
 }

@@ -5,16 +5,16 @@
         </div>
         <div class="col-8 col-sm-4 p-0 m-0">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="campeonato..." aria-label="campeonato...">
+            <input type="text" class="form-control" [(ngModel)]="filter.nome" placeholder="campeonato..." aria-label="campeonato...">
             <span class="input-group-btn">
-              <button class="btn" type="button">
+              <button class="btn" (click)="buscar()" type="button">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </span>
           </div>
         </div>
         <div class="col-4 col-sm-1 text-right pl-3 mr-0 pr-0 mt-2 mb-2">
-          <button class="btn w-100" data-toggle="modal" data-target="#modal-campeonato">
+          <button class="btn w-100" data-toggle="modal" (click)="novo()" data-target="#modal-campeonato">
             <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
         </div>
@@ -25,13 +25,17 @@
     #table
     class="material"
     [headerHeight]="40"
-    [limit]="10"
     [columnMode]="'force'"
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [rows]="rows"
+    [externalPaging]="true"
+    [limit]="pagination.limit"
+    [count]="pagination.count"                
+    [offset]="pagination.offset"
     [scrollbarH]="'false'"
-    [loadingIndicator]="loadingIndicator">
+    [loadingIndicator]="loadingIndicator"
+    (page)="setPage($event)">
     <ngx-datatable-column name="Escudo">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span>
@@ -48,9 +52,9 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Ações">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-        <span>
-          {{row.nome}}
-        </span>
+        <a class="col-12" data-toggle="modal" (click)="edit(row)" data-target="#modal-campeonato">
+          <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
       </ng-template>
     </ngx-datatable-column>
     </ngx-datatable>
@@ -108,7 +112,7 @@
 
             <div class="row">
               <div class="col-md-4">
-                <a class="btn" (click)=save()>Salvar</a>
+                <a class="btn" (click)=submit()>Salvar</a>
               </div>
               <div class="col-md-8">
               </div>
