@@ -12,10 +12,15 @@ export class InicialComponent implements OnInit {
   @ViewChild('inputTelefone') InputTelefone: ElementRef;
   @ViewChild('formularioCadastro') FormularioCadastro: ElementRef;
   @ViewChild('equipeEscolhida') EquipeEscolhida: ElementRef;
+  public jogos: any[];
 
-  constructor() { }
+  // constructor(private service: JogoService) { }
 
   ngOnInit() {
+  }
+
+  buscarJogos() {
+    // this.service.buscarJogos()
   }
 
   finalizarAposta() {

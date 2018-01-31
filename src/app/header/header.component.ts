@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     this.loginService.login(this.user)
       .then(result => {
         localStorage.setItem(STORED_TOKEN, result.token);
-        this.route.navigate(['/admin/administrador']);
+        this.route.navigate(['admin']);
         this.closeModal();
         this.user = new User();
       })

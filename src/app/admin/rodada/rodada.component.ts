@@ -54,10 +54,10 @@ export class RodadaComponent implements OnInit {
         this.pagination.offset = result.current_page - 1;
         this.pagination.limit = result.per_page;
         this.rows = result.data;
+        this.temp = result.data;
         this.loadingIndicator = false;
       })
       .catch(err => {
-        console.log(err);
         showError(err, this.toastr);
       });
   }

@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { CampeonatoService } from './campeonato/campeonato.service';
 import { RodadaService } from './rodada/rodada.service';
 import { JogoComponent } from './jogo/jogo.component';
+import { EquipeService } from './equipe/equipe.service';
 
 @NgModule({
   imports: [
@@ -36,6 +37,6 @@ import { JogoComponent } from './jogo/jogo.component';
     EquipeComponent,
     JogoComponent
   ],
-  providers: [ CampeonatoService, RodadaService ]
+  providers: [ CampeonatoService, RodadaService, EquipeService ]
 })
 export class AdminModule { }

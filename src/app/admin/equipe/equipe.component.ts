@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { URL_API } from '../../constant/api';
+import { EquipeService } from './equipe.service';
+import { Equipe } from '../../models/equipe';
+import { showError } from '../../utils/showError';
+import { ToastrService } from 'ngx-toastr';
+import { Pagination } from '../../models/pagination';
 declare const jQuery;
 
 @Component({
@@ -13,24 +18,44 @@ export class EquipeComponent implements OnInit {
   rows = [];
   temp = [];
   selected = [];
-  loadingIndicator: boolean = true;
-  reorderable: boolean = true;
-  
-  constructor() {
-    this.fetch((data) => {
-      this.temp = [...data];
-      this.rows = data;
-      setTimeout(() => { this.loadingIndicator = false; }, 1500);
-    });
+  loadingIndicator: boolean;
+  reorderable: boolean;
+  filter: any = {};
+  equipes: Equipe[];
+  pagination: Pagination;
+
+  constructor(private service: EquipeService, private toastr: ToastrService) {
+    this.loadingIndicator = true;
+    this.reorderable = true;
+    this.equipes = [];
+    this.pagination = new Pagination();
   }
 
-  fetch(data) {
-    const req = new XMLHttpRequest();
-    req.open('GET', '../../assets/data/company.json');
-    req.onload = () => {
-      data(JSON.parse(req.response));
-    };
-    req.send();
+  setPage(pageInfo = {offset: 0}) {
+    this.filter.page = pageInfo.offset + 1;
+    this.getEquipes();
+  }
+
+  ngOnInit() {
+    this.setPage();
+  }
+
+  getEquipes() {
+    this.service.getEquipes(this.filter || {page: 1})
+      .then(result => {
+        console.log(result);
+        this.pagination.count = result.total;
+        this.pagination.offset = result.current_page - 1;
+        this.pagination.limit = result.per_page;
+        this.rows = result.data.map(equipe => {
+          return {
+            nome: equipe.nome,
+            campeonato: equipe.campeonatos[0].nome
+          };
+        });
+        this.loadingIndicator = false;
+      })
+      .catch(err => showError(err, this.toastr));
   }
 
   addInputCampeonato() {
@@ -54,9 +79,6 @@ export class EquipeComponent implements OnInit {
 
   removeInputCampeonato() {
     // criar lógica
-  }
-
-  ngOnInit() {
   }
 
 }
