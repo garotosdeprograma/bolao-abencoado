@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { RodadaService } from '../../admin/rodada/rodada.service';
+import { showError } from '../../utils/showError';
+import { ToastrService } from 'ngx-toastr';
 declare var jQuery: any;
 
 @Component({
@@ -12,15 +15,56 @@ export class InicialComponent implements OnInit {
   @ViewChild('inputTelefone') InputTelefone: ElementRef;
   @ViewChild('formularioCadastro') FormularioCadastro: ElementRef;
   @ViewChild('equipeEscolhida') EquipeEscolhida: ElementRef;
-  public jogos: any[];
+  public rodadas: any[];
+  public apostas: any[];
 
-  // constructor(private service: JogoService) { }
+  constructor(private service: RodadaService, private toastr: ToastrService) { 
+    this.rodadas = [];
+  }
 
   ngOnInit() {
+    this.getJogos();
+  }
+
+  getJogos() {
+    this.service.getRodadaJogos()
+      .then(result => {
+        console.log(result);
+        this.rodadas = result;
+      })
+      .catch(err => showError(err, this.toastr));
   }
 
   buscarJogos() {
     // this.service.buscarJogos()
+  }
+
+  isActive(jogo, time) {
+    if (jogo.equipe_casa.id === time.id) {
+      jogo.equipe_casa.ativo = true;
+      jogo.equipe_visitante.ativo = false;
+    } else {
+      jogo.equipe_visitante.ativo = true;
+      jogo.equipe_casa.ativo = false;
+    }
+  }
+
+  escolherEquipe(jogo, time) {
+    // TODO checar rodada
+    const aposta = {
+      idTime: time.id,
+      idJogo: jogo.id
+    };
+
+    const filteredApostas = this.apostas.filter(elm => {
+      return !(elm.id === aposta.idJogo);
+    });
+
+    filteredApostas.push(aposta);
+
+    this.apostas = filteredApostas;
+
+    console.log(aposta);
   }
 
   finalizarAposta() {
@@ -30,9 +74,5 @@ export class InicialComponent implements OnInit {
 
   FormularioCadastroUsuario() {
     this.FormularioCadastro.nativeElement.style.display = 'block';
-  }
-
-  escolherEquipe() {
-    this.EquipeEscolhida.nativeElement.style.backgroundColor = '#000';
   }
 }

@@ -15,334 +15,38 @@
   <!-- Campeonatos -->
 
   <div class="jogos col-12 row d-flex justify-content-center align-items-center m-0">
-    <div class="col-sm-10 row d-flex justify-content-center p-0">
+    <div class="col-sm-10 row d-flex justify-content-center p-0" *ngFor="let rodada of rodadas">
       <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
         <div class="col-2 text-center">
           <img class="logo-campeonato" src="assets/img/campeonatos/uefa.png" alt="Logo campeonato">
         </div>
-        <h5 class="col-10">Título do campeonato</h5>
+        <h5 class="col-10">{{rodada.nome}}</h5>
       </div>
 
       <!-- jogo -->
       <div class="div-jogos col-12 row p-0">
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
+        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row" *ngFor="let jogo of rodada.jogos">
           <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipeEscolhida (click)="escolherEquipe()">
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" (click)="escolherEquipe(jogo, jogo.equipe_casa)">
             <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
             <small class="col-12 p-0">
-              <span>Barcelona</span>
+              <span>{{jogo.equipe_casa.nome}}</span>
             </small>
 
           </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
+          <div class="col-2 d-flex justify-content-center align-items-center">vs</div>
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipeEscolhida (click)="escolherEquipe()">
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" (click)="escolherEquipe(jogo, jogo.equipe_visitante.id)">
             <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
             <small class="col-12 p-0">
-              <span>Real Madrid</span>
+              <span>{{jogo.equipe_visitante.nome}}</span>
             </small>
-
           </div>
           <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
+              <p class="info">{{ jogo.inicio | date:'medium'}}</p>
           </div>
         </div>
       </div>
-
-    </div>
-
-    <div class="col-sm-10 row d-flex justify-content-center p-0">
-      <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
-        <div class="col-2 text-center">
-          <img class="logo-campeonato" src="assets/img/campeonatos/uefa.png" alt="Logo campeonato">
-        </div>
-        <h5 class="col-10">Título do campeonato</h5>
-      </div>
-
-      <!-- jogo -->
-      <div class="div-jogos col-12 row p-0">
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-sm-10 row d-flex justify-content-center p-0">
-      <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
-        <div class="col-2 text-center">
-          <img class="logo-campeonato" src="assets/img/campeonatos/uefa.png" alt="Logo campeonato">
-        </div>
-        <h5 class="col-10">Título do campeonato</h5>
-      </div>
-
-      <!-- jogo -->
-      <div class="div-jogos col-12 row p-0">
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-
-        <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" #equipecasaescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" #equipevisitanteescolhida (click)="escolherEquipe()">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 info-jogo">
-            <p class="info">Data</p>
-            <p class="info">Horário: 00:00h</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 

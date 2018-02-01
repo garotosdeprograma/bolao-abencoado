@@ -4,16 +4,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { URL_API } from '../../constant/api';
 import { STORED_TOKEN } from '../../constant/local-storage';
-import { Rodada } from '../../models/rodada';
+import { Jogo } from '../../models/jogo';
 
 @Injectable()
-export class RodadaService {
+export class JogoService {
 
-  private token: string;
   private url: string;
+  private token: string;
 
   constructor(private http: Http) {
-    this.url = URL_API + 'rodada';
+    this.url = URL_API + 'jogo';
   }
 
   private getHeaders() {
@@ -30,23 +30,21 @@ export class RodadaService {
     return res.json();
   }
 
-  public save(rodada: Rodada): Promise<any> {
-    return this.http.post(this.url, rodada, this.getHeaders())
-    .map(this.extract)
-    .toPromise();
-  }
-
-  getRodadaJogos() {
-    return this.http.get(this.url + '/jogos', this.getHeaders())
+  public saveJogo(jogo: Jogo): Promise<any> {
+    return this.http.post(this.url, jogo, this.getHeaders())
       .map(this.extract)
       .toPromise();
   }
 
+  public update(jogo: Jogo): Promise<any> {
+    const url = this.url + '/' + jogo.id;
+    return this.http.put(url, jogo, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
+  }
 
-  public getRodadas(filter: any): Promise<any> {
-
+  public getJogos(filter: any): Promise<any> {
     let url = '';
-
     if (filter.page) {
       url = this.url + '?page=' + filter.page;
     } else {
@@ -55,24 +53,9 @@ export class RodadaService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
-    if (filter.inicio) {
-      url += '&inicio=' + filter.inicio;
-    }
-    if (filter.fim) {
-      url += '&fim=' + filter.fim;
-    }
-    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();
   }
-
-  public update(rodada: Rodada): Promise<any> {
-    const url = this.url + '/' + rodada.id;
-    return this.http.put(url, rodada, this.getHeaders())
-      .map(this.extract)
-      .toPromise();
-  }
-
 
 }
