@@ -79,17 +79,10 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Ações">
         <ng-template ngx-datatable-cell-template let-value="value">
-          <div class="action col-12 row text-center">
-            <div class="col-6">
-              <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
-                  <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
-              </span>
-            </div>
-            <div class="col-6">
-                <span class="col-12" data-toggle="modal" data-target="#modal-equipe">
-                    <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
-                </span>
-            </div>
+          <div class="action col-12 row">
+            <span class="col-12" data-toggle="modal" (click)="edit(row)" data-target="#modal-equipe">
+                <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
           </div>
         </ng-template>
       </ngx-datatable-column>
@@ -99,64 +92,73 @@
 
 <!-- Modal Equipe -->
 <div class="modal gameboll-theme-modal" id="modal-equipe">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header rounded-0">
-          <h5 class="modal-title">Equipe</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="col-md-12">
-            <div class="col-12 text-center">
-              <div class="col-12">
-                <img class="image-escudo" src="assets/img/ligaInglesa/chelsea.png" alt="Escudo do time">
-              </div>
-              <div class="col-12 p-0 mt-1">
-                <button class="btn btn-sm">
-                  <small>
-                    Alterar/Inserir escudo
-                  </small>
-                </button>
-              </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Equipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="col-12 text-center">
+            <div class="col-12 pt-2 pb-2">
+              <img class="image-escudo" id="escudo-equipe"src="assets/img/default.png" alt="Escudo do time">
             </div>
-  
-            <form class="form-modal" method="post" action="">
-              <div class="form-group">
-                <label>Nome</label>
+            <div class="btn-escolher-escudo col-12 p-0 mt-1" #botaoEscolherEscudo>
+              <button class="btn btn-sm" (click)="escolherEscudo()">
+                <small>
+                  Escolher escudo
+                </small>
+              </button>
+            </div>
+          </div>
+
+          <div class="escudos" #divEscudos>
+            <div class=" row col-12 m-0 p-0 pb-2" id="escudos" *ngFor="let infoEscudo of escudos">
+              <h6 class="pl-2 col-12 p-0 m-0 pt-2 pb-2">{{infoEscudo.regiao}}</h6>
+                <div class="img-escudo col-sm-4 p-2 text-center" id="id" *ngFor="let url of infoEscudo.srcEscudo" (click)="selecionarEscudo(url)">
+                    <img class="ml-1" src={{url}} alt="Escudo da equipe">
+                </div>
+            </div>
+          </div>
+
+          <form class="form-modal" method="post" action="">
+            <div class="form-group">
+              <label>Nome</label>
                 <input type="text" name="nome" class="form-control" placeholder="nome">
               </div>
   
-              <label>Campeonato(s)</label>
-              <div class="input-campeonato">
-                <div class="col-sm-12 row p-0 m-0">
-                  <div class="form-group col-11 pl-0 ml-0">
-                    <select class="form-control">
-                      <option selected>Campeonato...</option>
-                      <option value="1">Brasileiro Série A</option>
-                      <option value="2">Brasileiro Série B</option>
-                      <option value="3">UEFA</option>
-                    </select>
-                  </div>
-                  <div class="col-1 pl-0 ml-0">
-                    <a class="btn" (click)="addInputCampeonato()">
-                      <i class="fa fa-plus" aria-hidden="true"></i>
-                    </a>
-                  </div>
+            <label>Campeonato(s)</label>
+            <div class="input-campeonato">
+              <div class="col-sm-12 row p-0 m-0">
+                <div class="form-group col-11 pl-0 ml-0">
+                  <select class="form-control">
+                    <option selected>Campeonato...</option>
+                    <option>Brasileiro Série A</option>
+                    <option>Brasileiro Série B</option>
+                    <option>UEFA</option>
+                  </select>
+                </div>
+                <div class="col-1 pl-0 ml-0">
+                  <a class="btn" (click)="addInputCampeonato()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </a>
                 </div>
               </div>
-            </form>
-  
-            <div class="row">
-              <div class="col-md-4">
-                <a class="btn">Salvar</a>
-              </div>
-              <div class="col-md-8">
-              </div>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="col-md-4">
+              <a class="btn" (click)=submit()>Salvar</a>
+            </div>
+            <div class="col-md-8">
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

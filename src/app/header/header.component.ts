@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
         this.route.navigate(['admin']);
         this.closeModal();
         this.user = new User();
+        (<HTMLElement>document.getElementById('botaoEntrarSair')).innerHTML = '<i class="fa pr-2 d-inline fa-lg fa-user-circle"></i><span>Sair</span>';
       })
       .catch(err => {
         showError(err, this.toastr);

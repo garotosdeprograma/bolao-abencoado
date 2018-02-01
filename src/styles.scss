@@ -80,6 +80,19 @@
       height: 60px;
   }
   .escudos {
+    overflow: auto;
+    max-height: 50vh;
+    background-color:#f2f2f2;    
+    display: none;
+    h6 {
+      background-color: #ced4da;
+    }
+    .img-escudo {
+      cursor: pointer;
+      &:hover {
+        background-color:#d0cece;
+      }
+    }
     .btn {
       background-color: #fff !important;
       border-color: #ced4da !important;
@@ -88,9 +101,6 @@
         background-color: #ced4da !important;
         border: solid 1px #000;
       }
-    }
-    .dropdown-item {
-      border-bottom: solid 1px #ced4da;
     }
     img {
       width: auto;
