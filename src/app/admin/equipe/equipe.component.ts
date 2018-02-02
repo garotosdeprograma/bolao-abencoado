@@ -5,10 +5,10 @@ import { Equipe } from '../../models/equipe';
 import { showError } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { Pagination } from '../../models/pagination';
+import { Campeonato } from '../../models/campeonato';
+import { CampeonatoService } from '../campeonato/campeonato.service';
 declare const jQuery;
 
-import { infoEscudo } from '../../../assets/data/escudos';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-equipe',
@@ -16,10 +16,10 @@ import { element } from 'protractor';
   styleUrls: ['./equipe.component.scss']
 })
 export class EquipeComponent implements OnInit {
-  
+
   @ViewChild('botaoEscolherEscudo') BotaoEscolherEscudo: ElementRef;
   @ViewChild('divEscudos') DivEscudos: ElementRef;
-  
+
   public escudos: any[];
   url: String;
 
@@ -33,15 +33,21 @@ export class EquipeComponent implements OnInit {
   equipes: Equipe[];
   pagination: Pagination;
   public equipe: Equipe;
-  
-  constructor(private service: EquipeService, private toastr: ToastrService) {
+  campeonatos: Campeonato[];
+  listaCampeonatos: number[];
+
+
+  constructor(private service: EquipeService, private toastr: ToastrService,
+              private campeonatoService: CampeonatoService) {
     this.url = '';
     this.equipe = new Equipe();
     this.loadingIndicator = true;
     this.reorderable = true;
     this.equipes = [];
     this.pagination = new Pagination();
-    this.escudos = infoEscudo;
+    this.escudos = [];
+    this.campeonatos = [];
+    this.listaCampeonatos = [];
   }
 
   setPage(pageInfo = { offset: 0 }) {
@@ -51,6 +57,25 @@ export class EquipeComponent implements OnInit {
 
   ngOnInit() {
     this.setPage();
+    this.getEscudos();
+    this.getCampeonatos();
+  }
+
+  getCampeonatos() {
+    this.campeonatoService.getAllCampeonatos()
+      .then(result => {
+        console.log(result);
+        this.campeonatos = result;
+      })
+      .catch(err => showError(err, this.toastr));
+  }
+
+  getEscudos() {
+    return this.service.getEscudos()
+      .then(escudos => {
+        this.escudos = escudos;
+      })
+      .catch(err => showError(err, this.toastr));
   }
 
   getEquipes() {
@@ -59,12 +84,13 @@ export class EquipeComponent implements OnInit {
         this.pagination.count = result.total;
         this.pagination.offset = result.current_page - 1;
         this.pagination.limit = result.per_page;
-        this.rows = result.data.map(equipe => {
-          return {
-            nome: equipe.nome,
-            campeonato: equipe.campeonatos[0].nome
-          };
-        });
+        this.rows = result.data;
+        // .map(equipe => {
+        //   return {
+        //     nome: equipe.nome,
+        //     campeonato: equipe.campeonatos[0].nome
+        //   };
+        // });
         this.loadingIndicator = false;
       })
       .catch(err => showError(err, this.toastr));
@@ -105,6 +131,8 @@ export class EquipeComponent implements OnInit {
 
   public save() {
     // this.equipe.logo = url;
+    this.equipe.campeonato = this.listaCampeonatos;
+    console.log(this.equipe);
     this.service.saveEquipe(this.equipe)
       .then(result => {
         this.toastr.success('Equipe salva com sucesso!');
@@ -122,33 +150,37 @@ export class EquipeComponent implements OnInit {
   }
 
   selecionarEscudo(url) {
-    this.url = url;
-    (<HTMLImageElement>document.getElementById('escudo-equipe')).src = url;
+    this.equipe.logo = url;
+    (<HTMLImageElement>document.getElementById('escudo-equipe')).src = this.equipe.logo;
     this.BotaoEscolherEscudo.nativeElement.style.display = 'block';
     this.DivEscudos.nativeElement.style.display = 'none';
   }
 
-  addInputCampeonato() {
-    jQuery('<div class="col-sm-12 row p-0 m-0">' +
-      '<div class= "form-group col-11 pl-0 ml-0">' +
-      '<select class="form-control">' +
-      '<option selected > Campeonato...</option>' +
-      '<option value = "1" > Brasileiro Série A </option>' +
-      '<option value = "2" > Brasileiro Série B </option>' +
-      '<option value = "3" > UEFA < /option>' +
-      '</select>' +
-      '</div>' +
-      '<div class="col-1 pl-0 ml-0">' +
-      '<a class="btn btn-excluir" style="cursor:pointer;background-color:gray">' +
-      '<i class="fa fa-trash" aria-hidden="true" style="color: #fff"></i>' +
-      '</a>' +
-      '</div>' +
-      '</div>').appendTo(".input-campeonato");
-    return false;
+  newEquipe() {
+    this.equipe = new Equipe();
   }
 
+  // addInputCampeonato() {
+  //   jQuery('<div class="col-sm-12 row p-0 m-0">' +
+  //     '<div class= "form-group col-11 pl-0 ml-0">' +
+  //     '<select class="form-control">' +
+  //     '<option selected > Campeonato...</option>' +
+  //     '<option value = "1" > Brasileiro Série A </option>' +
+  //     '<option value = "2" > Brasileiro Série B </option>' +
+  //     '<option value = "3" > UEFA < /option>' +
+  //     '</select>' +
+  //     '</div>' +
+  //     '<div class="col-1 pl-0 ml-0">' +
+  //     '<a class="btn btn-excluir" style="cursor:pointer;background-color:gray">' +
+  //     '<i class="fa fa-trash" aria-hidden="true" style="color: #fff"></i>' +
+  //     '</a>' +
+  //     '</div>' +
+  //     '</div>').appendTo(".input-campeonato");
+  //   return false;
+  // }
+
   removeInputCampeonato() {
-    // criar lógica
+    // TODO criar lógica
   }
 
 }

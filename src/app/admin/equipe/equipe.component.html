@@ -27,7 +27,7 @@
         </button>
       </div>
       <div class="col-4 pl-1 pr-0">
-        <button class="btn w-100" type="button" data-toggle="modal" data-target="#modal-equipe">
+        <button class="btn w-100" type="button" data-toggle="modal" (click)="newEquipe()" data-target="#modal-equipe">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
@@ -126,19 +126,17 @@
 
           <form class="form-modal" method="post" action="">
             <div class="form-group">
-              <label>Nome</label>
-                <input type="text" name="nome" class="form-control" placeholder="nome">
+              <label for="nome">Nome</label>
+                <input type="text" name="nome" [(ngModel)]="equipe.nome"  class="form-control" placeholder="nome">
               </div>
   
             <label>Campeonato(s)</label>
             <div class="input-campeonato">
               <div class="col-sm-12 row p-0 m-0">
                 <div class="form-group col-11 pl-0 ml-0">
-                  <select class="form-control">
+                  <select class="form-control" name="lista" [(ngModel)]="listaCampeonatos" multiple>
                     <option selected>Campeonato...</option>
-                    <option>Brasileiro Série A</option>
-                    <option>Brasileiro Série B</option>
-                    <option>UEFA</option>
+                    <option [ngValue]="campeonato.id" *ngFor="let campeonato of campeonatos">{{campeonato.nome}}</option>
                   </select>
                 </div>
                 <div class="col-1 pl-0 ml-0">

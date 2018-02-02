@@ -43,6 +43,12 @@ export class CampeonatoService {
       .toPromise();
   }
 
+  public getAllCampeonatos() {
+    return this.http.get(this.url + '/todos', this.getHeaders())
+    .map(this.extract)
+    .toPromise();
+  }
+
   public getCampeonatos(filter: any): Promise<any> {
     let url = '';
     if (filter.page) {

@@ -18,8 +18,9 @@ export class InicialComponent implements OnInit {
   public rodadas: any[];
   public apostas: any[];
 
-  constructor(private service: RodadaService, private toastr: ToastrService) { 
+  constructor(private service: RodadaService, private toastr: ToastrService) {
     this.rodadas = [];
+    this.apostas = [];
   }
 
   ngOnInit() {
@@ -29,7 +30,6 @@ export class InicialComponent implements OnInit {
   getJogos() {
     this.service.getRodadaJogos()
       .then(result => {
-        console.log(result);
         this.rodadas = result;
       })
       .catch(err => showError(err, this.toastr));
@@ -39,14 +39,16 @@ export class InicialComponent implements OnInit {
     // this.service.buscarJogos()
   }
 
-  isActive(jogo, time) {
-    if (jogo.equipe_casa.id === time.id) {
-      jogo.equipe_casa.ativo = true;
-      jogo.equipe_visitante.ativo = false;
-    } else {
-      jogo.equipe_visitante.ativo = true;
-      jogo.equipe_casa.ativo = false;
-    }
+  isActive(event) {
+    console.log(event);
+    return true;
+    // if (jogo.equipe_casa.id === time.id) {
+    //   jogo.equipe_casa.ativo = true;
+    //   jogo.equipe_visitante.ativo = false;
+    // } else {
+    //   jogo.equipe_visitante.ativo = true;
+    //   jogo.equipe_casa.ativo = false;
+    // }
   }
 
   escolherEquipe(jogo, time) {
@@ -64,7 +66,8 @@ export class InicialComponent implements OnInit {
 
     this.apostas = filteredApostas;
 
-    console.log(aposta);
+    // this.isActive(jogo, time);
+
   }
 
   finalizarAposta() {

@@ -26,6 +26,12 @@ export class EquipeService {
     };
   }
 
+  public getEscudos() {
+    return this.http.get('../../../assets/data/escudos.json')
+      .map(this.extract)
+      .toPromise();
+  }
+
   private extract(res: Response): any {
     return res.json();
   }
@@ -53,6 +59,8 @@ export class EquipeService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
+    console.log(filter);
+    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();
