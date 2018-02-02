@@ -60,21 +60,17 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Escudo">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span title="Double click to edit" (dblclick)="editing[row.$$index + '-name'] = true" *ngIf="!editing[row.$$index + '-name']">
-            {{value}}
-          </span>
-          <input autofocus (blur)="updateValue($event, 'name', value, row)" *ngIf="editing[row.$$index + '-name']" type="text" [value]="value"
-          />
+            {{row.logo}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Nome">
         <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-            {{value}}
+            {{row.nome}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Campeonato(s)">
         <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-          {{row.campeonato}}
+          {{row.campeonatos}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Ações">
@@ -133,7 +129,7 @@
             <label>Lista Campeonatos</label>
             <div class="input-campeonato">
                 <div class="form-group col-12 pl-0 ml-0 p-0">
-                  <select class="form-control" name="lista" [(ngModel)]="listaCampeonatos" multiple>
+                  <select class="form-control" name="lista" multiple>
                     <option [ngValue]="campeonato.id" (click)="listaCampeonatosEquipe(campeonato)" *ngFor="let campeonato of campeonatos">{{campeonato.nome}}</option>
                   </select>
               </div>

@@ -39,7 +39,7 @@ export class EquipeComponent implements OnInit {
   listaCampeonatos: any[];
 
   constructor(private service: EquipeService, private toastr: ToastrService,
-              private campeonatoService: CampeonatoService) {
+    private campeonatoService: CampeonatoService) {
     this.url = 'assets/img/default.png';
     this.equipe = new Equipe();
     this.loadingIndicator = true;
@@ -66,7 +66,6 @@ export class EquipeComponent implements OnInit {
   getCampeonatos() {
     this.campeonatoService.getAllCampeonatos()
       .then(result => {
-        // console.log(result);
         this.campeonatos = result;
       })
       .catch(err => showError(err, this.toastr));
@@ -131,9 +130,18 @@ export class EquipeComponent implements OnInit {
       });
   }
 
+  clearModal() {
+    this.listaCampeonatoEscolhido.forEach(element => {
+      this.listaCampeonatos.push(element.id);
+    })
+    this.equipe.campeonato = this.listaCampeonatos;
+    this.listaCampeonatoEscolhido.clear();
+    this.url = 'assets/img/default.png';
+    this.listaCampeonatos = [];
+  }
+
   public save() {
-    // this.equipe.campeonato = this.listaCampeonatos;
-    console.log(this.equipe);
+    this.clearModal();
     this.service.saveEquipe(this.equipe)
       .then(result => {
         this.toastr.success('Equipe salva com sucesso!');
@@ -165,9 +173,6 @@ export class EquipeComponent implements OnInit {
     this.listaCampeonatoEscolhido.delete(campeonato);
   }
 
-  teste() {
-    console.log('teste');
-  }
   newEquipe() {
     this.equipe = new Equipe();
   }
