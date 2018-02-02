@@ -104,7 +104,7 @@
         <div class="col-md-12">
           <div class="col-12 text-center">
             <div class="col-12 pt-2 pb-2">
-              <img class="image-escudo" id="escudo-equipe"src="assets/img/default.png" alt="Escudo do time">
+              <img class="image-escudo" id="escudo-equipe"src="{{url}}" alt="Escudo do time">
             </div>
             <div class="btn-escolher-escudo col-12 p-0 mt-1" #botaoEscolherEscudo>
               <button class="btn btn-sm" (click)="escolherEscudo()">
@@ -128,23 +128,22 @@
             <div class="form-group">
               <label for="nome">Nome</label>
                 <input type="text" name="nome" [(ngModel)]="equipe.nome"  class="form-control" placeholder="nome">
-              </div>
-  
-            <label>Campeonato(s)</label>
+            </div>
+
+            <label>Lista Campeonatos</label>
             <div class="input-campeonato">
-              <div class="col-sm-12 row p-0 m-0">
-                <div class="form-group col-11 pl-0 ml-0">
+                <div class="form-group col-12 pl-0 ml-0 p-0">
                   <select class="form-control" name="lista" [(ngModel)]="listaCampeonatos" multiple>
-                    <option selected>Campeonato...</option>
-                    <option [ngValue]="campeonato.id" *ngFor="let campeonato of campeonatos">{{campeonato.nome}}</option>
+                    <option [ngValue]="campeonato.id" (click)="listaCampeonatosEquipe(campeonato)" *ngFor="let campeonato of campeonatos">{{campeonato.nome}}</option>
                   </select>
-                </div>
-                <div class="col-1 pl-0 ml-0">
-                  <a class="btn" (click)="addInputCampeonato()">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  </a>
-                </div>
               </div>
+            </div>
+
+            <label>Campeonato(s) da equipe</label>
+            <div class="campeonatos mb-2 m-0 p-0 col-12 row">
+              <span class="p-1 m-1" *ngFor="let lista of listaCampeonatoEscolhido">
+                {{lista.nome}}<sup class="pl-1 pr-1 ml-1" (click)="removerCampeonato(lista)" >x</sup>
+              </span>
             </div>
           </form>
 
