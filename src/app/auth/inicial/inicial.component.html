@@ -27,7 +27,7 @@
       <div class="div-jogos col-12 row p-0">
         <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row" *ngFor="let jogo of rodada.jogos">
           <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_casa.ativo}" (click)="escolherEquipeRight(jogo, jogo.equipe_casa, rodada.id)">
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_casa.ativo}" (click)="escolherEquipe(jogo, jogo.equipe_casa, rodada.id, 'right')">
             <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_casa.nome}}</span>
@@ -37,7 +37,7 @@
           <div class="col-2 d-flex justify-content-center align-items-center">vs</div>
           
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}" (click)="escolherEquipeLeft(jogo, jogo.equipe_visitante.id, rodada.id)">
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}" (click)="escolherEquipe(jogo, jogo.equipe_visitante.id, rodada.id, 'left')">
             <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_visitante.nome}}</span>

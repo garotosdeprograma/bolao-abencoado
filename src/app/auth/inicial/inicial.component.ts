@@ -3,6 +3,7 @@ import { RodadaService } from '../../admin/rodada/rodada.service';
 import { showError } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { RodadaTO } from '../../models/rodadaTO';
+import { ApostaTO } from '../../models/apostaTO';
 declare var jQuery: any;
 
 @Component({
@@ -17,13 +18,15 @@ export class InicialComponent implements OnInit {
   @ViewChild('formularioCadastro') FormularioCadastro: ElementRef;
   @ViewChild('equipeEscolhida') EquipeEscolhida: ElementRef;
   public rodadas: any[];
-  public apostas;
+  public apostas: any[];
   private idRodada: number;
+  private apostaTO: ApostaTO;
 
 
   constructor(private service: RodadaService, private toastr: ToastrService) {
     this.rodadas = [];
-    this.apostas = new Set();
+    this.apostas = [];
+    this.apostaTO = new ApostaTO();
   }
 
   ngOnInit() {
@@ -46,78 +49,61 @@ export class InicialComponent implements OnInit {
       .catch(err => showError(err, this.toastr));
   }
 
-  buscarJogos() {
-    // this.service.buscarJogos()
-  }
+  escolherEquipe(jogo, time, idRodada, side) {
 
-  escolherEquipeRight(jogo, time, idRodada) {
+    try {
 
-    if (!!this.idRodada && this.idRodada !== idRodada) {
-      this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
-      return;
+      if (jogo.campeonato.tipo === 'INTERNACIONAL') {
+        if (!!this.apostaTO.tipo && this.apostaTO.tipo === jogo.campeonato.tipo) {
+          throw new Error('Só é permitido escolher um jogo internacional.');
+        } else {
+          this.apostaTO.tipo = jogo.campeonato.tipo;
+        }
+      }
+
+      if (!this.apostaTO.rodada_id) {
+        this.apostaTO.rodada_id = idRodada;
+      } else if (this.apostaTO.rodada_id !== idRodada) {
+        this.toastr.error('Não é permitido escolher jogos de rodadas diferentes em uma aposta.');
+        return;
+      }
+
+      const timeAposta = {
+        idTime: time.id,
+        idJogo: jogo.id
+      };
+
+      if (this.apostaTO.times.length < 1) {
+        this.apostaTO.times.push(timeAposta);
+        return;
+      } else {
+        const filteredTime = this.apostaTO.times.filter(elm => {
+          if (elm.idJogo === timeAposta.idJogo) {
+            elm.idTime = timeAposta.idTime;
+            return true;
+          }
+          return false;
+        });
+
+        if (filteredTime.length < 1) {
+          if (this.apostaTO.times.length === 4) {
+            this.toastr.error('Não é permitido escolher mais de quatro(4) times em uma aposta.');
+            return;
+          }
+          this.apostaTO.times.push(timeAposta);
+        }
+      }
+
+      if (side === 'right') {
+        jogo.equipe_casa.ativo = true;
+        jogo.equipe_visitante.ativo = false;
+      } else {
+        jogo.equipe_casa.ativo = false;
+        jogo.equipe_visitante.ativo = true;
+      }
+    } catch (error) {
+      this.toastr.error(error.message);
     }
-
-    const aposta = {
-      idTime: time.id,
-      idJogo: jogo.id
-    };
-
-    const visitante = {
-      idJogo: jogo.id,
-      idTime: jogo.equipe_visitante.id
-    };
-
-    this.apostas.delete(visitante);
-
-    this.apostas.add(aposta);
-
-    jogo.equipe_casa.ativo = true;
-    jogo.equipe_visitante.ativo = false;
-
-  }
-
-  escolherEquipeLeft(jogo, time, idRodada) {
-    
-    const rodada = {
-      idRodada
-    }
-
-    if(this.apostas.size < 1) {
-      this.apostas.add(rodada);
-    } else if(this.apostas.has(rodada)) {
-      
-    }
-
-    const iteratorApostas = this.apostas[Symbol.iterator]();
-    iteratorApostas.next().value;
-
-    if(iteratorApostas.next().value) {
-
-    }
-
-
-    this.apostas.add(rodada);
-    // if (!!this.idRodada && this.idRodada !== idRodada) {
-    //   this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
-    //   return;
-    // }
-
-    const aposta = {
-      idJogo: jogo.id,
-      idTime: time.id
-    };
-
-    const casa = {
-      idJogo: jogo.id,
-      idTime: jogo.equipe_casa.id
-    };
-
-    this.apostas.delete(casa);
-
-    this.apostas.add(aposta);
-
-    jogo.equipe_casa.ativo = false;
-    jogo.equipe_visitante.ativo = true;
 
   }
 
