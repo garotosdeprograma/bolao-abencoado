@@ -77,11 +77,30 @@ export class InicialComponent implements OnInit {
   }
 
   escolherEquipeLeft(jogo, time, idRodada) {
-
-    if (!!this.idRodada && this.idRodada !== idRodada) {
-      this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
-      return;
+    
+    const rodada = {
+      idRodada
     }
+
+    if(this.apostas.size < 1) {
+      this.apostas.add(rodada);
+    } else if(this.apostas.has(rodada)) {
+      
+    }
+
+    const iteratorApostas = this.apostas[Symbol.iterator]();
+    iteratorApostas.next().value;
+
+    if(iteratorApostas.next().value) {
+
+    }
+
+
+    this.apostas.add(rodada);
+    // if (!!this.idRodada && this.idRodada !== idRodada) {
+    //   this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
+    //   return;
+    // }
 
     const aposta = {
       idJogo: jogo.id,
