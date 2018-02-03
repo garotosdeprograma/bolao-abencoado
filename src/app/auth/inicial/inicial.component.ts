@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RodadaService } from '../../admin/rodada/rodada.service';
 import { showError } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
+import { RodadaTO } from '../../models/rodadaTO';
 declare var jQuery: any;
 
 @Component({
@@ -16,11 +17,13 @@ export class InicialComponent implements OnInit {
   @ViewChild('formularioCadastro') FormularioCadastro: ElementRef;
   @ViewChild('equipeEscolhida') EquipeEscolhida: ElementRef;
   public rodadas: any[];
-  public apostas: any[];
+  public apostas;
+  private idRodada: number;
+
 
   constructor(private service: RodadaService, private toastr: ToastrService) {
     this.rodadas = [];
-    this.apostas = [];
+    this.apostas = new Set();
   }
 
   ngOnInit() {
@@ -30,7 +33,15 @@ export class InicialComponent implements OnInit {
   getJogos() {
     this.service.getRodadaJogos()
       .then(result => {
-        this.rodadas = result;
+        console.log(result);
+        this.rodadas = result.map((elm: any) => {
+          elm.jogos.map(elm2 => {
+            elm2.equipe_casa.ativo = false;
+            elm2.equipe_visitante.ativo = false;
+            return elm2;
+          });
+          return elm;
+        });
       })
       .catch(err => showError(err, this.toastr));
   }
@@ -39,34 +50,55 @@ export class InicialComponent implements OnInit {
     // this.service.buscarJogos()
   }
 
-  isActive(event) {
-    console.log(event);
-    return true;
-    // if (jogo.equipe_casa.id === time.id) {
-    //   jogo.equipe_casa.ativo = true;
-    //   jogo.equipe_visitante.ativo = false;
-    // } else {
-    //   jogo.equipe_visitante.ativo = true;
-    //   jogo.equipe_casa.ativo = false;
-    // }
-  }
+  escolherEquipeRight(jogo, time, idRodada) {
 
-  escolherEquipe(jogo, time) {
-    // TODO checar rodada
+    if (!!this.idRodada && this.idRodada !== idRodada) {
+      this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
+      return;
+    }
+
     const aposta = {
       idTime: time.id,
       idJogo: jogo.id
     };
 
-    const filteredApostas = this.apostas.filter(elm => {
-      return !(elm.id === aposta.idJogo);
-    });
+    const visitante = {
+      idJogo: jogo.id,
+      idTime: jogo.equipe_visitante.id
+    };
 
-    filteredApostas.push(aposta);
+    this.apostas.delete(visitante);
 
-    this.apostas = filteredApostas;
+    this.apostas.add(aposta);
 
-    // this.isActive(jogo, time);
+    jogo.equipe_casa.ativo = true;
+    jogo.equipe_visitante.ativo = false;
+
+  }
+
+  escolherEquipeLeft(jogo, time, idRodada) {
+
+    if (!!this.idRodada && this.idRodada !== idRodada) {
+      this.toastr.error('Não pode escolher jogos em rodadas diferentes.');
+      return;
+    }
+
+    const aposta = {
+      idJogo: jogo.id,
+      idTime: time.id
+    };
+
+    const casa = {
+      idJogo: jogo.id,
+      idTime: jogo.equipe_casa.id
+    };
+
+    this.apostas.delete(casa);
+
+    this.apostas.add(aposta);
+
+    jogo.equipe_casa.ativo = false;
+    jogo.equipe_visitante.ativo = true;
 
   }
 
