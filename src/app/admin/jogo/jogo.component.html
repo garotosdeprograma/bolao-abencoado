@@ -1,4 +1,4 @@
-<div class="content jogos" #jogos>  
+<div class="content jogos">  
     <div class="col-12 row d-flex justify-content-center m-0 mt-5 pt-3">  
       <div class="col-sm-8 lista-jogos pt-5 pl-3 pr-3">
   
@@ -11,29 +11,28 @@
           </button>
         </div>
   
-        <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3">
+        <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3" *ngFor="let jogo of jogos">
           <div class="col-5 text-center">
             <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
             <br/>
-            <small>Barcelona</small>
+            <small>{{jogo.equipe_casa.nome}}</small>
             <br/>
             <small>0</small>
           </div>
           <div class="col-2 d-flex justify-content-center align-items-center">
-            <p>X</p>
+            <p>vs</p>
           </div>
           <div class="col-5 text-center">
             <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
             <br/>
-            <small>Real Madrid</small>
+            <small>{{jogo.equipe_visitante.nome}}</small>
             <br/>
             <small>0</small>
           </div>
           <div class="col-12 row info d-flex align-items-center p-0 m-0">
             <div class="col-8 text-left">
               <small>
-                Data: 00/00/0000
-                <br/> Horário: 00:00h
+                {{jogo.inicio | date:'short'}}
               </small>
             </div>
   
@@ -69,21 +68,16 @@
             <div class="col-12 ml-0 mr-0">
               <label>Campeonato</label>
               <div class="form-group pl-0 ml-0">
-                <select class="form-control">
-                  <option selected>campeonatos...</option>
-                  <option value="1">UEFA</option>
-                  <option value="2">Brasileiro Série A</option>
-                  <option value="3">Brasileiro Série B</option>
+                <select class="form-control" name="id" [(ngModel)]="jogo.campeonato_id" (change)="getEquipesPorCampeonatos($event)">
+                  <option [ngValue]="campeonato.id" *ngFor="let campeonato of campeonatos">{{campeonato.nome}}</option>
                 </select>
               </div>
             </div>
   
             <div class="col-8 ml-0 mr-0">
               <label>Time casa</label>
-              <select class="form-control">
-                <option selected>equipe...</option>
-                <option value="1">Barcelona</option>
-                <option value="2">Real Madrid</option>
+              <select class="form-control" name="equipecasa" [(ngModel)]="jogo.equipe_casa">
+                <option [ngValue]="equipe.id" *ngFor="let equipe of equipes">{{equipe.nome}}</option>
               </select>
             </div>
   
@@ -94,11 +88,9 @@
   
             <div class="col-8 ml-0 mr-0">
               <label>Time Visitante</label>
-              <select class="form-control">
-                <option selected>equipe...</option>
-                <option value="1">Barcelona</option>
-                <option value="2">Real Madrid</option>
-              </select>
+                <select class="form-control" name="equipevisitante" [(ngModel)]="jogo.equipe_visitante">
+                  <option [ngValue]="equipe.id" *ngFor="let equipe of equipes">{{equipe.nome}}</option>
+                </select>
             </div>
   
             <div class="form-group col-4">
@@ -108,11 +100,11 @@
   
             <div class="col-12 row ml-0 mr-0">
               <label>Data/Hora</label>
-              <input type="datetime-local" name="horario" class="form-control">
+              <input type="datetime-local" name="inicio" [(ngModel)]="jogo.inicio" class="form-control">
             </div>
   
             <div class="col-12 mt-3">
-              <a class="btn">Salvar</a>
+              <a class="btn" (click)="salvar()">Salvar</a>
             </div>
           </form>
         </div>

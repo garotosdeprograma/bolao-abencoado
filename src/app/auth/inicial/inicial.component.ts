@@ -4,6 +4,7 @@ import { showError } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { RodadaTO } from '../../models/rodadaTO';
 import { ApostaTO } from '../../models/apostaTO';
+import { ApostaService } from '../../admin/aposta/aposta.service';
 declare var jQuery: any;
 
 @Component({
@@ -20,10 +21,12 @@ export class InicialComponent implements OnInit {
   public rodadas: any[];
   public apostas: any[];
   private idRodada: number;
-  private apostaTO: ApostaTO;
+  public apostaTO: ApostaTO;
 
 
-  constructor(private service: RodadaService, private toastr: ToastrService) {
+  constructor(private service: RodadaService,
+              private toastr: ToastrService,
+              private apostaService: ApostaService) {
     this.rodadas = [];
     this.apostas = [];
     this.apostaTO = new ApostaTO();
@@ -34,9 +37,8 @@ export class InicialComponent implements OnInit {
   }
 
   getJogos() {
-    this.service.getRodadaJogos()
+    this.service.getJogosPorRodada()
       .then(result => {
-        console.log(result);
         this.rodadas = result.map((elm: any) => {
           elm.jogos.map(elm2 => {
             elm2.equipe_casa.ativo = false;
@@ -54,7 +56,7 @@ export class InicialComponent implements OnInit {
     try {
 
       if (jogo.campeonato.tipo === 'INTERNACIONAL') {
-        if (!!this.apostaTO.tipo && this.apostaTO.tipo === jogo.campeonato.tipo) {
+        if (this.apostaTO.tipo && this.apostaTO.tipo === jogo.campeonato.tipo) {
           throw new Error('Só é permitido escolher um jogo internacional.');
         } else {
           this.apostaTO.tipo = jogo.campeonato.tipo;
@@ -70,16 +72,17 @@ export class InicialComponent implements OnInit {
 
       const timeAposta = {
         idTime: time.id,
-        idJogo: jogo.id
+        idJogo: jogo.id,
+        nomeTime: time.nome
       };
 
       if (this.apostaTO.times.length < 1) {
         this.apostaTO.times.push(timeAposta);
-        return;
       } else {
         const filteredTime = this.apostaTO.times.filter(elm => {
           if (elm.idJogo === timeAposta.idJogo) {
             elm.idTime = timeAposta.idTime;
+            elm.nomeTime = timeAposta.nomeTime;
             return true;
           }
           return false;
@@ -101,13 +104,27 @@ export class InicialComponent implements OnInit {
         jogo.equipe_casa.ativo = false;
         jogo.equipe_visitante.ativo = true;
       }
+
+      // console.log(this.apostaTO.times);
     } catch (error) {
       this.toastr.error(error.message);
     }
 
   }
 
+  resetValues() {
+    this.rodadas = [];
+    this.apostas = [];
+    this.apostaTO = new ApostaTO();
+  }
+
   finalizarAposta() {
+    this.apostaService.saveAposta(this.apostaTO)
+      .then(result => {
+        this.resetValues();
+        this.toastr.success('Aposta salva com sucesso');
+      })
+      .catch(err => showError(err, this.toastr));
     this.Enviar.nativeElement.style.display = 'block';
     this.InputTelefone.nativeElement.style.display = 'block';
   }

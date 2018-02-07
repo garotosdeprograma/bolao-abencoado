@@ -37,7 +37,7 @@
           <div class="col-2 d-flex justify-content-center align-items-center">vs</div>
           
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}" (click)="escolherEquipe(jogo, jogo.equipe_visitante.id, rodada.id, 'left')">
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}" (click)="escolherEquipe(jogo, jogo.equipe_visitante, rodada.id, 'left')">
             <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_visitante.nome}}</span>
@@ -68,56 +68,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="jogo col-12 m-0 p-1 d-flex justify-content-center row mb-3 pb-2">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
+        <div class="jogo col-12 m-0 p-1 d-flex row mb-3 pb-2" *ngFor="let time of apostaTO.times">
+          <div class="time-casa text-center d-flex col-5 row">
+            <small class="col-10 p-0">
+              <span>{{time.nomeTime}}</span>
             </small>
-
           </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 trash p-0 m-0 text-center">
-            <button type="button" class="btn btn-sm mt-2">
+          <div class="col-2 trash p-0 m-0 text-center">
+            <button type="button" class="btn btn-sm mb-2" (click)="retirarTime(time)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </div>
         </div>
-
-        <div class="jogo col-12 m-0 p-1 d-flex justify-content-center row mb-3 pb-2">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row">
-            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 trash p-0 m-0 text-center">
-            <button type="button" class="btn btn-sm mt-2">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-
       </div>
 
       <div class="col-12 mb-3 text-center">

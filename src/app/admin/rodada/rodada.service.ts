@@ -36,8 +36,10 @@ export class RodadaService {
     .toPromise();
   }
 
-  getRodadaJogos() {
-    return this.http.get(this.url + '/jogos', this.getHeaders())
+  getJogosPorRodada(id = '') {
+    const url = this.url + '/jogos?id=' + id;
+    console.log(url);
+    return this.http.get(url, this.getHeaders())
       .map(this.extract)
       .toPromise();
   }
@@ -61,7 +63,6 @@ export class RodadaService {
     if (filter.fim) {
       url += '&fim=' + filter.fim;
     }
-    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();

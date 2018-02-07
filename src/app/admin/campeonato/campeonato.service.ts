@@ -49,6 +49,14 @@ export class CampeonatoService {
     .toPromise();
   }
 
+  getEquipesPorCampeonatos(id: number) {
+    const url = this.url + '/equipes?id=' + id;
+    console.log(url);
+    return this.http.get(url, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
+  }
+
   public getCampeonatos(filter: any): Promise<any> {
     let url = '';
     if (filter.page) {

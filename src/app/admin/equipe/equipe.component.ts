@@ -86,12 +86,6 @@ export class EquipeComponent implements OnInit {
         this.pagination.offset = result.current_page - 1;
         this.pagination.limit = result.per_page;
         this.rows = result.data;
-        // .map(equipe => {
-        //   return {
-        //     nome: equipe.nome,
-        //     campeonato: equipe.campeonatos[0].nome
-        //   };
-        // });
         this.loadingIndicator = false;
       })
       .catch(err => showError(err, this.toastr));
@@ -133,7 +127,7 @@ export class EquipeComponent implements OnInit {
   clearModal() {
     this.listaCampeonatoEscolhido.forEach(element => {
       this.listaCampeonatos.push(element.id);
-    })
+    });
     this.equipe.campeonato = this.listaCampeonatos;
     this.listaCampeonatoEscolhido.clear();
     this.url = 'assets/img/default.png';

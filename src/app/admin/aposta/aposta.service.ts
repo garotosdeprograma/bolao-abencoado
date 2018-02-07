@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { URL_API } from '../../constant/api';
 import { STORED_TOKEN } from '../../constant/local-storage';
 import { Aposta } from '../../models/aposta';
+import { ApostaTO } from '../../models/apostaTO';
 
 @Injectable()
 export class ApostaService {
@@ -30,7 +31,18 @@ export class ApostaService {
     return res.json();
   }
 
-  public saveAposta(aposta: Aposta): Promise<any> {
+  public saveAposta(apostaTO: ApostaTO): Promise<any> {
+    const aposta = new Aposta();
+    console.log(apostaTO.times);
+    aposta.rodada_id = apostaTO.rodada_id;
+    aposta.jogo_1 = apostaTO.times[0].idJogo;
+    aposta.time_1 = apostaTO.times[0].idTime;
+    aposta.jogo_2 = apostaTO.times[1].idJogo;
+    aposta.time_2 = apostaTO.times[1].idTime;
+    aposta.jogo_3 = apostaTO.times[2].idJogo;
+    aposta.time_3 = apostaTO.times[2].idTime;
+    aposta.jogo_4 = apostaTO.times[3].idJogo;
+    aposta.time_4 = apostaTO.times[3].idTime;
     return this.http.post(this.url, aposta, this.getHeaders())
       .map(this.extract)
       .toPromise();

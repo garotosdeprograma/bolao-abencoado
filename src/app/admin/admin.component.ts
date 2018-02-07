@@ -11,7 +11,6 @@ export class AdminComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['admin/ranking']);
   }
 
 }
