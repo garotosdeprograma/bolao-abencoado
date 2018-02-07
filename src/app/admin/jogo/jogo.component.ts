@@ -40,15 +40,15 @@ export class JogoComponent implements OnInit {
     this.route.queryParams.
     subscribe(params => {
       this.jogo.rodada_id = +params.id;
+      this.idRodada = params.id;
       this.getJogos(params.id);
     });
     this.getCampeonatos();
   }
 
   salvar() {
-    console.log(this.jogo);
     if (this.jogo.equipe_casa === this.jogo.equipe_visitante) {
-      this.toastr.error('Time repetido.');
+      this.toastr.error('Time casa e visitante não podem ser iguais');
       return;
     }
     this.service.saveJogo(this.jogo)
@@ -56,6 +56,7 @@ export class JogoComponent implements OnInit {
         this.toastr.success('Jogo salvo com sucesso.');
         jQuery('#modal-jogo').modal('hide');
         this.getJogos(this.idRodada);
+        this.jogo = new Jogo();
       })
       .catch(err => showError(err, this.toastr));
   }

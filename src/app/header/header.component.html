@@ -1,7 +1,7 @@
 <div class="header">
   <nav class="navbar gameboll-theme-primary navbar-expand-md fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="{{home}}">
         <b class="logo">
           <span class="span1">
             GameB
@@ -18,8 +18,13 @@
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav"></ul>
-        <a class="btn button-entrar navbar-btn ml-2 text-white" data-target="#modal-login" data-toggle="modal" id="botaoEntrarSair">
-          <i class="fa pr-2 d-inline fa-lg fa-user-circle-o"></i><span>Entrar</span>
+        <a class="btn button entrar navbar-btn ml-2 text-white" data-target="#modal-login" data-toggle="modal" id="botaoEntrarSair" #buttonEntrar>
+          <i class="fa pr-2 d-inline fa-lg fa-user-circle-o"></i>
+          <span>Entrar</span>
+        </a>
+        <a class="btn button sair navbar-btn ml-2 text-white" data-target="#modal-logout" data-toggle="modal" id="botaoEntrarSair" #buttonSair>
+          <i class="fa pr-2 d-inline fa-lg fa-user-circle"></i>
+          <span>Sair</span>
         </a>
       </div>
     </div>
@@ -43,7 +48,8 @@
               </div>
               <div class="form-group">
                 <label>Senha</label>
-                <input type="password" name="password" class="form-control" [(ngModel)]="user.password" autocomplete="off" maxlength="40">
+                <input type="password" name="password" class="form-control" [(ngModel)]="user.password" autocomplete="off" maxlength="40"
+                  (keyup.enter)="login()">
               </div>
             </form>
             <div class="row">
@@ -64,6 +70,35 @@
             </div>
             <div class="col-md-4 mt-3 p-0">
               <a class="btn btn-sm">Enviar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal gameboll-theme-modal" id="modal-logout">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title">Sair</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="col-md-12">
+          <label class="mt-4 mb-4">Tem certeza que deseja sair?</label>
+          <div class="row mt-3 mb-4 d-flex justify-content-center">
+            <div class="col-md-4">
+              <a class="btn" data-dismiss="modal" (click)="logout()">Sim</a>
+            </div>
+            <div class="col-md-4">
+              <a class="btn" data-dismiss="modal">Não</a>
+            </div>
+
+            <div class="col-md-8">
             </div>
           </div>
         </div>

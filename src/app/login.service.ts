@@ -21,6 +21,7 @@ export class LoginService {
 
   login(user: User): Promise<any> {
     // const headers = new Headers({'Content-Type': 'application/json'});
+    console.log(this.extract);
     return this.http.post(this.url, user)
       .map(this.extract)
       .toPromise();

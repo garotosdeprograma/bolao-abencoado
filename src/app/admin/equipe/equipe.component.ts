@@ -22,8 +22,8 @@ export class EquipeComponent implements OnInit {
   @ViewChild('divEscudos') DivEscudos: ElementRef;
 
   public escudos: any[];
-  url: String;
-  listaCampeonatoEscolhido: any;
+  src: String;
+  x: any;
 
   editing = {};
   rows = [];
@@ -37,10 +37,11 @@ export class EquipeComponent implements OnInit {
   public equipe: Equipe;
   campeonatos: Campeonato[];
   listaCampeonatos: any[];
+  listaCampeonatosEscolhidos: any[];
 
   constructor(private service: EquipeService, private toastr: ToastrService,
     private campeonatoService: CampeonatoService) {
-    this.url = 'assets/img/default.png';
+    this.src = 'assets/img/default.png';
     this.equipe = new Equipe();
     this.loadingIndicator = true;
     this.reorderable = true;
@@ -49,7 +50,7 @@ export class EquipeComponent implements OnInit {
     this.escudos = [];
     this.campeonatos = [];
     this.listaCampeonatos = [];
-    this.listaCampeonatoEscolhido = new Set();
+    this.listaCampeonatosEscolhidos = [];
   }
 
   setPage(pageInfo = { offset: 0 }) {
@@ -98,6 +99,14 @@ export class EquipeComponent implements OnInit {
 
   public edit(equipe) {
     this.equipe = equipe;
+    this.src = this.equipe.logo;
+    equipe.campeonatos.forEach(element => {
+      const campeonato = {
+        id: element.id,
+        nome: element.nome
+      };
+      this.listaCampeonatosEscolhidos.push(campeonato);
+    });
   }
 
   public novo() {
@@ -124,21 +133,22 @@ export class EquipeComponent implements OnInit {
       });
   }
 
-  clearModal() {
-    this.listaCampeonatoEscolhido.forEach(element => {
+  criarListaCampeonatos() {
+    this.listaCampeonatosEscolhidos.forEach(element => {
       this.listaCampeonatos.push(element.id);
     });
     this.equipe.campeonato = this.listaCampeonatos;
-    this.listaCampeonatoEscolhido.clear();
-    this.url = 'assets/img/default.png';
     this.listaCampeonatos = [];
+    console.log(this.equipe);
   }
 
   public save() {
-    this.clearModal();
+    this.criarListaCampeonatos();
     this.service.saveEquipe(this.equipe)
       .then(result => {
         this.toastr.success('Equipe salva com sucesso!');
+        this.listaCampeonatosEscolhidos = [];
+        this.src = 'assets/img/default.png';
         return this.getEquipes();
       })
       .then(result => jQuery('#modal-equipe').modal('hide'))
@@ -154,17 +164,38 @@ export class EquipeComponent implements OnInit {
 
   selecionarEscudo(url) {
     this.equipe.logo = url;
-    this.url = this.equipe.logo;
+    this.src = this.equipe.logo;
     this.BotaoEscolherEscudo.nativeElement.style.display = 'block';
     this.DivEscudos.nativeElement.style.display = 'none';
   }
 
   listaCampeonatosEquipe(campeonato) {
-    this.listaCampeonatoEscolhido.add(campeonato);
+    if (this.listaCampeonatosEscolhidos.length < 1) {
+      this.listaCampeonatosEscolhidos.push(campeonato);
+    } else {
+      const filterCampeonato = this.listaCampeonatosEscolhidos.filter(element => {
+        if (element.id === campeonato.id) {
+          element.id = campeonato.id;
+          element.nome = campeonato.nome;
+          return true;
+        }
+        return false;
+      });
+
+      if (filterCampeonato.length < 1) {
+        this.listaCampeonatosEscolhidos.push(campeonato);
+      }
+    }
   }
 
   removerCampeonato(campeonato) {
-    this.listaCampeonatoEscolhido.delete(campeonato);
+    this.listaCampeonatosEscolhidos = this.listaCampeonatosEscolhidos.filter(element => {
+      if (element.id !== campeonato.id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   newEquipe() {

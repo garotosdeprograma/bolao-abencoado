@@ -14,14 +14,34 @@ declare var jQuery: any;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  home: string;
+  modal: any;
 
   @ViewChild('formularioRecuperar') FormularioRecuperar: ElementRef;
   @ViewChild('formularioLogin') FormularioLogin: ElementRef;
+  @ViewChild('buttonEntrar') ButtonEntrar: ElementRef;
+  @ViewChild('buttonSair') ButtonSair: ElementRef;
   user: User = new User();
 
-  constructor(private loginService: LoginService, private toastr: ToastrService, private route: Router) { }
+  constructor(private loginService: LoginService, private toastr: ToastrService, private route: Router) {
+    this.home = '';
+    this.modal = 'login';
+  }
 
   ngOnInit() {
+    this.verificarStatusLogin();
+  }
+
+  verificarStatusLogin() {
+    if (!!localStorage.getItem(STORED_TOKEN)) {
+      this.ButtonEntrar.nativeElement.style.display = 'none';
+      this.ButtonSair.nativeElement.style.display = 'block';
+      this.home = '/admin';
+    } else {
+      this.ButtonEntrar.nativeElement.style.display = 'block';
+      this.ButtonSair.nativeElement.style.display = 'none';
+      this.home = 'index.html';
+    }
   }
 
   closeModal() {
@@ -35,10 +55,18 @@ export class HeaderComponent implements OnInit {
         this.route.navigate(['admin']);
         this.closeModal();
         this.user = new User();
-        (<HTMLElement>document.getElementById('botaoEntrarSair')).innerHTML = '<i class="fa pr-2 d-inline fa-lg fa-user-circle"></i><span>Sair</span>';
+        this.verificarStatusLogin();
       })
       .catch(err => {
         showError(err, this.toastr);
       });
   }
+
+  logout() {
+    localStorage.removeItem(STORED_TOKEN);
+    this.verificarStatusLogin();
+    this.route.navigate(['']);
+    console.log(localStorage);
+  }
+
 }

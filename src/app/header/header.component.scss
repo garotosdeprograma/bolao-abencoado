@@ -1,7 +1,13 @@
 .gameboll-theme-primary {
     background-color: #0E562C !important;    
     color: #fff !important;
-    .button-entrar, {
+    .entrar {
+        display: none;
+    }
+    .sair {
+        display: none;
+    }
+    .button, {
         background-color: #073018 !important;
         color: #fff !important;
         cursor: pointer;
