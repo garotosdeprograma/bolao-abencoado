@@ -66,7 +66,6 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem(STORED_TOKEN);
     this.verificarStatusLogin();
     this.route.navigate(['']);
-    console.log(localStorage);
   }
 
 }

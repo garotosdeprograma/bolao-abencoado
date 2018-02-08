@@ -49,7 +49,7 @@ export class CampeonatoService {
     .toPromise();
   }
 
-  getEquipesPorCampeonatos(id: number) {
+  getEquipesPorCampeonatos(id: number): Promise<any> {
     const url = this.url + '/equipes?id=' + id;
     console.log(url);
     return this.http.get(url, this.getHeaders())

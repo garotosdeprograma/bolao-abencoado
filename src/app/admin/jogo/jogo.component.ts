@@ -47,6 +47,7 @@ export class JogoComponent implements OnInit {
   }
 
   salvar() {
+    console.log(this.jogo);
     if (this.jogo.equipe_casa === this.jogo.equipe_visitante) {
       this.toastr.error('Time casa e visitante não podem ser iguais');
       return;
@@ -56,15 +57,40 @@ export class JogoComponent implements OnInit {
         this.toastr.success('Jogo salvo com sucesso.');
         jQuery('#modal-jogo').modal('hide');
         this.getJogos(this.idRodada);
-        this.jogo = new Jogo();
+        // this.jogo = new Jogo();
       })
       .catch(err => showError(err, this.toastr));
+  }
+
+  newJogo() {
+    this.jogo = new Jogo();
+    this.jogo.rodada_id = this.idRodada;
+    jQuery('#modal-jogo').modal('show');
+  }
+
+  editJogo(jogo) {
+    this.campeonatoService.getEquipesPorCampeonatos(jogo.campeonato_id)
+    .then(result => this.equipes = result.equipes)
+    .then(result => {
+      this.jogo = new Jogo();
+      this.jogo.campeonato_id = jogo.campeonato_id;
+      this.jogo.equipe_casa = jogo.equipe_casa.id;
+      this.jogo.equipe_visitante = jogo.equipe_visitante.id;
+      this.jogo.rodada_id = this.idRodada;
+      this.jogo.inicio = jogo.inicio;
+      this.jogo.id = jogo.id;
+      return this.jogo;
+    })
+    .then(result => {
+      jQuery('#modal-jogo').modal('show');
+    })
+    .catch(err => showError(err, this.toastr));
   }
 
   getEquipesPorCampeonatos() {
     return this.campeonatoService.getEquipesPorCampeonatos(this.jogo.campeonato_id)
         .then(result => {
-          this.equipes = result.equipes;
+          return this.equipes = result.equipes;
         })
         .catch(err => showError(err, this.toastr));
   }

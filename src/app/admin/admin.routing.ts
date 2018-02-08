@@ -15,7 +15,6 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', component: RankingComponent },
-      { path: 'administrador', component: AdministradorComponent },
       { path: 'ranking', component: RankingComponent },
       { path: 'campeonato', component: CampeonatoComponent },
       { path: 'rodada', component: RodadaComponent },

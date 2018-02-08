@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginService } from './login.service';
 import { HttpModule } from '@angular/http';
+import { AdminGuard } from './admin.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { HttpModule } from '@angular/http';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [ LoginService ],
+  providers: [ LoginService, AdminGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
