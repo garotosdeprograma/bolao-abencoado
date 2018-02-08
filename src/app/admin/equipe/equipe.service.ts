@@ -59,8 +59,6 @@ export class EquipeService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
-    console.log(filter);
-    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();

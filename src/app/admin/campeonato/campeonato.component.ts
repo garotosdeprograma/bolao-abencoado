@@ -68,7 +68,9 @@ export class CampeonatoComponent implements OnInit {
 
 
   public edit(campeonato) {
+    console.log(campeonato);
     this.campeonato = campeonato;
+    console.log(this.campeonato);
   }
 
   public novo() {

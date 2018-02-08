@@ -13,7 +13,7 @@
   
         <div class="col-sm-12 row jogo m-0 mb-3 p-0 pt-3" *ngFor="let jogo of jogos">
           <div class="col-5 text-center">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="escudo do time">
+            <img src="{{jogo.equipe_casa.logo}}" alt="escudo do time">
             <br/>
             <small>{{jogo.equipe_casa.nome}}</small>
             <br/>
@@ -23,7 +23,7 @@
             <p>vs</p>
           </div>
           <div class="col-5 text-center">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="escudo do time">
+            <img src="{{jogo.equipe_visitante.logo}}" alt="escudo do time">
             <br/>
             <small>{{jogo.equipe_visitante.nome}}</small>
             <br/>
@@ -32,7 +32,7 @@
           <div class="col-12 row info d-flex align-items-center p-0 m-0">
             <div class="col-8 text-left">
               <small>
-                {{jogo.inicio | date:'dd-MM-y H:m'}}
+                {{jogo.inicio | date:'dd/MM/y H:m'}}
               </small>
             </div>
   

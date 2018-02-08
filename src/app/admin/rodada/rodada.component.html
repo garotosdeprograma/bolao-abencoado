@@ -5,7 +5,7 @@
         </div>
         <div class="col-8 col-sm-4 p-0 m-0">
           <div class="input-group">
-            <input type="text" [(ngModel)]="filter.nome" class="form-control" placeholder="rodadas..." aria-label="campeonato...">
+            <input type="text" [(ngModel)]="filter.nome" (keyup.enter)="buscar()" class="form-control" placeholder="rodadas..." aria-label="campeonato...">
             <span class="input-group-btn">
               <button class="btn" (click)="buscar()" type="button">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -50,14 +50,14 @@
       <ngx-datatable-column [width]="200" name="Início">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            {{row.inicio | date:'medium'}}
+            {{row.inicio | date:'dd/MM/y H:m'}}
           </span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column [width]="200" name="Fim">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            {{row.fim | date: 'medium'}}
+            {{row.fim | date: 'dd/MM/y H:m'}}
           </span>
         </ng-template>
       </ngx-datatable-column>
@@ -93,11 +93,11 @@
               </div>
               <div class="form-group">
                 <label>Data Início</label>
-                <input type="date" name="inicio" [value]="rodada.inicio | date:'yyyy-MM-dd'" (input)="rodada.inicio=parseDate($event.target.value)" class="form-control">
+                <input type="date" name="inicio" [value]="rodada.inicio | date:dd-MM-y" (input)="rodada.inicio=parseDate($event.target.value)" class="form-control">
               </div>
               <div class="form-group">
                 <label>Data Fim</label>
-                <input type="date" name="fim" [value]="rodada.fim | date:'yyyy-MM-dd'" (input)="rodada.fim=parseDate($event.target.value)" class="form-control">
+                <input type="date" name="fim" [value]="rodada.fim | date:dd-MM-y" (input)="rodada.fim=parseDate($event.target.value)" class="form-control">
               </div>
             </form>
             <div class="row">

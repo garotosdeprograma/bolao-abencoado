@@ -80,8 +80,8 @@ export class EquipeComponent implements OnInit {
       .catch(err => showError(err, this.toastr));
   }
 
-  getEquipes() {
-    this.service.getEquipes(this.filter || { page: 1 })
+  getEquipes(): Promise<any> {
+    return this.service.getEquipes(this.filter || { page: 1 })
       .then(result => {
         this.pagination.count = result.total;
         this.pagination.offset = result.current_page - 1;
@@ -98,7 +98,10 @@ export class EquipeComponent implements OnInit {
   }
 
   public edit(equipe) {
-    this.equipe = equipe;
+    this.equipe = new Equipe();
+    this.equipe.id = equipe.id;
+    this.equipe.nome = equipe.nome;
+    this.equipe.logo = equipe.logo;
     this.src = this.equipe.logo;
     equipe.campeonatos.forEach(element => {
       const campeonato = {
@@ -109,11 +112,8 @@ export class EquipeComponent implements OnInit {
     });
   }
 
-  public novo() {
-    this.equipe = new Equipe();
-  }
-
   public submit() {
+    this.criarListaCampeonatos();
     if (this.equipe.id != null) {
       this.update();
     } else {
@@ -125,6 +125,7 @@ export class EquipeComponent implements OnInit {
     this.service.update(this.equipe)
       .then(result => {
         this.toastr.success('Equipe editada com sucesso!');
+        this.newEquipe();
         return this.getEquipes();
       })
       .then(result => jQuery('#modal-equipe').modal('hide'))
@@ -135,20 +136,16 @@ export class EquipeComponent implements OnInit {
 
   criarListaCampeonatos() {
     this.listaCampeonatosEscolhidos.forEach(element => {
-      this.listaCampeonatos.push(element.id);
+      this.equipe.campeonato.push(element.id);
     });
-    this.equipe.campeonato = this.listaCampeonatos;
     this.listaCampeonatos = [];
-    console.log(this.equipe);
   }
 
   public save() {
-    this.criarListaCampeonatos();
     this.service.saveEquipe(this.equipe)
       .then(result => {
         this.toastr.success('Equipe salva com sucesso!');
-        this.listaCampeonatosEscolhidos = [];
-        this.src = 'assets/img/default.png';
+        this.newEquipe();
         return this.getEquipes();
       })
       .then(result => jQuery('#modal-equipe').modal('hide'))
@@ -200,5 +197,8 @@ export class EquipeComponent implements OnInit {
 
   newEquipe() {
     this.equipe = new Equipe();
+    this.listaCampeonatosEscolhidos = [];
+    this.src = 'assets/img/default.png';
+    jQuery('#modal-equipe').modal('show');
   }
 }

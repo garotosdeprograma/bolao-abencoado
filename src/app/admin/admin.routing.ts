@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { AdministradorComponent } from './administrador/administrador.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { CampeonatoComponent } from './campeonato/campeonato.component';
 import { RodadaComponent } from './rodada/rodada.component';
