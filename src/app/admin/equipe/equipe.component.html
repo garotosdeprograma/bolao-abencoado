@@ -5,13 +5,7 @@
     </div>
     <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
       <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-        <input type="text" class="form-control" placeholder="equipe" aria-label="equipe">
-      </div>
-    </div>
-
-    <div class="form-group col-sm-3 row m-0 p-0 mt-2 mb-2">
-      <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-        <input type="text" class="form-control" placeholder="campeonato" aria-label="campeonato">
+        <input type="text" [(ngModel)]="filter.nome" class="form-control" (keyup.enter)="buscar()" placeholder="equipe" aria-label="equipe">
       </div>
     </div>
 
@@ -61,7 +55,7 @@
       <ngx-datatable-column name="Escudo">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <div class="logo">
-            <img src="{{row.logo}}" alt="">
+            <img src="{{row.logo}}" alt="logo equipe">
           </div>
         </ng-template>
       </ngx-datatable-column>
@@ -104,7 +98,7 @@
         <div class="col-md-12">
           <div class="col-12 text-center">
             <div class="col-12 pt-2 pb-2">
-              <img class="image-escudo" id="escudo-equipe"src="{{src}}" alt="Escudo do time">
+              <img class="image-escudo" id="escudo-equipe" src="{{equipe.logo}}" alt="Escudo do time">
             </div>
             <div class="btn-escolher-escudo col-12 p-0 mt-1" #botaoEscolherEscudo>
               <button class="btn btn-sm" (click)="escolherEscudo()">

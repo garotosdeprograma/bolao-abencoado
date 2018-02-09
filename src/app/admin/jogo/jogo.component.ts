@@ -24,25 +24,24 @@ export class JogoComponent implements OnInit {
   equipes: Equipe[];
   idRodada: number;
 
-
   constructor(private service: JogoService,
-              private toastr: ToastrService,
-              private campeonatoService: CampeonatoService,
-              private rodadaService: RodadaService,
-              private route: ActivatedRoute) {
-                this.jogo = new Jogo();
-                this.campeonatos = [];
-                this.equipes = [];
-                this.jogos = [];
-               }
+    private toastr: ToastrService,
+    private campeonatoService: CampeonatoService,
+    private rodadaService: RodadaService,
+    private route: ActivatedRoute) {
+    this.jogo = new Jogo();
+    this.campeonatos = [];
+    this.equipes = [];
+    this.jogos = [];
+  }
 
   ngOnInit() {
     this.route.queryParams.
-    subscribe(params => {
-      this.jogo.rodada_id = +params.id;
-      this.idRodada = params.id;
-      this.getJogos(params.id);
-    });
+      subscribe(params => {
+        this.jogo.rodada_id = +params.id;
+        this.idRodada = params.id;
+        this.getJogos(params.id);
+      });
     this.getCampeonatos();
   }
 
@@ -51,6 +50,9 @@ export class JogoComponent implements OnInit {
       this.toastr.error('Time casa e visitante não podem ser iguais');
       return;
     }
+    this.jogo.inicio = this.jogo.inicio.replace('T', ' ');
+    this.jogo.inicio = this.jogo.inicio.substr(0, 16);
+    console.log(this.jogo);
     this.service.saveJogo(this.jogo)
       .then(result => {
         this.toastr.success('Jogo salvo com sucesso.');
@@ -58,6 +60,12 @@ export class JogoComponent implements OnInit {
         this.getJogos(this.idRodada);
       })
       .catch(err => showError(err, this.toastr));
+  }
+
+  salvarEdicao(jogo) {
+    this.jogo = jogo;
+    this.jogo.inicio = this.jogo.inicio.substr(0, 16);
+    this.salvar();
   }
 
   newJogo() {
@@ -68,29 +76,31 @@ export class JogoComponent implements OnInit {
 
   editJogo(jogo) {
     this.campeonatoService.getEquipesPorCampeonatos(jogo.campeonato_id)
-    .then(result => this.equipes = result.equipes)
-    .then(result => {
-      this.jogo = new Jogo();
-      this.jogo.campeonato_id = jogo.campeonato_id;
-      this.jogo.equipe_casa = jogo.equipe_casa.id;
-      this.jogo.equipe_visitante = jogo.equipe_visitante.id;
-      this.jogo.rodada_id = this.idRodada;
-      this.jogo.inicio = jogo.inicio;
-      this.jogo.id = jogo.id;
-      return this.jogo;
-    })
-    .then(result => {
-      jQuery('#modal-jogo').modal('show');
-    })
-    .catch(err => showError(err, this.toastr));
+      .then(result => this.equipes = result.equipes)
+      .then(result => {
+        this.jogo = new Jogo();
+        this.jogo.campeonato_id = jogo.campeonato_id;
+        this.jogo.equipe_casa = jogo.equipe_casa.id;
+        this.jogo.equipe_visitante = jogo.equipe_visitante.id;
+        this.jogo.rodada_id = this.idRodada;
+        this.jogo.inicio = jogo.inicio;
+        this.jogo.id = jogo.id;
+        this.jogo.gol_casa = jogo.gol_casa;
+        this.jogo.gol_visitante = jogo.gol_visitante;
+        return this.jogo;
+      })
+      .then(result => {
+        jQuery('#modal-jogo').modal('show');
+      })
+      .catch(err => showError(err, this.toastr));
   }
 
   getEquipesPorCampeonatos() {
     return this.campeonatoService.getEquipesPorCampeonatos(this.jogo.campeonato_id)
-        .then(result => {
-          return this.equipes = result.equipes;
-        })
-        .catch(err => showError(err, this.toastr));
+      .then(result => {
+        return this.equipes = result.equipes;
+      })
+      .catch(err => showError(err, this.toastr));
   }
 
   getJogos(id) {

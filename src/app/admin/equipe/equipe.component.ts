@@ -1,3 +1,4 @@
+import { Jogo } from './../../models/jogo';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { URL_API } from '../../constant/api';
 import { EquipeService } from './equipe.service';
@@ -38,10 +39,12 @@ export class EquipeComponent implements OnInit {
   campeonatos: Campeonato[];
   listaCampeonatos: any[];
   listaCampeonatosEscolhidos: any[];
+  logoDefault: string;
 
   constructor(private service: EquipeService, private toastr: ToastrService,
     private campeonatoService: CampeonatoService) {
-    this.src = 'assets/img/default.png';
+    this.logoDefault = 'assets/img/default.png';
+    this.src = '';
     this.equipe = new Equipe();
     this.loadingIndicator = true;
     this.reorderable = true;
@@ -101,8 +104,7 @@ export class EquipeComponent implements OnInit {
     this.equipe = new Equipe();
     this.equipe.id = equipe.id;
     this.equipe.nome = equipe.nome;
-    this.equipe.logo = equipe.logo;
-    this.src = this.equipe.logo;
+    this.equipe.logo = equipe.logo ? equipe.logo : this.logoDefault;
     equipe.campeonatos.forEach(element => {
       const campeonato = {
         id: element.id,
@@ -113,12 +115,15 @@ export class EquipeComponent implements OnInit {
   }
 
   public submit() {
-    this.criarListaCampeonatos();
-    if (this.equipe.id != null) {
-      this.update();
-    } else {
-      this.save();
-    }
+    Promise.resolve(
+      this.criarListaCampeonatos()
+    ).then(result => {
+      if (this.equipe.id != null) {
+        this.update();
+      } else {
+        this.save();
+      }
+    });
   }
 
   public update() {
@@ -138,7 +143,6 @@ export class EquipeComponent implements OnInit {
     this.listaCampeonatosEscolhidos.forEach(element => {
       this.equipe.campeonato.push(element.id);
     });
-    this.listaCampeonatos = [];
   }
 
   public save() {
@@ -198,7 +202,7 @@ export class EquipeComponent implements OnInit {
   newEquipe() {
     this.equipe = new Equipe();
     this.listaCampeonatosEscolhidos = [];
-    this.src = 'assets/img/default.png';
+    this.equipe.logo = this.logoDefault;
     jQuery('#modal-equipe').modal('show');
   }
 }

@@ -64,6 +64,7 @@ export class RodadaComponent implements OnInit {
 
   public novo() {
     this.rodada = new Rodada();
+    jQuery('#modal-rodada').modal('show');
   }
 
   public setRodada(row) {

@@ -37,7 +37,7 @@ export class RodadaService {
   }
 
   getJogosPorRodada(id = '') {
-    const url = this.url + '/jogos?id=' + id;
+    const url = URL_API + 'externo/rodada/jogos?id=' + id;
     return this.http.get(url, this.getHeaders())
       .map(this.extract)
       .toPromise();

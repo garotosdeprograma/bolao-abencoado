@@ -7,9 +7,11 @@ export class Jogo {
     estadio: string;
     gol_casa: number;
     gol_visitante: number;
-    inicio: Date;
+    inicio: string;
 
     constructor() {
         this.estadio = '';
+        this.equipe_casa = undefined;
+        this.equipe_visitante = undefined;
     }
 }

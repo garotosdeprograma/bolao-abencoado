@@ -58,12 +58,4 @@ export class JogoService {
     .toPromise();
   }
 
-  // getJogosPorRodada(id: number) {
-  //   const url = this.url + '/rodada?id=' + id;
-  //   console.log(url);
-  //   return this.http.get(url, this.getHeaders())
-  //     .map(this.extract)
-  //     .toPromise();
-  // }
-
 }

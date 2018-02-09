@@ -1,12 +1,12 @@
 export class Rodada {
     public id: number;
     public nome: string;
-    public inicio: Date;
-    public fim: Date;
+    public inicio: string;
+    public fim: string;
 
     constructor() {
         this.nome = '';
-        this.fim = new Date();
-        this.fim = new Date();
+        this.fim = '';
+        this.fim = '';
     }
 }
