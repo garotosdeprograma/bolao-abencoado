@@ -11,7 +11,6 @@ import { CampeonatoService } from '../campeonato/campeonato.service';
 import { element } from 'protractor';
 declare const jQuery;
 
-
 @Component({
   selector: 'app-equipe',
   templateUrl: './equipe.component.html',
@@ -112,6 +111,7 @@ export class EquipeComponent implements OnInit {
       };
       this.listaCampeonatosEscolhidos.push(campeonato);
     });
+    this.recolherLogos();
   }
 
   public submit() {
@@ -163,11 +163,15 @@ export class EquipeComponent implements OnInit {
     this.DivEscudos.nativeElement.style.display = 'block';
   }
 
+  recolherLogos() {
+    this.BotaoEscolherEscudo.nativeElement.style.display = 'block';
+    this.DivEscudos.nativeElement.style.display = 'none';
+  }
+
   selecionarEscudo(url) {
     this.equipe.logo = url;
     this.src = this.equipe.logo;
-    this.BotaoEscolherEscudo.nativeElement.style.display = 'block';
-    this.DivEscudos.nativeElement.style.display = 'none';
+    this.recolherLogos();
   }
 
   listaCampeonatosEquipe(campeonato) {
@@ -204,5 +208,6 @@ export class EquipeComponent implements OnInit {
     this.listaCampeonatosEscolhidos = [];
     this.equipe.logo = this.logoDefault;
     jQuery('#modal-equipe').modal('show');
+    this.recolherLogos();
   }
 }

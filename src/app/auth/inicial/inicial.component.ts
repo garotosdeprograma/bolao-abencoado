@@ -25,8 +25,8 @@ export class InicialComponent implements OnInit {
 
 
   constructor(private service: RodadaService,
-              private toastr: ToastrService,
-              private apostaService: ApostaService) {
+    private toastr: ToastrService,
+    private apostaService: ApostaService) {
     this.rodadas = [];
     this.apostas = [];
     this.apostaTO = new ApostaTO();
@@ -119,14 +119,14 @@ export class InicialComponent implements OnInit {
   }
 
   finalizarAposta() {
+    this.Enviar.nativeElement.style.display = 'block';
+    this.InputTelefone.nativeElement.style.display = 'block';
     this.apostaService.saveAposta(this.apostaTO)
       .then(result => {
         this.resetValues();
         this.toastr.success('Aposta salva com sucesso');
       })
       .catch(err => showError(err, this.toastr));
-    this.Enviar.nativeElement.style.display = 'block';
-    this.InputTelefone.nativeElement.style.display = 'block';
   }
 
   FormularioCadastroUsuario() {
