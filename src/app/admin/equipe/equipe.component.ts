@@ -129,10 +129,12 @@ export class EquipeComponent implements OnInit {
     this.service.update(this.equipe)
       .then(result => {
         this.toastr.success('Equipe editada com sucesso!');
-        this.newEquipe();
         return this.getEquipes();
       })
-      .then(result => jQuery('#modal-equipe').modal('hide'))
+      .then(result => {
+        jQuery('#modal-equipe').modal('hide');
+        this.limparDados();
+      })
       .catch(err => {
         showError(err, this.toastr);
       });
@@ -148,10 +150,12 @@ export class EquipeComponent implements OnInit {
     this.service.saveEquipe(this.equipe)
       .then(result => {
         this.toastr.success('Equipe salva com sucesso!');
-        this.newEquipe();
         return this.getEquipes();
       })
-      .then(result => jQuery('#modal-equipe').modal('hide'))
+      .then(result => {
+        jQuery('#modal-equipe').modal('hide');
+        this.limparDados();
+      })
       .catch(err => {
         showError(err, this.toastr);
       });
@@ -202,11 +206,15 @@ export class EquipeComponent implements OnInit {
     });
   }
 
-  newEquipe() {
+  limparDados() {
     this.equipe = new Equipe();
     this.listaCampeonatosEscolhidos = [];
     this.equipe.logo = this.logoDefault;
-    jQuery('#modal-equipe').modal('show');
     this.recolherLogos();
+  }
+
+  newEquipe() {
+    jQuery('#modal-equipe').modal('show');
+    this.limparDados();
   }
 }

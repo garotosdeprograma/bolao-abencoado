@@ -16,9 +16,11 @@ declare var jQuery: any;
 export class InicialComponent implements OnInit {
 
   @ViewChild('enviar') Enviar: ElementRef;
-  @ViewChild('inputTelefone') InputTelefone: ElementRef;
+  @ViewChild('formulario') Formulario: ElementRef;
   @ViewChild('formularioCadastro') FormularioCadastro: ElementRef;
   @ViewChild('equipeEscolhida') EquipeEscolhida: ElementRef;
+  @ViewChild('bolaAposta') BolaAposta: ElementRef;
+  @ViewChild('jogosSelecionados') JogosSelecionados: ElementRef;
   public rodadas: any[];
   public apostas: any[];
   private idRodada: number;
@@ -73,6 +75,7 @@ export class InicialComponent implements OnInit {
         return;
       }
 
+
       const timeAposta = {
         idTime: time.id,
         idJogo: jogo.id
@@ -97,6 +100,8 @@ export class InicialComponent implements OnInit {
           this.apostaTO.times.push(timeAposta);
         }
       }
+
+      this.mostrarBolaAposta();
 
       if (side === 'right') {
         jogo.equipe_casa.ativo = true;
@@ -124,6 +129,7 @@ export class InicialComponent implements OnInit {
       }
       return true;
     });
+    this.mostrarBolaAposta();
   }
 
   resetValues() {
@@ -133,7 +139,6 @@ export class InicialComponent implements OnInit {
   }
 
   salvarAposta() {
-    console.log(this.apostaTO);
     this.apostaService.saveAposta(this.apostaTO)
       .then(result => {
         this.toastr.success('Aposta salva com sucesso');
@@ -144,11 +149,27 @@ export class InicialComponent implements OnInit {
 
   continuarAposta() {
     this.Enviar.nativeElement.style.display = 'block';
-    this.InputTelefone.nativeElement.style.display = 'block';
+    this.Formulario.nativeElement.style.display = 'block';
+    this.JogosSelecionados.nativeElement.style.display = 'none';
   }
 
   numberValidation(event) {
     event.target.value = event.target.value.replace(/\D/g, '');
   }
 
+
+  mostrarBolaAposta() {
+    if (this.apostaTO.times.length > 0) {
+      this.BolaAposta.nativeElement.style.right = '10px';
+    } else {
+      this.BolaAposta.nativeElement.style.right = '-83px';
+      jQuery('#modal-aposta').modal('hide');
+    }
+  }
+
+  voltarVerAposta() {
+    this.JogosSelecionados.nativeElement.style.display = 'block';
+    this.Formulario.nativeElement.style.display = 'none';
+    this.Enviar.nativeElement.style.display = 'none';
+  }
 }

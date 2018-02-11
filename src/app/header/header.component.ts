@@ -14,7 +14,6 @@ declare var jQuery: any;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  home: string;
   modal: any;
 
   @ViewChild('formularioRecuperar') FormularioRecuperar: ElementRef;
@@ -24,7 +23,6 @@ export class HeaderComponent implements OnInit {
   user: User = new User();
 
   constructor(private loginService: LoginService, private toastr: ToastrService, private route: Router) {
-    this.home = '';
     this.modal = 'login';
   }
 
@@ -36,11 +34,9 @@ export class HeaderComponent implements OnInit {
     if (!!localStorage.getItem(STORED_TOKEN)) {
       this.ButtonEntrar.nativeElement.style.display = 'none';
       this.ButtonSair.nativeElement.style.display = 'block';
-      this.home = '/admin';
     } else {
       this.ButtonEntrar.nativeElement.style.display = 'block';
       this.ButtonSair.nativeElement.style.display = 'none';
-      this.home = 'index.html';
     }
   }
 

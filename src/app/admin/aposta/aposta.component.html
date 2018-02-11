@@ -1,24 +1,16 @@
 <div class="row content pt-2 pb-5 m-0">
   <div class="col-12 form-group row d-flex align-items-center m-0 p-3">
-    <div class="form-group col-sm-6 ml-0 pl-0">
+    <div class="form-group col-sm-8 ml-0 pl-0">
       <h2 class="text-left mt-4 mb-3">Apostas</h2>
     </div>
-    <div class="form-group col-sm-4 row m-0 p-0 mt-2 mb-2">
-      <div class="input-group col-sm-11 mt-2 mb-2 p-0">
-        <input type="text" class="form-control" placeholder="nome" aria-label="nome">
-      </div>
-    </div>
-
-    <div class="form-group col-sm-2 row ml-auto pr-0 pl-0 mr-0 ml-0 mt-3 mb-3">
-      <div class="col-6 ml-0 pl-0">
-        <button class="btn clean w-100" type="button">
-          <img src="assets/img/clean.png" alt="Icone para limpar campos de busca">
-        </button>
-      </div>
-      <div class="col-6 mr-0 pr-0">
-        <button class="btn w-100" type="button">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
+    <div class="col-8 col-sm-4 p-0 m-0">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="nome..." aria-label="nome...">
+        <span class="input-group-btn">
+          <button class="btn" type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </span>
       </div>
     </div>
 
@@ -57,9 +49,9 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Equipes Escolhidas">
         <ng-template ngx-datatable-cell-template let-value="value">
-          <span *ngFor="row.jogos">
+          <!-- <span *ngFor="row.jogos">
 
-          </span>
+          </span> -->
           {{value}}
         </ng-template>
       </ngx-datatable-column>

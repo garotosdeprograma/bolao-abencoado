@@ -24,7 +24,7 @@
       <div class="div-jogos col-12 row p-0">
         <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row" *ngFor="let jogo of rodada.jogos">
           <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
+          <div class="time-casa text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_casa, rodada.id, 'right')">
             <img src="{{jogo.equipe_casa.logo}}" alt="logo do time">
             <small class="col-12 p-0">
@@ -35,7 +35,7 @@
           <div class="col-2 d-flex justify-content-center align-items-center">vs</div>
 
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}"
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_visitante.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_visitante, rodada.id, 'left')">
             <img src="{{jogo.equipe_visitante.logo}}" alt="logo do time">
             <small class="col-12 p-0">
@@ -51,7 +51,7 @@
   </div>
 
 
-  <div class="aposta d-flex justify-content-center align-items-center">
+  <div class="aposta d-flex justify-content-center align-items-center" #bolaAposta>
     <img src="assets/img/icone-aposta.png" data-toggle="modal" data-target="#modal-aposta" alt="Icone apostas">
   </div>
 
@@ -67,11 +67,11 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" #jogosSelecionados>
         <!-- aposta -->
         <div class="jogo col-12 m-0 p-1 d-flex row mb-3 pb-2" *ngFor="let jogo of viewJogos">
-          <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img class="equipe-escolhida" src="{{jogo.equipe_casa.logo}}" alt="logo do time">
+          <div class="time-casa text-center d-flex justify-content-center col-5 row" [ngClass]="{'equipe-escolhida': jogo.equipe_casa.ativo}">
+            <img src="{{jogo.equipe_casa.logo}}" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_casa.nome}}</span>
             </small>
@@ -79,7 +79,7 @@
 
           <div class="col-2 d-flex justify-content-center align-items-center">X</div>
 
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row">
+          <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'equipe-escolhida': jogo.equipe_visitante.ativo}">
             <img src="{{jogo.equipe_visitante.logo}}" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_visitante.nome}}</span>
@@ -93,22 +93,30 @@
           </div>
         </div>
 
-      </div>
-      <div class="col-12 mb-3 text-center">
-        <button class="btn btn-sm" (click)="continuarAposta()">
-          <small>
-            Continuar
-          </small>
-        </button>
+        <div class="col-12 mb-3 text-center">
+          <button class="btn btn-sm" (click)="continuarAposta()">
+            <small>
+              Continuar
+            </small>
+          </button>
+        </div>
       </div>
 
-      <div class="input-telefone col-12 mb-3" #inputTelefone>
-        <div>
-          <p class="text-center">Preencha o formulário para finalizar a aposta</p>
+      <div class="input-telefone col-12 mb-4 mt-3" #formulario>
+        <div class="mb-3 col-12 row m-0 p-0">
+          <div class="col-sm-1 m-0 p-0 mb-3">
+            <button class="btn" (click) = "voltarVerAposta()">
+              <i class="fa fa-reply"></i>
+            </button>
+          </div>
+          <div class="col-sm-11 m-0 p-0 text-center">
+            <p>Preencha o formulário para finalizar a aposta</p>
+          </div>
         </div>
         <div class="col-12 mb-2">
           <label>Telefone</label>
-          <input type="text" (keyup)="numberValidation($event)" name="telefone" [(ngModel)]="apostaTO.telefone" class="form-control" placeholder="(85)9xxxx-xxxx" maxlength="11">
+          <input type="text" (keyup)="numberValidation($event)" name="telefone" [(ngModel)]="apostaTO.telefone" class="form-control"
+            placeholder="(85)9xxxx-xxxx" maxlength="11">
         </div>
         <div class="col-12 m-0">
           <label>Nome</label>
@@ -123,7 +131,7 @@
               <br/>Informe os dados abaixo</p>
           </small>
         </div>
-        
+
       </div>
 
       <div class="enviar text-center pt-2 pb-2 p-0" #enviar>
