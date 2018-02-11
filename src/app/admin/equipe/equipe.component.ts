@@ -25,7 +25,6 @@ export class EquipeComponent implements OnInit {
   src: String;
   x: any;
 
-  editing = {};
   rows = [];
   temp = [];
   selected = [];

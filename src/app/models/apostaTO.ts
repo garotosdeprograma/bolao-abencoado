@@ -1,8 +1,8 @@
 export class ApostaTO {
     id: number;
-    usuario_id: number;
     rodada_id: number;
     tipo: string;
+    telefone: number;
     times: any[];
     constructor() {
         this.times = [];

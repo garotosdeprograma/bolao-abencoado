@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { RodadaTO } from '../../models/rodadaTO';
 import { ApostaTO } from '../../models/apostaTO';
 import { ApostaService } from '../../admin/aposta/aposta.service';
+import { Jogo } from '../../models/jogo';
 declare var jQuery: any;
 
 @Component({
@@ -22,6 +23,7 @@ export class InicialComponent implements OnInit {
   public apostas: any[];
   private idRodada: number;
   public apostaTO: ApostaTO;
+  public viewJogos: Set<any>;
 
 
   constructor(private service: RodadaService,
@@ -30,6 +32,7 @@ export class InicialComponent implements OnInit {
     this.rodadas = [];
     this.apostas = [];
     this.apostaTO = new ApostaTO();
+    this.viewJogos = new Set();
   }
 
   ngOnInit() {
@@ -72,8 +75,7 @@ export class InicialComponent implements OnInit {
 
       const timeAposta = {
         idTime: time.id,
-        idJogo: jogo.id,
-        nomeTime: time.nome
+        idJogo: jogo.id
       };
 
       if (this.apostaTO.times.length < 1) {
@@ -82,7 +84,6 @@ export class InicialComponent implements OnInit {
         const filteredTime = this.apostaTO.times.filter(elm => {
           if (elm.idJogo === timeAposta.idJogo) {
             elm.idTime = timeAposta.idTime;
-            elm.nomeTime = timeAposta.nomeTime;
             return true;
           }
           return false;
@@ -105,11 +106,24 @@ export class InicialComponent implements OnInit {
         jogo.equipe_visitante.ativo = true;
       }
 
-      // console.log(this.apostaTO.times);
     } catch (error) {
       this.toastr.error(error.message);
     }
 
+    this.viewJogos.add(jogo);
+
+  }
+
+  retirarAposta(jogo) {
+    this.viewJogos.delete(jogo);
+    this.apostaTO.times = this.apostaTO.times.filter(elm => {
+      if (elm.idJogo === jogo.id) {
+        jogo.equipe_casa.ativo = false;
+        jogo.equipe_visitante.ativo = false;
+        return false;
+      }
+      return true;
+    });
   }
 
   resetValues() {
@@ -118,18 +132,23 @@ export class InicialComponent implements OnInit {
     this.apostaTO = new ApostaTO();
   }
 
-  finalizarAposta() {
-    this.Enviar.nativeElement.style.display = 'block';
-    this.InputTelefone.nativeElement.style.display = 'block';
+  salvarAposta() {
+    console.log(this.apostaTO);
     this.apostaService.saveAposta(this.apostaTO)
       .then(result => {
-        this.resetValues();
         this.toastr.success('Aposta salva com sucesso');
+        jQuery('#modal-aposta').modal('hide');
       })
       .catch(err => showError(err, this.toastr));
   }
 
-  FormularioCadastroUsuario() {
-    this.FormularioCadastro.nativeElement.style.display = 'block';
+  continuarAposta() {
+    this.Enviar.nativeElement.style.display = 'block';
+    this.InputTelefone.nativeElement.style.display = 'block';
   }
+
+  numberValidation(event) {
+    event.target.value = event.target.value.replace(/\D/g, '');
+  }
+
 }

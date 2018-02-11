@@ -32,43 +32,34 @@
     [footerHeight]="50" 
     [rowHeight]="'auto'"
     [rows]="rows" 
+    [externalPaging]="true"
+    [limit]="pagination.limit"
+    [count]="pagination.count"                
+    [offset]="pagination.offset"
     [scrollbarH]="'false'"
-    [loadingIndicator]="loadingIndicator">
+    [loadingIndicator]="loadingIndicator"
+    (page)="setPage($event)">
       <ngx-datatable-column 
       name="Nº" [maxWidth]="30" [width]="20">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.$$index +1}}
-          </span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Nome">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span title="Double click to edit" (dblclick)="editing[row.$$index + '-name'] = true" *ngIf="!editing[row.$$index + '-name']">
-            {{value}}
-          </span>
-          <input autofocus (blur)="updateValue($event, 'name', value, row)" *ngIf="editing[row.$$index + '-name']" type="text" [value]="value"
-          />
+            {{row.usuario.nome}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Data da aposta">
         <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-          <span title="Double click to edit" (dblclick)="editing[row.$$index + '-gender'] = true" *ngIf="!editing[row.$$index + '-gender']">
-            {{value}}
-          </span>
-          <select *ngIf="editing[row.$$index + '-gender']" (change)="updateValue($event, 'gender', value, row)" [value]="value">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+            {{row.created_at | date:'dd/MM/y H:mm'}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Equipes Escolhidas">
         <ng-template ngx-datatable-cell-template let-value="value">
-          {{value}}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Pago">
-        <ng-template ngx-datatable-cell-template let-value="value">
+          <span *ngFor="row.jogos">
+
+          </span>
           {{value}}
         </ng-template>
       </ngx-datatable-column>

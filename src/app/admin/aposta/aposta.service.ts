@@ -32,18 +32,7 @@ export class ApostaService {
   }
 
   public saveAposta(apostaTO: ApostaTO): Promise<any> {
-    const aposta = new Aposta();
-    console.log(apostaTO.times);
-    aposta.rodada_id = apostaTO.rodada_id;
-    aposta.jogo_1 = apostaTO.times[0].idJogo;
-    aposta.time_1 = apostaTO.times[0].idTime;
-    aposta.jogo_2 = apostaTO.times[1].idJogo;
-    aposta.time_2 = apostaTO.times[1].idTime;
-    aposta.jogo_3 = apostaTO.times[2].idJogo;
-    aposta.time_3 = apostaTO.times[2].idTime;
-    aposta.jogo_4 = apostaTO.times[3].idJogo;
-    aposta.time_4 = apostaTO.times[3].idTime;
-    return this.http.post(this.url, aposta, this.getHeaders())
+    return this.http.post(this.url, apostaTO, this.getHeaders())
       .map(this.extract)
       .toPromise();
   }
@@ -65,7 +54,6 @@ export class ApostaService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
-    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();

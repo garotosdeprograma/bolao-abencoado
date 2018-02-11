@@ -24,8 +24,9 @@
     <ngx-datatable
     #table
     class="material"
-    [headerHeight]="40"
-    [columnMode]="'force'"
+    [columnMode]="'flex'"
+    [columns]="columns"
+    [headerHeight]="50"
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [rows]="rows"
@@ -36,23 +37,16 @@
     [scrollbarH]="'false'"
     [loadingIndicator]="loadingIndicator"
     (page)="setPage($event)">
-    <ngx-datatable-column name="Escudo">
+    <ngx-datatable-column name="Nome" [flexGrow]="14">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span>
           {{row.nome}}
         </span>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Nome">
+    <ngx-datatable-column name="Ações" [flexGrow]="1">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-        <span>
-          {{row.nome}}
-        </span>
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Ações">
-      <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-        <a class="col-12" data-toggle="modal" (click)="edit(row)" data-target="#modal-campeonato">
+        <a data-toggle="modal" (click)="edit(row)" data-target="#modal-campeonato">
           <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
         </a>
       </ng-template>

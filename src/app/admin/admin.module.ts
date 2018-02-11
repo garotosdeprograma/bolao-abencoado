@@ -18,6 +18,7 @@ import { RodadaService } from './rodada/rodada.service';
 import { JogoComponent } from './jogo/jogo.component';
 import { EquipeService } from './equipe/equipe.service';
 import { JogoService } from './jogo/jogo.service';
+import { ApostaService } from './aposta/aposta.service';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { JogoService } from './jogo/jogo.service';
   providers: [  CampeonatoService,
                 RodadaService,
                 EquipeService,
-                JogoService
+                JogoService,
+                ApostaService
             ]
 })
 export class AdminModule { }

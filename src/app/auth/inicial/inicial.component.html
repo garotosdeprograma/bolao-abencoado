@@ -17,9 +17,6 @@
   <div class="jogos col-12 row d-flex justify-content-center align-items-center m-0">
     <div class="col-sm-10 row d-flex justify-content-center p-0" *ngFor="let rodada of rodadas">
       <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
-        <div class="col-2 text-center">
-          <img class="logo-campeonato" src="assets/img/campeonatos/uefa.png" alt="Logo campeonato">
-        </div>
         <h5 class="col-10">{{rodada.nome}}</h5>
       </div>
 
@@ -29,7 +26,7 @@
           <!-- time da casa -->
           <div class="time-casa text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_casa, rodada.id, 'right')">
-            <img src="assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
+            <img src="{{jogo.equipe_casa.logo}}" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_casa.nome}}</span>
             </small>
@@ -40,7 +37,7 @@
           <!-- time visitante -->
           <div class="time-visitante text-center d-flex justify-content-center col-5 row" [ngClass]="{'selected': jogo.equipe_visitante.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_visitante, rodada.id, 'left')">
-            <img src="assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
+            <img src="{{jogo.equipe_visitante.logo}}" alt="logo do time">
             <small class="col-12 p-0">
               <span>{{jogo.equipe_visitante.nome}}</span>
             </small>
@@ -55,12 +52,13 @@
 
 
   <div class="aposta d-flex justify-content-center align-items-center">
-    <img src="assets/img/icone-aposta.png" data-toggle="modal" data-target="#modal-apostas" alt="Icone apostas">
+    <img src="assets/img/icone-aposta.png" data-toggle="modal" data-target="#modal-aposta" alt="Icone apostas">
   </div>
 
 </div>
 
-<div class="modal gameboll-theme-modal" id="modal-apostas">
+<!-- Modal aposta -->
+<div class="modal gameboll-theme-modal" id="modal-aposta">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header rounded-0">
@@ -70,51 +68,26 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="jogo col-12 m-0 p-1 d-flex row mb-3 pb-2" *ngFor="let time of apostaTO.times">
-          <!-- time da casa -->
+        <!-- aposta -->
+        <div class="jogo col-12 m-0 p-1 d-flex row mb-3 pb-2" *ngFor="let jogo of viewJogos">
           <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
+            <img class="equipe-escolhida" src="{{jogo.equipe_casa.logo}}" alt="logo do time">
             <small class="col-12 p-0">
-              <span>Barcelona</span>
+              <span>{{jogo.equipe_casa.nome}}</span>
             </small>
-
           </div>
+
           <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
+
           <div class="time-visitante text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
+            <img src="{{jogo.equipe_visitante.logo}}" alt="logo do time">
             <small class="col-12 p-0">
-              <span>Real Madrid</span>
+              <span>{{jogo.equipe_visitante.nome}}</span>
             </small>
 
           </div>
           <div class="col-12 trash p-0 m-0 text-center">
-            <button type="button" class="btn btn-sm mt-2">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="jogo col-12 m-0 p-1 d-flex justify-content-center row mb-3 pb-2">
-          <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row">
-            <img src="../../../assets/img/ligaEspanhola/barcelona.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Barcelona</span>
-            </small>
-
-          </div>
-          <div class="col-2 d-flex justify-content-center align-items-center">X</div>
-          <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row">
-            <img class="equipe-escolhida" src="../../../assets/img/ligaEspanhola/real-madrid.png" alt="logo do time">
-            <small class="col-12 p-0">
-              <span>Real Madrid</span>
-            </small>
-
-          </div>
-          <div class="col-12 trash p-0 m-0 text-center">
-            <button type="button" class="btn btn-sm mt-2">
+            <button type="button" class="btn btn-sm mt-2" (click)="retirarAposta(jogo)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </div>
@@ -122,9 +95,9 @@
 
       </div>
       <div class="col-12 mb-3 text-center">
-        <button class="btn btn-sm" (click)="finalizarAposta()">
+        <button class="btn btn-sm" (click)="continuarAposta()">
           <small>
-            Finalizar aposta
+            Continuar
           </small>
         </button>
       </div>
@@ -133,8 +106,14 @@
         <div>
           <p class="text-center">Preencha o formulário para finalizar a aposta</p>
         </div>
-        <label>Telefone</label>
-        <input type="text" name="nomeRodada" class="form-control" placeholder="(85)9xxxx-xxxx">
+        <div class="col-12 mb-2">
+          <label>Telefone</label>
+          <input type="text" (keyup)="numberValidation($event)" name="telefone" [(ngModel)]="apostaTO.telefone" class="form-control" placeholder="(85)9xxxx-xxxx" maxlength="11">
+        </div>
+        <div class="col-12 m-0">
+          <label>Nome</label>
+          <input type="text" name="nomeRodada" [(ngModel)]="apostaTO.nome" class="form-control" placeholder="nome">
+        </div>
       </div>
 
       <div class="formularioCadastrado col-12 row m-0 p-0 pt-3 pb-3" #formularioCadastro>
@@ -144,19 +123,11 @@
               <br/>Informe os dados abaixo</p>
           </small>
         </div>
-        <div class="col-12 m-0">
-          <label>Nome</label>
-          <input type="text" name="nomeRodada" class="form-control" placeholder="nome">
-        </div>
-
-        <div class="col-12 m-0">
-          <label>Sobrenome</label>
-          <input type="text" name="nomeRodada" class="form-control" placeholder="sobrenome">
-        </div>
+        
       </div>
 
       <div class="enviar text-center pt-2 pb-2 p-0" #enviar>
-        <button class="btn btn-sm" (click)="FormularioCadastroUsuario()">
+        <button class="btn btn-sm" (click)="salvarAposta()">
           <small>
             Enviar
           </small>
