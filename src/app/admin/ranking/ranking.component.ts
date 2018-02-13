@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { RodadaService } from '../rodada/rodada.service';
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -41,7 +41,7 @@ export class RankingComponent implements OnInit {
         this.filter.idRodada = rodadas[rodadas.length - 1].id;
         return this.getRanking();
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   getRanking() {
@@ -51,7 +51,7 @@ export class RankingComponent implements OnInit {
         this.rows = result;
         return this.loadingIndicator = false;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   getLastRodadas() {
@@ -59,14 +59,7 @@ export class RankingComponent implements OnInit {
     .then(result => {
       return this.listaRodada = result.data;
     })
-    .catch(err => {
-      if (err.status) {
-        this.router.navigate(['/']);
-        this.toastr.error(err.getMessage());
-      } else {
-        showError(err, this.toastr);
-      }
-    });
+    .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
 }

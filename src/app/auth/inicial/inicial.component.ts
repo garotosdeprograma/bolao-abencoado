@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RodadaService } from '../../admin/rodada/rodada.service';
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { RodadaTO } from '../../models/rodadaTO';
 import { ApostaTO } from '../../models/apostaTO';
 import { ApostaService } from '../../admin/aposta/aposta.service';
 import { Jogo } from '../../models/jogo';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 
 @Component({
@@ -30,6 +31,7 @@ export class InicialComponent implements OnInit {
 
   constructor(private service: RodadaService,
     private toastr: ToastrService,
+    private router: Router,
     private apostaService: ApostaService) {
     this.rodadas = [];
     this.apostas = [];
@@ -61,13 +63,10 @@ export class InicialComponent implements OnInit {
           return elm;
         });
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   escolherEquipe(jogo, time, idRodada, side) {
-
-    console.log(this.apostaTO.times);
-    console.log(this.viewJogos);
 
     try {
 
@@ -76,10 +75,6 @@ export class InicialComponent implements OnInit {
         const internacional = this.apostaTO.times.filter(elm => {
           return elm.idJogo === jogo.id;
         });
-
-        console.log(internacional.length < 1);
-        console.log(this.apostaTO.tipo);
-        console.log(jogo.campeonato.tipo)
 
         if (this.apostaTO.tipo === jogo.campeonato.tipo && internacional.length < 1) {
           this.toastr.error('Só é permitido escolher um jogo internacional.');
@@ -166,7 +161,7 @@ export class InicialComponent implements OnInit {
         this.initComponent();
         this.mostrarBolaAposta();
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   continuarAposta() {

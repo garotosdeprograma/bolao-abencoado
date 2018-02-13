@@ -9,7 +9,6 @@ export class AdminGuard implements CanLoad {
   constructor(private router: Router) {}
 
   canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
-    // console.log(localStorage.getItem(STORED_TOKEN));
     if (!!localStorage.getItem(STORED_TOKEN)) {
       return true;
     }

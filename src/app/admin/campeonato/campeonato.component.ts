@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { Campeonato } from '../../models/campeonato';
 import { Pagination } from '../../models/pagination';
 import { CampeonatoService } from './campeonato.service';
@@ -53,14 +53,7 @@ export class CampeonatoComponent implements OnInit {
       this.rows = result.data;
       this.loadingIndicator = false;
     })
-    .catch(err => {
-      if (err.status) {
-        this.router.navigate(['/']);
-        this.toastr.error(err.getMessage());
-      } else {
-        showError(err, this.toastr);
-      }
-    });
+    .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public buscar() {
@@ -92,14 +85,7 @@ export class CampeonatoComponent implements OnInit {
         return this.getCampeonatos();
       })
       .then(result => jQuery('#modal-campeonato').modal('hide'))
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public save() {
@@ -109,14 +95,7 @@ export class CampeonatoComponent implements OnInit {
         return this.getCampeonatos();
       })
       .then(result => jQuery('#modal-campeonato').modal('hide'))
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
 }

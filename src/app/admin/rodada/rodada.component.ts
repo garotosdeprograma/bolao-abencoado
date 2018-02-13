@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RodadaService } from './rodada.service';
 import { Rodada } from '../../models/rodada';
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { Pagination } from '../../models/pagination';
+import { Router } from '@angular/router';
 
 declare const jQuery;
 
@@ -25,7 +26,9 @@ export class RodadaComponent implements OnInit {
   public filter; any;
   public pagination: Pagination = new Pagination();
 
-  constructor(private service: RodadaService, private toastr: ToastrService) {
+  constructor(private service: RodadaService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.filter = {};
     this.rodada = new Rodada();
     this.rodadas = [];
@@ -57,9 +60,7 @@ export class RodadaComponent implements OnInit {
         this.temp = result.data;
         this.loadingIndicator = false;
       })
-      .catch(err => {
-        showError(err, this.toastr);
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public novo() {
@@ -93,9 +94,7 @@ export class RodadaComponent implements OnInit {
         return this.getRodadas();
       })
       .then(result => jQuery('#modal-rodada').modal('hide'))
-      .catch(err => {
-        showError(err, this.toastr);
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public save() {
@@ -105,9 +104,7 @@ export class RodadaComponent implements OnInit {
         return this.getRodadas();
       })
       .then(result => jQuery('#modal-rodada').modal('hide'))
-      .catch(err => {
-        showError(err, this.toastr);
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public submit() {

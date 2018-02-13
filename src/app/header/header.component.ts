@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { showError } from '../utils/showError';
+import { showError, errorHandler } from '../utils/showError';
 import { LoginService } from '../login.service';
 import { User } from '../models/user';
 import { STORED_TOKEN } from '../constant/local-storage';
@@ -55,14 +55,7 @@ export class HeaderComponent implements OnInit {
         this.user = new User();
         this.verificarStatusLogin();
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   logout() {

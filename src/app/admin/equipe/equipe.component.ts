@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { URL_API } from '../../constant/api';
 import { EquipeService } from './equipe.service';
 import { Equipe } from '../../models/equipe';
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { Pagination } from '../../models/pagination';
 import { Campeonato } from '../../models/campeonato';
@@ -81,14 +81,7 @@ export class EquipeComponent implements OnInit {
       .then(escudos => {
         this.escudos = escudos;
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   getEquipes(): Promise<any> {
@@ -100,14 +93,7 @@ export class EquipeComponent implements OnInit {
         this.rows = result.data;
         this.loadingIndicator = false;
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   public buscar() {
@@ -152,14 +138,7 @@ export class EquipeComponent implements OnInit {
         jQuery('#modal-equipe').modal('hide');
         this.limparDados();
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   criarListaCampeonatos() {
@@ -178,14 +157,7 @@ export class EquipeComponent implements OnInit {
         jQuery('#modal-equipe').modal('hide');
         this.limparDados();
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   escolherEscudo() {

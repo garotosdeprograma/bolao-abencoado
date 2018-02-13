@@ -3,7 +3,7 @@ import { URL_API } from '../../constant/api';
 import { ApostaService } from './aposta.service';
 import { Pagination } from '../../models/pagination';
 import { RodadaService } from '../rodada/rodada.service';
-import { showError } from '../../utils/showError';
+import { showError, errorHandler } from '../../utils/showError';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -42,14 +42,7 @@ export class ApostaComponent implements OnInit {
         this.filter.ids = listRodada[listRodada.length - 1].id;
         return this.getApostas();
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   getLastRodadas() {
@@ -74,14 +67,7 @@ export class ApostaComponent implements OnInit {
         this.rows = result;
         return this.loadingIndicator = false;
       })
-      .catch(err => {
-        if (err.status) {
-          this.router.navigate(['/']);
-          this.toastr.error(err.getMessage());
-        } else {
-          showError(err, this.toastr);
-        }
-      });
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
 }
