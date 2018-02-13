@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
+import { RodadaService } from '../rodada/rodada.service';
+import { showError } from '../../utils/showError';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ranking',
@@ -11,36 +15,58 @@ export class RankingComponent implements OnInit {
   rows = [];
   temp = [];
   selected = [];
-  loadingIndicator: boolean = true;
-  reorderable: boolean = true;
+  loadingIndicator: boolean;
+  reorderable: boolean;
+  limit: number;
 
   @ViewChild('tableWrapper') tableWrapper;
-  private currentComponentWidth;
+  listaRodada: any[];
+  filter: any;
+  ranking: any[];
 
-  columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
-
-  constructor() {
-    this.fetch((data) => {
-      this.temp = [...data];
-      this.rows = data;
-      setTimeout(() => { this.loadingIndicator = false; }, 1500);
-    });
-  }
-
-  fetch(data) {
-    const req = new XMLHttpRequest();
-    req.open('GET', '../../assets/data/company.json');
-    req.onload = () => {
-      data(JSON.parse(req.response));
-    };
-    req.send();
+  constructor(private rodadaService: RodadaService,
+    private router: Router,
+              private toastr: ToastrService) {
+    this.filter = {};
+    this.filter.ids = [];
+    this.ranking = [];
+    this.loadingIndicator = true;
+    this.listaRodada = [];
+    this.limit = 20;
   }
 
   ngOnInit() {
+    this.getLastRodadas()
+    .then(rodadas => {
+        this.filter.idRodada = rodadas[rodadas.length - 1].id;
+        return this.getRanking();
+      })
+      .catch(err => showError(err, this.toastr));
+  }
+
+  getRanking() {
+    this.rodadaService.getRanking(this.filter)
+      .then(result => {
+        this.temp = [...result];
+        this.rows = result;
+        return this.loadingIndicator = false;
+      })
+      .catch(err => showError(err, this.toastr));
+  }
+
+  getLastRodadas() {
+    return this.rodadaService.getLastRodadas(this.limit)
+    .then(result => {
+      return this.listaRodada = result.data;
+    })
+    .catch(err => {
+      if (err.status) {
+        this.router.navigate(['/']);
+        this.toastr.error(err.getMessage());
+      } else {
+        showError(err, this.toastr);
+      }
+    });
   }
 
 }

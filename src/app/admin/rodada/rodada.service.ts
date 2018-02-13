@@ -43,6 +43,20 @@ export class RodadaService {
       .toPromise();
   }
 
+  public getLastRodadas(limit): Promise<any> {
+    const url = this.url + '?page=1&limit=' + limit;
+    return this.http.get(url, this.getHeaders())
+        .map(this.extract)
+        .toPromise();
+  }
+
+  getRanking(filter: any): Promise<any> {
+    const url = URL_API + 'externo/rodada' + '/ranking?id=' + filter.idRodada;
+    return this.http.get(url, this.getHeaders())
+      .map(this.extract)
+      .toPromise();
+  }
+
 
   public getRodadas(filter: any): Promise<any> {
 

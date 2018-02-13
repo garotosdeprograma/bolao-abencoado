@@ -51,7 +51,6 @@ export class CampeonatoService {
 
   getEquipesPorCampeonatos(id: number): Promise<any> {
     const url = URL_API + 'externo/campeonato/equipes?id=' + id;
-    console.log(url);
     return this.http.get(url, this.getHeaders())
       .map(this.extract)
       .toPromise();
@@ -67,7 +66,6 @@ export class CampeonatoService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
-    console.log(url);
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();

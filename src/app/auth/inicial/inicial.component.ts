@@ -41,6 +41,14 @@ export class InicialComponent implements OnInit {
     this.getJogos();
   }
 
+  initComponent() {
+    this.rodadas = [];
+    this.apostas = [];
+    this.apostaTO = new ApostaTO();
+    this.viewJogos = new Set();
+    this.getJogos();
+  }
+
   getJogos() {
     this.service.getJogosPorRodada()
       .then(result => {
@@ -58,11 +66,24 @@ export class InicialComponent implements OnInit {
 
   escolherEquipe(jogo, time, idRodada, side) {
 
+    console.log(this.apostaTO.times);
+    console.log(this.viewJogos);
+
     try {
 
       if (jogo.campeonato.tipo === 'INTERNACIONAL') {
-        if (this.apostaTO.tipo && this.apostaTO.tipo === jogo.campeonato.tipo) {
-          throw new Error('Só é permitido escolher um jogo internacional.');
+
+        const internacional = this.apostaTO.times.filter(elm => {
+          return elm.idJogo === jogo.id;
+        });
+
+        console.log(internacional.length < 1);
+        console.log(this.apostaTO.tipo);
+        console.log(jogo.campeonato.tipo)
+
+        if (this.apostaTO.tipo === jogo.campeonato.tipo && internacional.length < 1) {
+          this.toastr.error('Só é permitido escolher um jogo internacional.');
+          return;
         } else {
           this.apostaTO.tipo = jogo.campeonato.tipo;
         }
@@ -142,7 +163,8 @@ export class InicialComponent implements OnInit {
     this.apostaService.saveAposta(this.apostaTO)
       .then(result => {
         this.toastr.success('Aposta salva com sucesso');
-        jQuery('#modal-aposta').modal('hide');
+        this.initComponent();
+        this.mostrarBolaAposta();
       })
       .catch(err => showError(err, this.toastr));
   }
@@ -163,6 +185,8 @@ export class InicialComponent implements OnInit {
       this.BolaAposta.nativeElement.style.right = '10px';
     } else {
       this.BolaAposta.nativeElement.style.right = '-83px';
+      this.viewJogos.clear();
+      this.apostaTO = new ApostaTO();
       jQuery('#modal-aposta').modal('hide');
     }
   }

@@ -5,6 +5,7 @@ import { showError } from '../../utils/showError';
 import { Campeonato } from '../../models/campeonato';
 import { Pagination } from '../../models/pagination';
 import { CampeonatoService } from './campeonato.service';
+import { Router } from '@angular/router';
 declare const jQuery;
 
 @Component({
@@ -25,13 +26,9 @@ export class CampeonatoComponent implements OnInit {
   public filter; any;
   public pagination: Pagination = new Pagination();
 
-  columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
-
-  constructor(private service: CampeonatoService, private toastr: ToastrService) {
+  constructor(private service: CampeonatoService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.campeonato = new Campeonato();
     this.campeonatos = [];
     this.filter = {};
@@ -57,7 +54,12 @@ export class CampeonatoComponent implements OnInit {
       this.loadingIndicator = false;
     })
     .catch(err => {
-      showError(err, this.toastr);
+      if (err.status) {
+        this.router.navigate(['/']);
+        this.toastr.error(err.getMessage());
+      } else {
+        showError(err, this.toastr);
+      }
     });
   }
 
@@ -91,13 +93,16 @@ export class CampeonatoComponent implements OnInit {
       })
       .then(result => jQuery('#modal-campeonato').modal('hide'))
       .catch(err => {
-        showError(err, this.toastr);
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
       });
   }
 
   public save() {
-    const logo = 'assets/campeonatos/' + this.campeonato.nome + '';
-    this.campeonato.logo = logo;
     this.service.saveCampeonato(this.campeonato)
       .then(result => {
         this.toastr.success('Campeonato salvo com sucesso.');
@@ -105,7 +110,12 @@ export class CampeonatoComponent implements OnInit {
       })
       .then(result => jQuery('#modal-campeonato').modal('hide'))
       .catch(err => {
-        showError(err, this.toastr);
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
       });
   }
 

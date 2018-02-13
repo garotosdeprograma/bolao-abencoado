@@ -40,7 +40,7 @@
       name="Nº" [maxWidth]="30" [width]="20">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            {{row.$$index +1}}
+            {{(row.$$index +1) + (pagination.offset !== 0 ? pagination.offset * pagination.limit : 0)}}
           </span>
         </ng-template>
       </ngx-datatable-column>

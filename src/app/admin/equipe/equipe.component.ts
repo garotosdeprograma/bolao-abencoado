@@ -9,6 +9,7 @@ import { Pagination } from '../../models/pagination';
 import { Campeonato } from '../../models/campeonato';
 import { CampeonatoService } from '../campeonato/campeonato.service';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 declare const jQuery;
 
 @Component({
@@ -39,7 +40,9 @@ export class EquipeComponent implements OnInit {
   listaCampeonatosEscolhidos: any[];
   logoDefault: string;
 
-  constructor(private service: EquipeService, private toastr: ToastrService,
+  constructor(private service: EquipeService,
+    private toastr: ToastrService,
+    private router: Router,
     private campeonatoService: CampeonatoService) {
     this.logoDefault = 'assets/img/default.png';
     this.src = '';
@@ -78,7 +81,14 @@ export class EquipeComponent implements OnInit {
       .then(escudos => {
         this.escudos = escudos;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
   getEquipes(): Promise<any> {
@@ -90,7 +100,14 @@ export class EquipeComponent implements OnInit {
         this.rows = result.data;
         this.loadingIndicator = false;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
   public buscar() {
@@ -136,7 +153,12 @@ export class EquipeComponent implements OnInit {
         this.limparDados();
       })
       .catch(err => {
-        showError(err, this.toastr);
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
       });
   }
 
@@ -157,7 +179,12 @@ export class EquipeComponent implements OnInit {
         this.limparDados();
       })
       .catch(err => {
-        showError(err, this.toastr);
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
       });
   }
 

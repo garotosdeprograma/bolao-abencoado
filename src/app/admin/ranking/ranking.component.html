@@ -3,11 +3,17 @@
     <div class="col-sm-7 ml-0 pl-0">
       <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Ranking</h2>
     </div>
-    <div class="col-8 col-sm-5 p-0 m-0">
+    <div class="col-sm-4 p-0 m-0">
+      <div class="form-group p-0 m-0 mr-3">
+        <select class="form-control" [(ngModel)]="filter.idRodada">
+          <option [ngValue]="rodada.id" *ngFor="let rodada of listaRodada" [selected]="rodada.nome === 'Rodada...'">{{rodada.nome}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-1 p-0 m-0">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="rodada..." aria-label="campeonato...">
         <span class="input-group-btn">
-          <button class="btn" type="button">
+          <button class="btn" type="button" (click)="getRanking()">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </span>
@@ -28,51 +34,47 @@
     [scrollbarH]="'false'"
     [loadingIndicator]="loadingIndicator">
     <ngx-datatable-column name="Nº"
-        [maxWidth]="10" [width]="20">
+        [maxWidth]="10">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
             {{row.$$index +1}}
           </span>
         </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Name">
-      <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-        <span
-          title="Double click to edit"
-          (dblclick)="editing[row.$$index + '-name'] = true"
-          *ngIf="!editing[row.$$index + '-name']">
-            {{value}}
-        </span>
-        <input
-          autofocus
-          (blur)="updateValue($event, 'name', value, row)"
-          *ngIf="editing[row.$$index + '-name']"
-          type="text"
-          [value]="value"
-        />
-      </ng-template>
+    <ngx-datatable-column name="Nome">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.usuario.nome}}
+          </span>
+        </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Telefone">
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span
-          title="Double click to edit"
-          (dblclick)="editing[row.$$index + '-gender'] = true"
-          *ngIf="!editing[row.$$index + '-gender']">
-          {{value}}
-        </span>
-        <select
-          *ngIf="editing[row.$$index + '-gender']"
-          (change)="updateValue($event, 'gender', value, row)"
-          [value]="value">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </ng-template>
+    <ngx-datatable-column name="Pontuação">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.pontuacao}}
+          </span>
+        </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Data da aposta">
-      <ng-template ngx-datatable-cell-template let-value="value">
-        {{value}}
-      </ng-template>
+    <ngx-datatable-column name="Saldo de gols">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.saldo_gol}}
+          </span>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Data">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.created_at | date:'dd/MM/y H:mm'}}
+          </span>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Celular">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+          <span>
+            {{row.usuario.celular}}
+          </span>
+        </ng-template>
     </ngx-datatable-column>
     </ngx-datatable>
   </div>   

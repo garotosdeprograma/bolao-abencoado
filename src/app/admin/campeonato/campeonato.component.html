@@ -47,7 +47,7 @@
     <ngx-datatable-column name="Tipo" [flexGrow]="10">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            Nacional/Internacional
+            {{row.tipo}}
           </span>
         </ng-template>
       </ngx-datatable-column>  
@@ -78,7 +78,7 @@
           <div class="col-md-12">
             <div class="col-12 text-center mb-3">
               <div class="col-12">
-                <img class="image-escudo" src="assets/img/default.png" alt="Escudo do campeonato">
+                <img class="image-escudo" src="assets/img/default.png" alt="Gameboll-logo">
               </div>
             </div>
 
@@ -86,9 +86,9 @@
               <div class="row">
                 <div class="form-group col-sm-12">
                     <label>Tipo</label>
-                    <select class="form-control">
-                        <option>Nacional</option>
-                        <option>Internacional</option>                        
+                    <select class="form-control" name="tipo" [(ngModel)]="campeonato.tipo">
+                        <option value="NACIONAL">Nacional</option>
+                        <option value="INTERNACIONAL">Internacional</option>                        
                     </select>
                 </div>
 

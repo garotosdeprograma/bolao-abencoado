@@ -54,6 +54,9 @@ export class ApostaService {
     if (filter.nome) {
       url += '&nome=' + filter.nome;
     }
+    if (filter.ids) {
+      url += '&ids=' + filter.ids;
+    }
     return this.http.get(url, this.getHeaders())
     .map(this.extract)
     .toPromise();

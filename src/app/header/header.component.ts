@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
   @ViewChild('buttonSair') ButtonSair: ElementRef;
   user: User = new User();
 
-  constructor(private loginService: LoginService, private toastr: ToastrService, private route: Router) {
+  constructor(private loginService: LoginService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.modal = 'login';
   }
 
@@ -48,20 +50,25 @@ export class HeaderComponent implements OnInit {
     this.loginService.login(this.user)
       .then(result => {
         localStorage.setItem(STORED_TOKEN, result.token);
-        this.route.navigate(['admin']);
+        this.router.navigate(['admin']);
         this.closeModal();
         this.user = new User();
         this.verificarStatusLogin();
       })
       .catch(err => {
-        showError(err, this.toastr);
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
       });
   }
 
   logout() {
     localStorage.removeItem(STORED_TOKEN);
     this.verificarStatusLogin();
-    this.route.navigate(['']);
+    this.router.navigate(['']);
   }
 
 }

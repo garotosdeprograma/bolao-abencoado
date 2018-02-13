@@ -1,18 +1,24 @@
 <div class="row content pt-2 pb-5 m-0">
   <div class="col-12 form-group row d-flex align-items-center m-0 p-3">
-    <div class="form-group col-sm-8 ml-0 pl-0">
+    <div class="form-group col-sm-5 ml-0 pl-0">
       <h2 class="text-left mt-4 mb-3">Apostas</h2>
     </div>
-    <div class="col-8 col-sm-4 p-0 m-0">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="nome..." aria-label="nome...">
-        <span class="input-group-btn">
-          <button class="btn" type="button">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </span>
+    <div class="col-sm-4 p-0 m-0">
+        <div class="form-group p-0 m-0 mr-3">
+          <select class="form-control" [(ngModel)]="filter.ids">
+            <option [ngValue]="rodada.id" *ngFor="let rodada of listaRodada" [selected]="rodada.nome === 'Rodada...'">{{rodada.nome}}</option>
+          </select>
+        </div>
       </div>
-    </div>
+      <div class="col-sm-1 p-0 m-0">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn" type="button" (click)="getApostas()">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </span>
+        </div>
+      </div>
 
   </div>
 
@@ -23,14 +29,9 @@
     [columnMode]="'force'" 
     [footerHeight]="50" 
     [rowHeight]="'auto'"
-    [rows]="rows" 
-    [externalPaging]="true"
-    [limit]="pagination.limit"
-    [count]="pagination.count"                
-    [offset]="pagination.offset"
+    [rows]="rows"
     [scrollbarH]="'false'"
-    [loadingIndicator]="loadingIndicator"
-    (page)="setPage($event)">
+    [loadingIndicator]="loadingIndicator">
       <ngx-datatable-column 
       name="Nº" [maxWidth]="30" [width]="20">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
@@ -39,7 +40,12 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Nome">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-            {{row.usuario.nome}}
+            {{row.nome}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Rodada">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+            {{row.rodada}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Data da aposta">
@@ -48,11 +54,10 @@
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Equipes Escolhidas">
-        <ng-template ngx-datatable-cell-template let-value="value">
-          <!-- <span *ngFor="row.jogos">
-
-          </span> -->
-          {{value}}
+        <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
+          <span *ngFor="let equipe of row.equipes">
+            {{equipe}} <br/>
+          </span>
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>

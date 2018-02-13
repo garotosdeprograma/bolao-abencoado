@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { URL_API } from '../../constant/api';
 import { ApostaService } from './aposta.service';
 import { Pagination } from '../../models/pagination';
+import { RodadaService } from '../rodada/rodada.service';
+import { showError } from '../../utils/showError';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aposta',
@@ -16,35 +20,68 @@ export class ApostaComponent implements OnInit {
   temp = [];
   selected = [];
   loadingIndicator: boolean;
-  pagination: Pagination;
+  listaRodada: any[];
+  limit: number;
 
-  constructor(private service: ApostaService) {
+  constructor(private service: ApostaService,
+              private toastr: ToastrService,
+              private router: Router,
+              private rodadaService: RodadaService) {
     this.filter = {};
+    this.filter.ids = [];
     this.apostas = [];
     this.loadingIndicator = true;
-    this.pagination = new Pagination();
+    this.listaRodada = [];
+    this.limit = 20;
+
   }
 
   ngOnInit() {
-    this.setPage();
+    this.getLastRodadas()
+      .then(listRodada => {
+        this.filter.ids = listRodada[listRodada.length - 1].id;
+        return this.getApostas();
+      })
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
-  setPage(pageInfo = { offset: 0 }) {
-    this.filter.page = pageInfo.offset + 1;
-    this.getApostas();
+  getLastRodadas() {
+    return this.rodadaService.getLastRodadas(this.limit)
+    .then(result => {
+      return this.listaRodada = result.data;
+    })
+    .catch(err => {
+      if (err.status) {
+        this.router.navigate(['/']);
+        this.toastr.error(err.getMessage());
+      } else {
+        showError(err, this.toastr);
+      }
+    });
   }
 
   getApostas() {
     this.service.getApostas(this.filter)
       .then(result => {
-        this.pagination.count = result.total;
-        this.pagination.offset = result.current_page - 1;
-        this.pagination.limit = result.per_page;
-        this.rows = result.data;
-        this.loadingIndicator = false;
-        console.log(this.rows);
+        this.temp = [...result];
+        this.rows = result;
+        return this.loadingIndicator = false;
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JogoService } from './jogo.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { CampeonatoService } from '../campeonato/campeonato.service';
 import { showError } from '../../utils/showError';
@@ -27,6 +27,7 @@ export class JogoComponent implements OnInit {
   constructor(private service: JogoService,
     private toastr: ToastrService,
     private campeonatoService: CampeonatoService,
+    private router: Router,
     private rodadaService: RodadaService,
     private route: ActivatedRoute) {
     this.jogo = new Jogo();
@@ -59,7 +60,14 @@ export class JogoComponent implements OnInit {
         jQuery('#modal-jogo').modal('hide');
         this.getJogos(this.idRodada);
       })
-      .catch(err => showError(err, this.toastr));
+    .catch(err => {
+      if (err.status) {
+        this.router.navigate(['/']);
+        this.toastr.error(err.getMessage());
+      } else {
+        showError(err, this.toastr);
+      }
+    });
   }
 
   salvarEdicao(jogo) {
@@ -92,7 +100,14 @@ export class JogoComponent implements OnInit {
       .then(result => {
         jQuery('#modal-jogo').modal('show');
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
   getEquipesPorCampeonatos() {
@@ -100,7 +115,14 @@ export class JogoComponent implements OnInit {
       .then(result => {
         return this.equipes = result.equipes;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
   getJogos(id) {
@@ -108,7 +130,14 @@ export class JogoComponent implements OnInit {
       .then(result => {
         this.jogos = result[0].jogos;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err =>{
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
   getCampeonatos() {
@@ -116,7 +145,14 @@ export class JogoComponent implements OnInit {
       .then(result => {
         this.campeonatos = result;
       })
-      .catch(err => showError(err, this.toastr));
+      .catch(err => {
+        if (err.status) {
+          this.router.navigate(['/']);
+          this.toastr.error(err.getMessage());
+        } else {
+          showError(err, this.toastr);
+        }
+      });
   }
 
 }
