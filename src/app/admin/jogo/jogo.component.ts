@@ -55,6 +55,10 @@ export class JogoComponent implements OnInit {
       this.jogo.inicio = this.jogo.inicio.replace('T', ' ');
       this.jogo.inicio = this.jogo.inicio.substr(0, 16);
     }
+    if (this.jogo.gol_casa < 0 || this.jogo.gol_visitante < 0) {
+      this.toastr.error('Não é permitido a inserção de gol(s) negativo(s)');
+      return;
+    }
     this.service.saveJogo(this.jogo)
       .then(result => {
         this.toastr.success('Jogo salvo com sucesso.');

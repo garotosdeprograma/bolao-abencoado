@@ -34,44 +34,32 @@
     <ngx-datatable-column name="Nº"
         [maxWidth]="10">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.$$index +1}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Nome">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.usuario.nome}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Pontuação">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.pontuacao}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Saldo de gols">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.saldo_gol}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Data">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.created_at | date:'dd/MM/y H:mm'}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Celular">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-          <span>
             {{row.usuario.celular}}
-          </span>
         </ng-template>
     </ngx-datatable-column>
     </ngx-datatable>

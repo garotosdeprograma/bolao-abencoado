@@ -20,7 +20,7 @@
         </div>
       </div>
   
-  <div class="col-12 m-0">
+  <div class="col-sm-12 m-0">
     <ngx-datatable
     #table
     class="material"
@@ -37,21 +37,21 @@
     [scrollbarH]="'false'"
     [loadingIndicator]="loadingIndicator"
     (page)="setPage($event)">
-    <ngx-datatable-column name="Nome" [flexGrow]="10">
+    <ngx-datatable-column name="Nome">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span>
           {{row.nome}}
         </span>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Tipo" [flexGrow]="10">
+    <ngx-datatable-column name="Tipo">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
             {{row.tipo}}
           </span>
         </ng-template>
       </ngx-datatable-column>  
-    <ngx-datatable-column name="Editar" [flexGrow]="1">
+    <ngx-datatable-column name="Editar">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <div class="action">
             <a data-toggle="modal" (click)="edit(row)" data-target="#modal-campeonato">

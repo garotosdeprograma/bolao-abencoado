@@ -27,7 +27,7 @@ export class InicialComponent implements OnInit {
   private idRodada: number;
   public apostaTO: ApostaTO;
   public viewJogos: Set<any>;
-
+  public isEmpty: boolean;
 
   constructor(private service: RodadaService,
     private toastr: ToastrService,
@@ -54,7 +54,7 @@ export class InicialComponent implements OnInit {
   getJogos() {
     this.service.getJogosPorRodada()
       .then(result => {
-        this.rodadas = result.map((elm: any) => {
+        return this.rodadas = result.map((elm: any) => {
           elm.jogos.map(elm2 => {
             elm2.equipe_casa.ativo = false;
             elm2.equipe_visitante.ativo = false;
@@ -62,6 +62,11 @@ export class InicialComponent implements OnInit {
           });
           return elm;
         });
+      })
+      .then(rodadas => {
+        if (rodadas.length  < 1) {
+          return this.isEmpty = true;
+        }
       })
       .catch(err => errorHandler(err, this.toastr, this.router));
   }

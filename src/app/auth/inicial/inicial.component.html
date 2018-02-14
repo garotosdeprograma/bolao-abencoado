@@ -43,7 +43,7 @@
             </small>
           </div>
           <div class="col-12 info-jogo">
-            <p class="info">{{ jogo.inicio | date:'medium'}}</p>
+            <p class="info">{{ jogo.inicio | date:'dd/MM/y'}}</p>
           </div>
         </div>
       </div>
@@ -55,9 +55,10 @@
     <img src="assets/img/icone-aposta.png" data-toggle="modal" data-target="#modal-aposta" alt="Icone apostas">
   </div>
 
-  <div class="rodadasOff col-sm-12 text-center justify-content-center row pt-5 pb-5 mt-5 mb-5" *ngIf="rodadas.length <= 0">
-    <h1>Não existem <br/> rodadas ativas</h1>
-    <i class="fa fa-5x fa-exclamation"></i>
+  <div class="col-12 d-flex justify-content-center" *ngIf="isEmpty">
+    <div class="alert alert-danger col-sm-6 text-center pt-5 pb-5 mt-5 mb-5">
+      <h1>Não existem <br/> rodadas ativas!</h1>
+    </div>
   </div>
 
 </div>
