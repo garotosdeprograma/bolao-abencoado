@@ -120,18 +120,17 @@
             .jogo {
                 background-color: #f2f2f2;
                 border: solid 3px #fff;
-                .time-casa {
+                .time {
                     cursor: pointer;
                     &:hover {
-                        color: #fff;
-                        background-color: #7c7c7c;
-                    }
-                }
-                .time-visitante {
-                    cursor: pointer;
-                    &:hover {
-                        color: #fff;
-                        background-color: #7c7c7c;
+                        span {
+                            font-size: 1.2em;
+                            font-weight: bold;                            
+                        }
+                        img {
+                            height: 25px;
+                            width: auto;
+                        }
                     }
                 }
                 img {
@@ -149,7 +148,16 @@
             }
         }
     }
-
+    .rodadasOff {
+        color: red;
+        h1 {
+            font-size: 50px;
+        }
+        i {
+            transform: rotate(5deg);
+            font-size: 8em;
+        }
+    }
 }
 
 .aposta {
@@ -169,5 +177,6 @@
 }
 
 .selected {
-    background-color: #38ff47;
+    color: #fff;
+    background-color: #5e9465;
 }

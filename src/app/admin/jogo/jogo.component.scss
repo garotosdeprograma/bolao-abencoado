@@ -1,15 +1,21 @@
 .jogos {
-  img {
-      width: 30px;
-  }
-  .jogo {
-      background-color: rgba(0, 0, 0, 0.164);
-  }
-  .info {
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.452);
-  }
-  span {
-      cursor: pointer;
-  }
+    img {
+        width: 30px;
+    }
+    .jogo {
+        background-color: rgba(0, 0, 0, 0.164);
+    }
+    .info {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.452);
+    }
+    span {
+        cursor: pointer;
+    }
+    .jogoOff {
+        color: red;
+        h1 {
+            font-size: 50px;
+        }
+    }
 }

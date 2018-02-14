@@ -64,4 +64,19 @@
             margin-left: -5px;
         }
     }
+    .collapse {
+        a{
+            text-decoration: none;
+            .fa-home {
+                display: none;
+                &:hover {
+                    cursor: pointer;
+                    color: #000 !important;
+                }
+                
+            }
+
+        }
+
+    }
 }

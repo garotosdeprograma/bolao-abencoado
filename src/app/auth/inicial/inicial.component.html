@@ -24,7 +24,7 @@
       <div class="div-jogos col-12 row p-0">
         <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row" *ngFor="let jogo of rodada.jogos">
           <!-- time da casa -->
-          <div class="time-casa text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
+          <div class="time text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_casa, rodada.id, 'right')">
             <img src="{{jogo.equipe_casa.logo}}" alt="logo do time">
             <small class="col-12 p-0">
@@ -35,7 +35,7 @@
           <div class="col-2 d-flex justify-content-center align-items-center">vs</div>
 
           <!-- time visitante -->
-          <div class="time-visitante text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_visitante.ativo}"
+          <div class="time text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_visitante.ativo}"
             (click)="escolherEquipe(jogo, jogo.equipe_visitante, rodada.id, 'left')">
             <img src="{{jogo.equipe_visitante.logo}}" alt="logo do time">
             <small class="col-12 p-0">
@@ -53,6 +53,11 @@
 
   <div class="aposta d-flex justify-content-center align-items-center" #bolaAposta>
     <img src="assets/img/icone-aposta.png" data-toggle="modal" data-target="#modal-aposta" alt="Icone apostas">
+  </div>
+
+  <div class="rodadasOff col-sm-12 text-center justify-content-center row pt-5 pb-5 mt-5 mb-5" *ngIf="rodadas.length <= 0">
+    <h1>Não existem <br/> rodadas ativas</h1>
+    <i class="fa fa-5x fa-exclamation"></i>
   </div>
 
 </div>

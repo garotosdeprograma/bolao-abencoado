@@ -1,25 +1,22 @@
 <div class="row content pt-2 pb-5 m-0">
-  <div class="col-12 form-group row d-flex align-items-center m-0 p-3">
-    <div class="form-group col-sm-5 ml-0 pl-0">
-      <h2 class="text-left mt-4 mb-3">Apostas</h2>
+  <div class="col-12 row d-flex align-items-center m-0 p-3">
+    <div class="col-sm-7 ml-0 pl-0">
+      <h2 class="text-left pl-0 ml-0 mt-4 mb-3">Apostas</h2>
     </div>
-    <div class="col-sm-4 p-0 m-0">
-        <div class="form-group p-0 m-0 mr-3">
-          <select class="form-control" [(ngModel)]="filter.ids">
-            <option [ngValue]="rodada.id" *ngFor="let rodada of listaRodada" [selected]="rodada.nome === 'Rodada...'">{{rodada.nome}}</option>
-          </select>
-        </div>
+    <div class="col-12 col-sm-5 row m-0 p-0">
+      <div class="col-10 col-sm-11 p-0 m-0 pr-3">
+        <select class="form-control" [(ngModel)]="filter.ids">
+          <option [ngValue]="rodada.id" *ngFor="let rodada of listaRodada" [selected]="rodada.nome === 'Rodada...'">{{rodada.nome}}</option>
+        </select>
       </div>
-      <div class="col-sm-1 p-0 m-0">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn" type="button" (click)="getApostas()">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </span>
-        </div>
+      <div class="col-1 col-sm-1 p-0 m-0">
+        <span class="input-group-btn">
+          <button class="btn" type="button" (click)="getAposta()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </span>
       </div>
-
+    </div>
   </div>
 
   <div class="col-12 m-0">

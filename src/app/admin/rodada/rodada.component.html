@@ -39,7 +39,7 @@
     <ngx-datatable-column name="Rodadas">
       <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
           <span>
-            <a class="nome-rodada" (click)="mostrarJogos()">
+            <a class="nome-rodada">
               <a [routerLink]="['../jogo']" [queryParams]="{id: row.id}">
                 {{row.nome}}
               </a>
@@ -57,7 +57,7 @@
             {{row.fim | date: 'dd/MM/y'}}
         </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column [width]="200" name="Ação">
+      <ngx-datatable-column [width]="200" name="Editar">
         <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
             <div class="action">
               <a class="col-12" data-toggle="modal" (click)="edit(row)" data-target="#modal-rodada">

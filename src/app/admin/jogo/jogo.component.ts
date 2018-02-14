@@ -51,16 +51,17 @@ export class JogoComponent implements OnInit {
       this.toastr.error('Time casa e visitante não podem ser iguais');
       return;
     }
-    this.jogo.inicio = this.jogo.inicio.replace('T', ' ');
-    this.jogo.inicio = this.jogo.inicio.substr(0, 16);
-    console.log(this.jogo);
+    if (this.jogo.inicio) {
+      this.jogo.inicio = this.jogo.inicio.replace('T', ' ');
+      this.jogo.inicio = this.jogo.inicio.substr(0, 16);
+    }
     this.service.saveJogo(this.jogo)
       .then(result => {
         this.toastr.success('Jogo salvo com sucesso.');
         jQuery('#modal-jogo').modal('hide');
         this.getJogos(this.idRodada);
       })
-    .catch(err => errorHandler(err, this.toastr, this.router));
+      .catch(err => errorHandler(err, this.toastr, this.router));
   }
 
   salvarEdicao(jogo) {

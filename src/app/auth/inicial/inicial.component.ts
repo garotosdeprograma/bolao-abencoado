@@ -137,6 +137,9 @@ export class InicialComponent implements OnInit {
 
   retirarAposta(jogo) {
     this.viewJogos.delete(jogo);
+    if (jogo.campeonato.tipo === 'INTERNACIONAL') {
+      this.apostaTO.tipo = '';
+    }
     this.apostaTO.times = this.apostaTO.times.filter(elm => {
       if (elm.idJogo === jogo.id) {
         jogo.equipe_casa.ativo = false;
@@ -183,6 +186,9 @@ export class InicialComponent implements OnInit {
       this.viewJogos.clear();
       this.apostaTO = new ApostaTO();
       jQuery('#modal-aposta').modal('hide');
+      this.JogosSelecionados.nativeElement.style.display = 'block';
+      this.Formulario.nativeElement.style.display = 'none';
+      this.Enviar.nativeElement.style.display = 'none';
     }
   }
 
