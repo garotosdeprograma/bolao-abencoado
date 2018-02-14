@@ -39,8 +39,12 @@ export class ApostaComponent implements OnInit {
   ngOnInit() {
     this.getLastRodadas()
       .then(listRodada => {
-        this.filter.ids = listRodada[listRodada.length - 1].id;
-        return this.getApostas();
+        if (listRodada.length > 0) {
+          this.filter.ids = listRodada[listRodada.length - 1].id;
+          return this.getApostas();
+        } else {
+          return this.loadingIndicator = false;
+        }
       })
       .catch(err => errorHandler(err, this.toastr, this.router));
   }

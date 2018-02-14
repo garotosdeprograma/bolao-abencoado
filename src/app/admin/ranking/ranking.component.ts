@@ -38,8 +38,12 @@ export class RankingComponent implements OnInit {
   ngOnInit() {
     this.getLastRodadas()
     .then(rodadas => {
-        this.filter.idRodada = rodadas[rodadas.length - 1].id;
-        return this.getRanking();
+        if (rodadas.length > 1) {
+          this.filter.idRodada = rodadas[rodadas.length - 1].id;
+          return this.getRanking();
+        } else {
+          return this.loadingIndicator = false;
+        }
       })
       .catch(err => errorHandler(err, this.toastr, this.router));
   }
