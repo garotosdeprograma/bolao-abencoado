@@ -42,8 +42,8 @@
               <span>{{jogo.equipe_visitante.nome}}</span>
             </small>
           </div>
-          <div class="col-12 info-jogo">
-            <p class="info">{{ jogo.inicio | date:'dd/MM/y'}}</p>
+          <div class="col-12 info-jogo d-flex justify-content-center">
+            <span class="info mr-2">{{ jogo.inicio | date:'dd/MM/y'}}</span> <span class="info ml-2">{{ jogo.campeonato.nome }}</span>
           </div>
         </div>
       </div>

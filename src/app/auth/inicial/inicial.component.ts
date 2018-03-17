@@ -64,6 +64,7 @@ export class InicialComponent implements OnInit {
         });
       })
       .then(rodadas => {
+        console.log(this.rodadas);
         if (rodadas.length  < 1) {
           return this.isEmpty = true;
         }
