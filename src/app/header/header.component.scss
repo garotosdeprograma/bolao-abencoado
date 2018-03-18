@@ -57,12 +57,15 @@
 .header {
     position: absolute;
     .logo {
-        .span1 {
-            margin-right: -5px;
+        img {
+            height: 50px;
         }
-        .span2 {
-            margin-left: -5px;
-        }
+        // .span1 {
+        //     margin-right: -5px;
+        // }
+        // .span2 {
+        //     margin-left: -5px;
+        // }
     }
     .collapse {
         a{
