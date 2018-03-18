@@ -12,16 +12,16 @@
     </div>
   </div>
 
-  <!-- Campeonatos -->
+  <!-- Rodadas -->
 
   <div class="jogos col-12 row d-flex justify-content-center align-items-center m-0">
     <div class="col-sm-10 row d-flex justify-content-center p-0" *ngFor="let rodada of rodadas">
-      <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0">
+      <div class="titulo-campeonato col-12 row text-left d-flex align-items-center pt-3 pb-2 pl-0 pr-0" *ngIf="rodada.jogos.length > 0">
         <h5 class="col-10">{{rodada.nome}}</h5>
       </div>
 
       <!-- jogo -->
-      <div class="div-jogos col-12 row p-0">
+      <div class="div-jogos col-12 row p-0" *ngIf="rodada.jogos.length > 0">
         <div class="jogo col-sm-6 m-0 p-1 d-flex justify-content-center row" *ngFor="let jogo of rodada.jogos">
           <!-- time da casa -->
           <div class="time text-center d-flex justify-content-center col-5 row p-0 m-0" [ngClass]="{'selected': jogo.equipe_casa.ativo}"
@@ -43,7 +43,7 @@
             </small>
           </div>
           <div class="col-12 info-jogo d-flex justify-content-center">
-            <span class="info mr-2">{{ jogo.inicio | date:'dd/MM/y'}}</span> <span class="info ml-2">{{ jogo.campeonato.nome }}</span>
+            <span class="info mr-2">{{ jogo.inicio | date:'dd/MM/yyyy H:mm'}}</span> <span class="info ml-2">{{ jogo.campeonato.nome }}</span>
           </div>
         </div>
       </div>

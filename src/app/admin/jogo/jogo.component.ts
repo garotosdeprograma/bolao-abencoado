@@ -110,7 +110,7 @@ export class JogoComponent implements OnInit {
   }
 
   getJogos(id) {
-    this.rodadaService.getJogosPorRodada(id)
+    this.rodadaService.getJogosPorRodadaAuth(id)
       .then(result => {
         this.jogos = result[0].jogos;
       })
