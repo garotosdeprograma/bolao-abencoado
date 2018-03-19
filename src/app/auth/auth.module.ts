@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule
   ],
-  declarations: [InicialComponent],
+  declarations: [InicialComponent, AuthComponent],
   providers: [
     RodadaService,
     ApostaService
