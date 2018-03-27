@@ -95,10 +95,17 @@
     background-color: #fff;
     .banner {
         height: 60vh;
-        background-image: url(../../../assets/img/banner.jpg); 
+        background-image: url(../../../assets/img/banner.jpg);
+        // background: rgba($color: #000000, $alpha: 1.0);
+        // opacity: 0.1;
+        // filter: brightness(90%);
         background-position: 0 -50px;
         background-size: 100%;
         background-repeat: no-repeat;
+        h1, p {
+            // border: solid 1px black;
+            text-shadow: 1px 1px 0px black;
+        }
     }
 
     @media (max-width: 575px) {
@@ -165,7 +172,7 @@
     height: 80px;
     position: fixed;
     right: -83px;
-    top: 60px;
+    top: 70px;
     img {
         width: 60px;
         transition: 0.2s;
