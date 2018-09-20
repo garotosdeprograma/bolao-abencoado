@@ -32,7 +32,7 @@ export class ApostaComponent implements OnInit {
     this.apostas = [];
     this.loadingIndicator = true;
     this.listaRodada = [];
-    this.limit = 20;
+    this.limit = 2000;
 
   }
 
